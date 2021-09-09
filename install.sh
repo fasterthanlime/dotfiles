@@ -9,7 +9,14 @@ fi
 echo "Creating symlinks..."
 basedir=$PWD
 for i in .p10k.zsh .zshrc .zshrc.d; do
-	ln --verbose --force --symbolic ./dotfiles/$i ~/
+	if [[ -d ~/dotfiles ]]; then
+		# probably on my computer
+		ln --verbose --force --symbolic ./dotfiles/$i ~/
+	else
+		# probably on GitHub Codespaces, which clones it elsewhere
+		# then turns links into actual files for some reason
+		ln --verbose --force --symbolic $PWD/$i ~/
+	fi
 done
 echo "Creating symlinks... done!"
 
