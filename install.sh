@@ -9,7 +9,7 @@ fi
 echo "Creating symlinks..."
 basedir=$PWD
 for i in .p10k.zsh .zshrc .zshrc.d; do
-	ln --verbose --force --symbolic $basedir/$i ~/
+	ln --verbose --force --symbolic ./dotfiles/$i ~/
 done
 echo "Creating symlinks... done!"
 
