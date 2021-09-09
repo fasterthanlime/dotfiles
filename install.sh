@@ -7,8 +7,10 @@ else
 fi
 
 echo "Creating symlinks..."
-shopt -s dotglob
-ln --verbose --force --symbolic ~/ftl/dotfiles/[.]* ~/
+basedir=$PWD
+for i in .p10k.zsh .zshrc .zshrc.d; do
+	ln --verbose --force --symbolic $basedir/$i ~/
+done
 echo "Creating symlinks... done!"
 
 if [[ -z "$CLOUDSMITH_API_KEY" ]]; then
