@@ -1,8 +1,14 @@
 if [[ "$IN_DEV_CONTAINER" = "1" ]]; then
-	export REAL_HOME=/host-home-folder
+	if [[ -n "$GITHUB_CODESPACE_TOKEN" ]]; then
+		export REAL_HOME=$HOME
+	else
+		export REAL_HOME=/host-home-folder
+	fi
 else
 	export REAL_HOME=$HOME
+fi
 
+if [[ "$IN_DEV_CONTAINER" != "1" ]]; then
 	## Go binaries
 	export PATH=$PATH:$HOME/go/bin
 	
