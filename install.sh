@@ -6,9 +6,15 @@ else
 	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 fi
 
+if [[ -d ~/.tmux/plugins/tpm ]]; then
+	echo "tpm is already installed"
+else
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
 echo "Creating symlinks..."
 basedir=$PWD
-for i in .p10k.zsh .zshrc .zshrc.d; do
+for i in .p10k.zsh .zshrc .zshrc.d .tmux.conf; do
 	if [[ -d ~/dotfiles ]]; then
 		# probably on my computer
 		ln --verbose --force --symbolic ./dotfiles/$i ~/
