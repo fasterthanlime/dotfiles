@@ -4,6 +4,8 @@ bindkey '^R' history-incremental-search-backward
 
 if [[ "$IN_DEV_CONTAINER" = "1" ]]; then
 	if [[ -n "$GITHUB_CODESPACE_TOKEN" ]]; then
+		export GOPROXY="https://proxy.golang.org,https://fasterthanlime:${CLOUDSMITH_API_KEY}@dl.cloudsmith.io/basic/netlify/burrow/go/,direct"
+		export GONOSUMDB="github.com/netlify/*"
 		export REAL_HOME=$HOME
 	else
 		export REAL_HOME=/host-home-folder
