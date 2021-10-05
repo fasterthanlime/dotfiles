@@ -1,9 +1,16 @@
+# Workaround, cf. https://unix.stackexchange.com/questions/30168/how-to-enable-reverse-search-in-zsh
+bindkey -v
+bindkey '^R' history-incremental-search-backward
+
 if [[ "$IN_DEV_CONTAINER" = "1" ]]; then
 	if [[ -n "$GITHUB_CODESPACE_TOKEN" ]]; then
 		export REAL_HOME=$HOME
 	else
 		export REAL_HOME=/host-home-folder
 	fi
+
+	## Things that don't belong in dotfiles
+	source ${REAL_HOME}/.secrets.zsh
 else
 	export REAL_HOME=$HOME
 fi
@@ -34,7 +41,10 @@ if [[ "$IN_DEV_CONTAINER" != "1" ]]; then
 	## Paths I often jump to
 	export CDPATH=.:~/work:~/ftl
 
-	## Things that don't believe in dotfiles
+	## My editor for git commits
+	export EDITOR=vim
+
+	## Things that don't belong in dotfiles
 	source ~/.secrets.zsh
 fi
 
@@ -75,6 +85,8 @@ setopt HIST_NO_STORE  ## Do not add history and fc commands to the history
 alias ls="ls --color=always"
 alias l="ls --color=always -lhA"
 alias ll="ls --color=always -lh"
+
+alias objdump="objdump -Mintel"
 
 source ~/.cargo/env
 
