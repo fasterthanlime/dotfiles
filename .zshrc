@@ -8,7 +8,7 @@ if [[ "$IN_DEV_CONTAINER" = "1" ]]; then
 		export GONOSUMDB="github.com/netlify/*"
 		export REAL_HOME=$HOME
 	else
-		export REAL_HOME=/host-home-folder
+		export REAL_HOME=/host-home/amos
 	fi
 
 	## Things that don't belong in dotfiles
