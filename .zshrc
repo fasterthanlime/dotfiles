@@ -5,8 +5,10 @@ if [[ "$IN_DEV_CONTAINER" = "1" ]]; then
 		export REAL_HOME=/host/home/amos
 	fi
 
-	## Things that don't belong in dotfiles
-	source ${REAL_HOME}/.secrets.zsh
+        ## Things that don't belong in dotfiles
+        if [[ -f "${REAL_HOME}/.secrets.zsh" ]]; then
+                source ${REAL_HOME}/.secrets.zsh
+        fi
 else
 	export REAL_HOME=$HOME
 fi
@@ -40,7 +42,7 @@ if [[ "$IN_DEV_CONTAINER" != "1" ]]; then
 	. $HOME/.asdf/asdf.sh
 
 	## Paths I often jump to
-	export CDPATH=.:~/work:~/ftl
+	export CDPATH=.:~/work:~/ftl:~
 
 	## Things that don't belong in dotfiles
 	source ~/.secrets.zsh
@@ -86,7 +88,9 @@ alias ll="ls --color=always -lh"
 
 alias objdump="objdump -Mintel"
 
-source ~/.cargo/env
+if [[ -f ~/.cargo/env ]]; then
+        source ~/.cargo/env
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
