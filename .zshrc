@@ -1,7 +1,3 @@
-# Workaround, cf. https://unix.stackexchange.com/questions/30168/how-to-enable-reverse-search-in-zsh
-bindkey -v
-bindkey '^R' history-incremental-search-backward
-
 if [[ "$IN_DEV_CONTAINER" = "1" ]]; then
 	if [[ -n "$GITHUB_CODESPACE_TOKEN" ]]; then
 		export REAL_HOME=$HOME
@@ -35,14 +31,16 @@ if [[ "$IN_DEV_CONTAINER" != "1" ]]; then
 	## Use neovim by default
 	alias vim="nvim"
 
+	## Git editor
+	export EDITOR=vim
+	## But keep emacs keymap
+	bindkey -e
+
 	## asdf
 	. $HOME/.asdf/asdf.sh
 
 	## Paths I often jump to
 	export CDPATH=.:~/work:~/ftl
-
-	## My editor for git commits
-	export EDITOR=vim
 
 	## Things that don't belong in dotfiles
 	source ~/.secrets.zsh
