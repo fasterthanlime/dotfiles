@@ -19,6 +19,10 @@ if [[ "$IN_DEV_CONTAINER" != "1" ]]; then
 	
 	## Local binaries
 	export PATH=$PATH:$HOME/.local/bin
+
+	## fly.io
+	export FLYCTL_INSTALL="/home/amos/.fly"
+  	export PATH="$FLYCTL_INSTALL/bin:$PATH"
 	
 	## Runtime toolkit
 	export PATH=$PATH:$HOME/work/runtime-toolkit
@@ -42,7 +46,7 @@ if [[ "$IN_DEV_CONTAINER" != "1" ]]; then
 	. $HOME/.asdf/asdf.sh
 
 	## Paths I often jump to
-	export CDPATH=.:~/work:~/ftl:~
+	export CDPATH=.:~/work:~/bearcove:~/ftl:~
 
 	## Things that don't belong in dotfiles
 	source ~/.secrets.zsh
