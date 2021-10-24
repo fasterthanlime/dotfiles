@@ -28,8 +28,11 @@ if [[ "$IN_DEV_CONTAINER" != "1" ]]; then
 	export PATH=$PATH:$HOME/work/runtime-toolkit
 
 	## SSH key manager
-	keychain -q ~/.ssh/id_ed25519
-	source ~/.keychain/comet-sh
+	which keychain &> /dev/null
+	if [[ $? == 0 ]]; then
+		keychain -q ~/.ssh/id_ed25519
+		source ~/.keychain/comet-sh
+	fi
 
 	## PATH additions
 	export PATH=$PATH:~/bin
@@ -43,7 +46,9 @@ if [[ "$IN_DEV_CONTAINER" != "1" ]]; then
 	bindkey -e
 
 	## asdf
-	. $HOME/.asdf/asdf.sh
+	if [[ -f "$HOME/.asdf/asdf.sh" ]]; then
+		. $HOME/.asdf/asdf.sh
+	fi
 
 	## Paths I often jump to
 	export CDPATH=.:~/work:~/bearcove:~/ftl:~
