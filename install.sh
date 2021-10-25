@@ -1,10 +1,12 @@
 #!/bin/bash
 
-if [[ -d ~/powerlevel10k ]]; then
-	echo "powerlevel10k is already installed"
-else
-	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-fi
+# if [[ -d ~/powerlevel10k ]]; then
+# 	echo "powerlevel10k is already installed"
+# else
+# 	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+# fi
+
+sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 
 if [[ -d ~/.tmux/plugins/tpm ]]; then
 	echo "tpm is already installed"
