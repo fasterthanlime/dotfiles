@@ -7,7 +7,12 @@
 # fi
 
 mkdir -p ~/.local/bin
-curl -fsSL https://starship.rs/install.sh | bash -s -- --yes --bin-dir ~/.local/bin
+
+if [[ -f ~/.local/bin/starship ]]; then
+	echo "starship is already installed"
+else
+	curl -fsSL https://starship.rs/install.sh | bash -s -- --yes --bin-dir ~/.local/bin
+fi
 
 if [[ -d ~/.tmux/plugins/tpm ]]; then
 	echo "tpm is already installed"
@@ -17,15 +22,11 @@ fi
 
 echo "Creating symlinks..."
 basedir=$PWD
-for i in .p10k.zsh .zshrc .zshrc.d .tmux.conf; do
-	if [[ -d ~/dotfiles ]]; then
-		# probably on my computer
-		ln --verbose --force --symbolic ./dotfiles/$i ~/
-	else
-		# probably on GitHub Codespaces, which clones it elsewhere
-		# then turns links into actual files for some reason
-		ln --verbose --force --symbolic $PWD/$i ~/
-	fi
+
+mkdir -p ~/.config/
+
+for i in .p10k.zsh .zshrc .zshrc.d .tmux.conf .config/starship.toml; do
+	ln --verbose --force --symbolic $PWD/$i ~/$(dirname $i)
 done
 echo "Creating symlinks... done!"
 
