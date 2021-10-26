@@ -65,7 +65,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 ## Prompt theme
-source $REAL_HOME/powerlevel10k/powerlevel10k.zsh-theme
+# source $REAL_HOME/powerlevel10k/powerlevel10k.zsh-theme
 
 ## zprezto-like git aliases
 source $REAL_HOME/.zshrc.d/git-alias.zsh

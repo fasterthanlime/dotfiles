@@ -6,7 +6,7 @@
 # 	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 # fi
 
-sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+curl -fsSL https://starship.rs/install.sh | bash -s -- --yes
 
 if [[ -d ~/.tmux/plugins/tpm ]]; then
 	echo "tpm is already installed"
