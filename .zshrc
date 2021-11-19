@@ -74,6 +74,15 @@ source $REAL_HOME/.zshrc.d/git-alias.zsh
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
+## Fix home/end/delete (GNOME Terminal, outside tmux)
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
+bindkey  "^[[3~"  delete-char
+
+## Fix home/end (GNOME Terminal, within tmux, with TERM=screen-256color)
+bindkey  "^[[1~"   beginning-of-line
+bindkey  "^[[4~"   end-of-line
+
 ## History file configuration
 [ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
 [ "$HISTSIZE" -lt 50000 ] && HISTSIZE=50000
@@ -105,6 +114,7 @@ fi
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

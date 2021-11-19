@@ -205,7 +205,7 @@ if ! zstyle -t ':prezto:module:git:alias' skip; then
   alias giD='git diff --no-ext-diff --cached --word-diff'
   alias gii='git update-index --assume-unchanged'
   alias giI='git update-index --no-assume-unchanged'
-  alias gir='git reset'
+  # alias gir='git reset'
   alias giR='git reset --patch'
   alias gix='git rm -r --cached'
   alias giX='git rm -r --force --cached'
