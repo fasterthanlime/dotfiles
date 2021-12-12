@@ -31,7 +31,7 @@ if [[ "$IN_DEV_CONTAINER" != "1" ]]; then
 	which keychain &> /dev/null
 	if [[ $? == 0 ]]; then
 		keychain -q ~/.ssh/id_ed25519
-		source ~/.keychain/comet-sh
+		source ~/.keychain/*-sh
 	fi
 
 	## PATH additions
@@ -113,8 +113,11 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# This apparently makes tab-complete with CDPATH work
+autoload -Uz compinit && compinit
+
 eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
+# eval "$(zoxide init zsh)"
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
