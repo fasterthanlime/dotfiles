@@ -53,6 +53,9 @@ if [[ "$IN_DEV_CONTAINER" != "1" ]]; then
 	## Paths I often jump to
 	export CDPATH=.:~/work:~/bearcove:~/ftl:~
 
+	## Don't make me add 'root@' to every command
+	export TELEPORT_LOGIN=root
+
 	## Things that don't belong in dotfiles
 	source ~/.secrets.zsh
 fi
