@@ -11,7 +11,7 @@ mkdir -p ~/.local/bin
 if [[ -f ~/.local/bin/starship ]]; then
 	echo "starship is already installed"
 else
-	curl -fsSL https://starship.rs/install.sh | bash -s -- --yes --bin-dir ~/.local/bin
+	curl -fsSL https://starship.rs/install.sh | sh -s -- --yes --bin-dir ~/.local/bin
 fi
 
 if [[ -d ~/.tmux/plugins/tpm ]]; then
