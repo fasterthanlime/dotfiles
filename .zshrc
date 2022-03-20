@@ -1,3 +1,5 @@
+export DATABASE_URL=sqlite:///home/amos/work/fly-proxy/estate/sqlite-state.db
+
 if [[ "$IN_DEV_CONTAINER" = "1" ]]; then
 	if [[ -n "$GITHUB_CODESPACE_TOKEN" ]]; then
 		export REAL_HOME=$HOME
@@ -6,16 +8,16 @@ if [[ "$IN_DEV_CONTAINER" = "1" ]]; then
 	fi
 
         ## Things that don't belong in dotfiles
-        if [[ -f "${REAL_HOME}/.secrets.zsh" ]]; then
-                source ${REAL_HOME}/.secrets.zsh
-        fi
+        # if [[ -f "${REAL_HOME}/.secrets.zsh" ]]; then
+                # source ${REAL_HOME}/.secrets.zsh
+        # fi
 else
 	export REAL_HOME=$HOME
 fi
 
 if [[ "$IN_DEV_CONTAINER" != "1" ]]; then
 	## Go binaries
-	export PATH=$PATH:$HOME/go/bin
+	export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 	
 	## Local binaries
 	export PATH=$PATH:$HOME/.local/bin
@@ -57,7 +59,7 @@ if [[ "$IN_DEV_CONTAINER" != "1" ]]; then
 	export TELEPORT_LOGIN=root
 
 	## Things that don't belong in dotfiles
-	source ~/.secrets.zsh
+	# source ~/.secrets.zsh
 fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -122,5 +124,20 @@ autoload -Uz compinit && compinit
 eval "$(starship init zsh)"
 # eval "$(zoxide init zsh)"
 
+# Grrr
+unset AWS_REGION
+unset AWS_ACCESS_KEY_ID
+unset AWS_SECRET_ACCESS_KEY
+
+alias unfuck-ipv4="sudo bash -c 'ip link set dev ens160 down; ip link set dev ens160 up; echo I am alive'"
+
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+export WASMTIME_HOME="$HOME/.wasmtime"
+
+export PATH="$WASMTIME_HOME/bin:$PATH"
+
+export COMPOSE_DOCKER_CLI_BUILD=1
+export DOCKER_BUILDKIT=1
+
