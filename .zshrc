@@ -1,79 +1,47 @@
-export DATABASE_URL=sqlite:///home/amos/work/fly-proxy/estate/sqlite-state.db
 
-if [[ "$IN_DEV_CONTAINER" = "1" ]]; then
-	if [[ -n "$GITHUB_CODESPACE_TOKEN" ]]; then
-		export REAL_HOME=$HOME
-	else
-		export REAL_HOME=/host/home/amos
-	fi
 
-        ## Things that don't belong in dotfiles
-        # if [[ -f "${REAL_HOME}/.secrets.zsh" ]]; then
-                # source ${REAL_HOME}/.secrets.zsh
-        # fi
-else
-	export REAL_HOME=$HOME
+## Go binaries
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+
+## Local binaries
+export PATH=$PATH:$HOME/.local/bin
+
+## fly.io
+export FLYCTL_INSTALL="/home/amos/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
+## Runtime toolkit
+export PATH=$PATH:$HOME/work/runtime-toolkit
+
+## SSH key manager
+which keychain &> /dev/null
+if [[ $? == 0 ]]; then
+	keychain -q ~/.ssh/id_ed25519
+	source ~/.keychain/*-sh
 fi
 
-if [[ "$IN_DEV_CONTAINER" != "1" ]]; then
-	## Go binaries
-	export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
-	
-	## Local binaries
-	export PATH=$PATH:$HOME/.local/bin
+## PATH additions
+export PATH=$PATH:~/bin
 
-	## fly.io
-	export FLYCTL_INSTALL="/home/amos/.fly"
-  	export PATH="$FLYCTL_INSTALL/bin:$PATH"
-	
-	## Runtime toolkit
-	export PATH=$PATH:$HOME/work/runtime-toolkit
+## Use neovim by default
+alias vim="nvim"
 
-	## SSH key manager
-	which keychain &> /dev/null
-	if [[ $? == 0 ]]; then
-		keychain -q ~/.ssh/id_ed25519
-		source ~/.keychain/*-sh
-	fi
+## Git editor
+export EDITOR=vim
+## But keep emacs keymap
+bindkey -e
 
-	## PATH additions
-	export PATH=$PATH:~/bin
+## Paths I often jump to
+export CDPATH=.:~/work:~/bearcove:~/ftl:~
 
-	## Use neovim by default
-	alias vim="nvim"
-
-	## Git editor
-	export EDITOR=vim
-	## But keep emacs keymap
-	bindkey -e
-
-	## asdf
-	if [[ -f "$HOME/.asdf/asdf.sh" ]]; then
-		. $HOME/.asdf/asdf.sh
-	fi
-
-	## Paths I often jump to
-	export CDPATH=.:~/work:~/bearcove:~/ftl:~
-
-	## Don't make me add 'root@' to every command
-	export TELEPORT_LOGIN=root
-
-	## Things that don't belong in dotfiles
-	# source ~/.secrets.zsh
-fi
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+## Don't make me add 'root@' to every command
+export TELEPORT_LOGIN=root
 
 ## Prompt theme
-# source $REAL_HOME/powerlevel10k/powerlevel10k.zsh-theme
+source $HOME/powerlevel10k/powerlevel10k.zsh-theme
 
 ## zprezto-like git aliases
-source $REAL_HOME/.zshrc.d/git-alias.zsh
+source $HOME/.zshrc.d/git-alias.zsh
 
 ## Fix ctrl-left / ctrl-right
 bindkey "^[[1;5C" forward-word
@@ -116,12 +84,12 @@ if [[ -f ~/.cargo/env ]]; then
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # This apparently makes tab-complete with CDPATH work
 autoload -Uz compinit && compinit
 
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
 # eval "$(zoxide init zsh)"
 
 # Grrr
@@ -129,15 +97,13 @@ unset AWS_REGION
 unset AWS_ACCESS_KEY_ID
 unset AWS_SECRET_ACCESS_KEY
 
-alias unfuck-ipv4="sudo bash -c 'ip link set dev ens160 down; ip link set dev ens160 up; echo I am alive'"
-
-# Generated for envman. Do not edit.
-[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
-
-export WASMTIME_HOME="$HOME/.wasmtime"
-
 export PATH="$WASMTIME_HOME/bin:$PATH"
 
 export COMPOSE_DOCKER_CLI_BUILD=1
 export DOCKER_BUILDKIT=1
+
+source /etc/zsh_command_not_found
+
+fpath+=~/.zshrc.d/completions
+compinit
 
