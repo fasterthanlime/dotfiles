@@ -1,18 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
-if [[ -d ~/powerlevel10k ]]; then
-	echo "powerlevel10k is already installed"
+if [[ -d $ZSH/custom/themes/powerlevel10k ]]; then
+  	echo "powerlevel10k is already installed"
 else
-	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+		mkdir -p $ZSH/custom/themes
+		git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 fi
 
 mkdir -p ~/.local/bin
-
-# if [[ -f ~/.local/bin/starship ]]; then
-# 	echo "starship is already installed"
-# else
-# 	curl -fsSL https://starship.rs/install.sh | sh -s -- --yes --bin-dir ~/.local/bin
-# fi
 
 if [[ -d ~/.tmux/plugins/tpm ]]; then
 	echo "tpm is already installed"
