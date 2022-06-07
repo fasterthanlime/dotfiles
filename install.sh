@@ -4,7 +4,7 @@ if [[ -d $ZSH/custom/themes/powerlevel10k ]]; then
   	echo "powerlevel10k is already installed"
 else
 		mkdir -p $ZSH/custom/themes
-		git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+		git clone https://github.com/romkatv/powerlevel10k.git $ZSH/custom/themes/powerlevel10k
 fi
 
 mkdir -p ~/.local/bin
