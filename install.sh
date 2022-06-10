@@ -1,10 +1,12 @@
 #!/usr/bin/env zsh
 
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 if [[ -d $ZSH/custom/themes/powerlevel10k ]]; then
   	echo "powerlevel10k is already installed"
 else
-		mkdir -p $ZSH/custom/themes
-		git clone https://github.com/romkatv/powerlevel10k.git $ZSH/custom/themes/powerlevel10k
+	mkdir -p $ZSH/custom/themes
+	git clone https://github.com/romkatv/powerlevel10k.git $ZSH/custom/themes/powerlevel10k
 fi
 
 mkdir -p ~/.local/bin

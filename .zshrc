@@ -191,7 +191,8 @@ fi
 export PATH=$PATH:$HOME/.go/bin
 
 # This apparently makes tab-complete with CDPATH work
-# autoload -Uz compinit && compinit
+fpath+=~/.zshrc.d/completions
+autoload -Uz compinit && compinit
 
 export COMPOSE_DOCKER_CLI_BUILD=1
 export DOCKER_BUILDKIT=1
@@ -199,6 +200,3 @@ export DOCKER_BUILDKIT=1
 export PKG_CONFIG_PATH=/prefix/lib/pkgconfig:$PKG_CONFIG_PATH
 export LD_LIBRARY_PATH=/prefix/lib:$LD_LIBRARY_PATH
 export PATH=/prefix/bin:$PATH
-
-fpath+=~/.zshrc.d/completions
-compinit
