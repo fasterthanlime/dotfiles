@@ -190,6 +190,8 @@ fi
 # Golang
 export PATH=$PATH:$HOME/.go/bin
 
+export PATH=$PATH:/usr/local/cargo-bin
+
 # This apparently makes tab-complete with CDPATH work
 fpath+=~/.zshrc.d/completions
 autoload -Uz compinit && compinit
