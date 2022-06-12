@@ -2,6 +2,8 @@
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+export ZSH="$HOME/.oh-my-zsh"
+
 if [[ -d $ZSH/custom/themes/powerlevel10k ]]; then
   	echo "powerlevel10k is already installed"
 else
