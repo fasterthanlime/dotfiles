@@ -110,7 +110,7 @@ source $ZSH/oh-my-zsh.sh
 ## SSH key manager
 which keychain &> /dev/null
 if [[ $? == 0 ]]; then
-	keychain -q ~/.ssh/id_ed25519
+	keychain -q ~/.ssh/id_rsa
 	source ~/.keychain/*-sh
 fi
 
