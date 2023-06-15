@@ -139,7 +139,7 @@ export EDITOR=vim
 bindkey -e
 
 ## Paths I often jump to
-export CDPATH=.:~/work:~/bearcove:~/ftl:~
+export CDPATH=.:~/work:~/bearcove:~/radblimp:~/ftl:~
 
 ## Don't make me add 'root@' to every command
 export TELEPORT_LOGIN=root
@@ -202,3 +202,9 @@ export DOCKER_BUILDKIT=1
 export PKG_CONFIG_PATH=/prefix/lib/pkgconfig:$PKG_CONFIG_PATH
 export LD_LIBRARY_PATH=/prefix/lib:$LD_LIBRARY_PATH
 export PATH=/prefix/bin:$PATH
+
+export NOMAD_ADDR=http://plonk:4646
+
+source ~/.cargo/env
+
+eval "$(direnv hook zsh)"
