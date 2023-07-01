@@ -150,6 +150,9 @@ source $HOME/.zshrc.d/git-alias.zsh
 ## Fix ctrl-left / ctrl-right
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
+## Same alt-left / alt-right (WezTerm macOS)
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
 
 ## Fix home/end/delete (GNOME Terminal, outside tmux)
 bindkey  "^[[H"   beginning-of-line
