@@ -139,7 +139,7 @@ export EDITOR=vim
 bindkey -e
 
 ## Paths I often jump to
-export CDPATH=.:~/work:~/bearcove:~/radblimp:~/ftl:~
+export CDPATH=.:~/work:~/bearcove:~/ftl:~
 
 ## Don't make me add 'root@' to every command
 export TELEPORT_LOGIN=root
@@ -211,3 +211,4 @@ export NOMAD_ADDR=http://plonk:4646
 source ~/.cargo/env
 
 eval "$(direnv hook zsh)"
+eval "$(rtx activate zsh)"
