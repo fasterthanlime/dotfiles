@@ -208,7 +208,5 @@ export PATH=/prefix/bin:$PATH
 
 export NOMAD_ADDR=http://plonk:4646
 
-source ~/.cargo/env
-
 eval "$(direnv hook zsh)"
 eval "$(rtx activate zsh)"
