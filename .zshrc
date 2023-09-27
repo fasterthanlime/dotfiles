@@ -139,7 +139,7 @@ export EDITOR=vim
 bindkey -e
 
 ## Paths I often jump to
-export CDPATH=.:~/work:~/bearcove:~/ftl:~
+export CDPATH=.:~/work:~/bearcove:~/hapsoc:~/ftl:~
 
 ## Don't make me add 'root@' to every command
 export TELEPORT_LOGIN=root
