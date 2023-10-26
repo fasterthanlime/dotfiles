@@ -210,3 +210,16 @@ export NOMAD_ADDR=http://plonk:4646
 
 eval "$(direnv hook zsh)"
 eval "$(rtx activate zsh)"
+
+# if we're on Darwin, insert a working libcurl
+if [[ "$(uname -s)" = "Darwin" ]]; then
+	echo "Adding curl workaround"
+	DYLD_INSERT_LIBRARIES="/opt/homebrew/opt/curl/lib/libcurl.dylib"
+else
+	echo "Not on Darwin"
+	DYLD_INSERT_LIBRARIES=""
+fi
+
+export DYLD_INSERT_LIBRARIES
+
+alias k="kubectl"
