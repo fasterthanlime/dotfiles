@@ -223,3 +223,4 @@ fi
 export DYLD_INSERT_LIBRARIES
 
 alias k="kubectl"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
