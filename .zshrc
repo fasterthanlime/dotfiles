@@ -223,4 +223,6 @@ fi
 export DYLD_INSERT_LIBRARIES
 
 alias k="kubectl"
+alias fact="act -W .forgejo/workflows -P docker=node:16-bullseye"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
