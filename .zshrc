@@ -213,10 +213,10 @@ eval "$(rtx activate zsh)"
 
 # if we're on Darwin, insert a working libcurl
 if [[ "$(uname -s)" = "Darwin" ]]; then
-	echo "Adding curl workaround"
+	# echo "Adding curl workaround"
 	DYLD_INSERT_LIBRARIES="/opt/homebrew/opt/curl/lib/libcurl.dylib"
 else
-	echo "Not on Darwin"
+	# echo "Not on Darwin"
 	DYLD_INSERT_LIBRARIES=""
 fi
 
@@ -226,3 +226,5 @@ alias k="kubectl"
 alias fact="act -W .forgejo/workflows -P docker=node:16-bullseye"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
+alias tf="terraform"
+alias nf="nix flake"
