@@ -223,7 +223,7 @@ fi
 export DYLD_INSERT_LIBRARIES
 
 alias k="kubectl"
-alias fact="act -W .forgejo/workflows -P docker=node:16-bullseye"
+alias fact="act --rm -W .forgejo/workflows -P docker=node:16-bullseye"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 alias tf="terraform"
