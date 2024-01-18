@@ -66,3 +66,6 @@ source $HOME/.zshrc.d/git-alias.zsh
 ## starship prompt
 eval "$(starship init zsh)"
 
+## mise
+eval "$(mise activate zsh)"
+
