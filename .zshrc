@@ -41,8 +41,6 @@ autoload -Uz compinit && compinit
 # PATH additions
 export PATH=$PATH:$HOME/.go/bin:$HOME/.local/bin
 
-eval "$(direnv hook zsh)"
-
 ####################################################
 ## Aliases
 ####################################################
@@ -63,6 +61,8 @@ alias objdump="objdump -Mintel"
 ## zprezto-like git aliases
 source $HOME/.zshrc.d/git-alias.zsh
 
+eval "$(direnv hook zsh)"
+
 ## starship prompt
 eval "$(starship init zsh)"
 
@@ -70,3 +70,5 @@ eval "$(starship init zsh)"
 eval "$(mise activate zsh)"
 
 eval "$(atuin init zsh --disable-up-arrow)"
+
+alias da="/opt/homebrew/bin/direnv allow"
