@@ -77,6 +77,8 @@ config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
 config.win32_system_backdrop = 'Acrylic'
 if is_windows() then
   config.window_background_opacity = 0.73
+else
+  config.window_background_opacity = 1.0
 end
 
 function trimString(str, len)
@@ -89,9 +91,16 @@ end
 
 function formatDomain(input)
     local map = {
-        ["local"] = function() return " PowerShell" end,
         ["WSL"] = function() return " Debian" end
     }
+
+    if is_windows() then
+      map["local"] = function() return " PowerShell" end
+    elseif is_linux() then
+      map["local"] = function() return " zsh" end
+    elseif is_darwin() then
+      map["local"] = function() return " zsh" end
+    end
 
     local prefix, name = string.match(input, "(%w+)(.*)")
 
