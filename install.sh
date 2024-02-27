@@ -24,7 +24,7 @@ basedir=$PWD
 
 mkdir -p ~/.config/
 
-for i in .p10k.zsh .zshrc .zshrc.d .tmux.conf .config/starship.toml; do
+for i in .p10k.zsh .zshrc .zshrc.d .tmux.conf .wezterm.lua .config/starship.toml; do
 	ln -f -s $PWD/$i ~/$(dirname $i)
 done
 echo "Creating symlinks... done!"
