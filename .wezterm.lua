@@ -12,16 +12,28 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+local is_linux = function()
+	return wezterm.target_triple:find("linux") ~= nil
+end
 
--- This is where you actually apply your config choices
-config.default_prog = { 'pwsh' }
+local is_darwin = function()
+	return wezterm.target_triple:find("darwin") ~= nil
+end
 
--- For example, changing the color scheme:
--- config.color_scheme = 'AdventureTime'
-config.color_scheme = 'Banana Blueberry'
+local is_windows = function()
+  return wezterm.target_triple:find("windows") ~= nil
+end
+
+if is_windows() then
+  config.default_prog = { 'pwsh' }
+end
+
 config.font = wezterm.font 'IosevkaTerm Nerd Font Mono'
--- config.font = wezterm.font 'Monaspace Neon'
-config.font_size = 11
+if is_windows() then
+  config.font_size = 11
+else
+  config.font_size = 14
+end
 
 local act = wezterm.action
 
@@ -63,9 +75,9 @@ config.color_scheme = 'OneHalfDark'
 
 config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
 config.win32_system_backdrop = 'Acrylic'
--- config.win32_system_backdrop = 'Mica'
--- config.win32_system_backdrop = 'Tabbed'
-config.window_background_opacity = 0.73
+if is_windows() then
+  config.window_background_opacity = 0.73
+end
 
 function trimString(str, len)
     if string.len(str) > len then
