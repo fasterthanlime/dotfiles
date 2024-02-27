@@ -39,6 +39,22 @@ local act = wezterm.action
 
 config.keys = {
   {
+    -- '1' key
+    key = 'raw:49',
+    mods = 'CTRL|SHIFT',
+    action = act.SpawnTab {
+      DomainName = 'local',
+    },
+  },
+  {
+    key = 'T',
+    mods = 'CTRL|SHIFT',
+    action = act.SpawnTab {
+      DomainName = 'local',
+    },
+  },
+  {
+    -- '4' key
     key = 'raw:52',
     mods = 'CTRL|SHIFT',
     action = act.SpawnTab {
