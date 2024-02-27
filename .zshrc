@@ -11,6 +11,8 @@ bindkey "^[[1;5D" backward-word
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 
+export WORDCHARS='*?_-.~=&;!#$%^(){}<>'
+
 ## History file configuration
 [ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
 [ "$HISTSIZE" -lt 50000 ] && HISTSIZE=50000
@@ -72,3 +74,5 @@ eval "$(mise activate zsh)"
 eval "$(atuin init zsh --disable-up-arrow)"
 
 alias da="/opt/homebrew/bin/direnv allow"
+
+alias t="terminus"
