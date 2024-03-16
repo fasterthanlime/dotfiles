@@ -1,0 +1,22 @@
+[
+  {
+    "context": "Editor",
+    "bindings": {
+      "t w": "pane::CloseActiveItem",
+      "t k": "pane::ActivatePrevItem",
+      "t j": "pane::ActivateNextItem",
+      "ctrl-j": "editor::GoToDiagnostic",
+      "ctrl-k": "editor::GoToPrevDiagnostic",
+      "\\ d": "editor::Hover",
+      "\\ t": "editor::GoToTypeDefinition",
+      "\\ g": "editor::GoToDefinition",
+      "ctrl-`": "terminal_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-`": "workspace::ToggleBottomDock"
+    }
+  }
+]
