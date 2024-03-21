@@ -7,13 +7,16 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "base_keymap": "VSCode",
+  "theme": "Github Light",
   // "theme": "Rosé Pine Moon",
   // "theme": "Atelier Cave Dark",
-  "theme": "One Dark",
-  "ui_font_family": "Iosevka",
-  "buffer_font_family": "Iosevka",
-  "buffer_font_size": 15,
+  // "theme": "One Dark",
+  // "theme": "Gruvbox Dark Hard",
+  "base_keymap": "VSCode",
+  "ui_font_family": "Iosevka Nerd Font Mono",
+  "buffer_font_family": "Iosevka Nerd Font Mono",
+  "buffer_font_size": 16,
+  "ui_font_size": 16,
   "vim_mode": true,
   "inlay_hints": {
     "enabled": true
@@ -22,6 +25,6 @@
     "enabled": true
   },
   "vim": {
-    "use_system_clipboard": true
+    "use_system_clipboard": "always"
   }
 }
