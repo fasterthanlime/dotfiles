@@ -41,7 +41,7 @@ fpath+=~/.zshrc.d/completions
 autoload -Uz compinit && compinit
 
 # PATH additions
-export PATH=$PATH:$HOME/.go/bin:$HOME/.local/bin
+export PATH=/opt/homebrew/bin:$PATH:$HOME/.go/bin:$HOME/.local/bin
 
 ####################################################
 ## Aliases
