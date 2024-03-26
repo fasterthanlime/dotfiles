@@ -41,7 +41,7 @@ fpath+=~/.zshrc.d/completions
 autoload -Uz compinit && compinit
 
 # PATH additions
-export PATH=/opt/homebrew/bin:$PATH:$HOME/.go/bin:$HOME/.local/bin
+export PATH=/opt/homebrew/bin:$HOME/.ghcup/bin:$PATH:$HOME/.go/bin:$HOME/.local/bin
 
 ####################################################
 ## Aliases
@@ -76,3 +76,6 @@ eval "$(atuin init zsh --disable-up-arrow)"
 alias da="/opt/homebrew/bin/direnv allow"
 
 alias t="terminus"
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
