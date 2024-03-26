@@ -7,11 +7,18 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "theme": "Github Light",
+  // "theme": "Github Light",
+  // "theme": "Github Dark",
   // "theme": "Rosé Pine Moon",
   // "theme": "Atelier Cave Dark",
   // "theme": "One Dark",
   // "theme": "Gruvbox Dark Hard",
+  "languages": {
+    "Markdown": {
+      "show_copilot_suggestions": false
+    }
+  },
+  "theme": "Gruvbox Dark",
   "base_keymap": "VSCode",
   "ui_font_family": "Iosevka Nerd Font Mono",
   "buffer_font_family": "Iosevka Nerd Font Mono",
