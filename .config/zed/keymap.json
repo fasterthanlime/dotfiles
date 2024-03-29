@@ -1,15 +1,20 @@
 [
   {
-    "context": "Editor",
+    "context": "Editor && vim_mode == normal",
     "bindings": {
       "t w": "pane::CloseActiveItem",
       "t k": "pane::ActivatePrevItem",
       "t j": "pane::ActivateNextItem",
-      "ctrl-j": "editor::GoToDiagnostic",
-      "ctrl-k": "editor::GoToPrevDiagnostic",
       "\\ d": "editor::Hover",
       "\\ t": "editor::GoToTypeDefinition",
-      "\\ g": "editor::GoToDefinition",
+      "\\ g": "editor::GoToDefinition"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-j": "editor::GoToDiagnostic",
+      "ctrl-k": "editor::GoToPrevDiagnostic",
       "ctrl-`": "terminal_panel::ToggleFocus"
     }
   },

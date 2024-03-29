@@ -9,6 +9,7 @@
 {
   // "theme": "Github Light",
   // "theme": "Github Dark",
+  "theme": "Gruvbox Light Hard",
   // "theme": "Rosé Pine Moon",
   // "theme": "Atelier Cave Dark",
   // "theme": "One Dark",
@@ -20,10 +21,12 @@
   },
   "theme": "Gruvbox Dark",
   "base_keymap": "VSCode",
-  "ui_font_family": "Iosevka Nerd Font Mono",
-  "buffer_font_family": "Iosevka Nerd Font Mono",
-  "buffer_font_size": 16,
-  "ui_font_size": 16,
+  // "ui_font_family": "Iosevka Nerd Font Mono",
+  // "buffer_font_family": "Iosevka Nerd Font Mono",
+  "ui_font_family": "Berkeley Mono Variable",
+  "buffer_font_family": "Berkeley Mono Variable",
+  "buffer_font_size": 13,
+  "ui_font_size": 13,
   "vim_mode": true,
   "inlay_hints": {
     "enabled": true

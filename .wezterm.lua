@@ -28,11 +28,12 @@ if is_windows() then
   config.default_prog = { 'pwsh' }
 end
 
-config.font = wezterm.font 'IosevkaTerm Nerd Font Mono'
+-- config.font = wezterm.font 'IosevkaTerm Nerd Font Mono'
+config.font = wezterm.font 'Berkeley Mono Variable'
 if is_windows() then
   config.font_size = 11
 else
-  config.font_size = 14
+  config.font_size = 13
 end
 
 local act = wezterm.action
