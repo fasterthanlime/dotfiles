@@ -19,7 +19,6 @@
       "show_copilot_suggestions": false
     }
   },
-  "theme": "Gruvbox Dark",
   "base_keymap": "VSCode",
   // "ui_font_family": "Iosevka Nerd Font Mono",
   // "buffer_font_family": "Iosevka Nerd Font Mono",
@@ -36,5 +35,6 @@
   },
   "vim": {
     "use_system_clipboard": "always"
-  }
+  },
+  "show_whitespaces": "selection"
 }
