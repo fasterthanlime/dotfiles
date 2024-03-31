@@ -10,6 +10,11 @@ bindkey "^[[1;5D" backward-word
 ## Same alt-left / alt-right (WezTerm macOS)
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
+## Apple Magic Keyboard on macOS: delete key
+bindkey "^[[3~" delete-char
+## ..home/end
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
 
 export WORDCHARS='*?_-.~=&;!#$%^(){}<>'
 
