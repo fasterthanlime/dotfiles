@@ -54,7 +54,7 @@ export PATH=/opt/homebrew/bin:$HOME/.ghcup/bin:$PATH:$HOME/.go/bin:$HOME/.local/
 
 alias k="kubectl"
 alias fact="act --rm -W .forgejo/workflows -P docker=node:16-bullseye"
-alias tf="terraform"
+alias tf="tofu"
 alias nf="nix flake"
 
 ## Colorful ls
