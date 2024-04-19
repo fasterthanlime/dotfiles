@@ -7,7 +7,8 @@
       "t j": "pane::ActivateNextItem",
       "\\ d": "editor::Hover",
       "\\ t": "editor::GoToTypeDefinition",
-      "\\ g": "editor::GoToDefinition"
+      "\\ g": "editor::GoToDefinition",
+      "\\ r": "editor::Rename"
     }
   },
   {
