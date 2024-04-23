@@ -11,6 +11,10 @@
   // "theme": "Github Dark",
   // "theme": "Gruvbox Dark Hard",
   "theme": "Atelier Sulphurpool Light",
+  "terminal": {
+    "dock": "bottom"
+  },
+  // "theme": "Rosé Pine Dawn",
   // "theme": "Rosé Pine Moon",
   // "theme": "Atelier Cave Dark",
   // "theme": "One Dark",
