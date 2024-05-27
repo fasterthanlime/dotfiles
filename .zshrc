@@ -84,5 +84,7 @@ alias da="/opt/homebrew/bin/direnv allow"
 
 alias t="terminus"
 
+export PROVIDER=ollama
+
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
