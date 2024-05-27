@@ -12,6 +12,8 @@ bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 ## Apple Magic Keyboard on macOS: delete key
 bindkey "^[[3~" delete-char
+bindkey "^[[3;3~" delete-word
+
 ## ..home/end
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
