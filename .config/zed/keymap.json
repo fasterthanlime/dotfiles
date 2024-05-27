@@ -2,7 +2,7 @@
   {
     "context": "Editor && vim_mode == normal",
     "bindings": {
-      "t w": "pane::CloseActiveItem",
+      "t w": "pane::CloseAllItems",
       "t k": "pane::ActivatePrevItem",
       "t j": "pane::ActivateNextItem",
       "\\ d": "editor::Hover",

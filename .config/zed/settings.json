@@ -10,11 +10,9 @@
   // "theme": "Github Light",
   // "theme": "Github Dark",
   // "theme": "Gruvbox Dark Hard",
-  "theme": "Atelier Sulphurpool Light",
   "terminal": {
     "dock": "bottom"
   },
-  // "theme": "Rosé Pine Dawn",
   // "theme": "Rosé Pine Moon",
   // "theme": "Atelier Cave Dark",
   // "theme": "One Dark",
@@ -39,5 +37,21 @@
     "use_system_clipboard": "always",
     "use_smartcase_find": true
   },
-  "show_whitespaces": "selection"
+  "show_whitespaces": "selection",
+  "tab_bar": {
+    "show": false
+  },
+  "toolbar": {
+    "breadcrumbs": false,
+    "quick_actions": false
+  },
+  "scrollbar": {
+    "show": "never"
+  },
+  "gutter": {
+    "folds": false
+  },
+  "project_panel": {
+    "button": false
+  }
 }
