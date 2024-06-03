@@ -10,6 +10,7 @@
   // "theme": "Github Light",
   // "theme": "Github Dark",
   // "theme": "Gruvbox Dark Hard",
+  "theme": "Gruvbox Light Hard",
   "terminal": {
     "dock": "bottom"
   },
@@ -42,7 +43,7 @@
     "show": false
   },
   "toolbar": {
-    "breadcrumbs": false,
+    "breadcrumbs": true,
     "quick_actions": false
   },
   "scrollbar": {
@@ -53,5 +54,26 @@
   },
   "project_panel": {
     "button": false
+  },
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "rustfmt": {
+          "overrideCommand": [
+            "rustup",
+            "run",
+            "nightly",
+            "--",
+            "rustfmt",
+            "--edition",
+            "2018",
+            "--"
+          ]
+        },
+        "checkOnSave": {
+          "command": "clippy"
+        }
+      }
+    }
   }
 }
