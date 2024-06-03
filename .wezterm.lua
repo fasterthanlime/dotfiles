@@ -88,7 +88,8 @@ config.skip_close_confirmation_for_processes_named = {
 config.default_cursor_style = 'BlinkingBar'
 config.enable_scroll_bar = true
 config.freetype_load_target = 'HorizontalLcd'
-config.color_scheme = 'OneHalfDark'
+-- config.color_scheme = 'OneHalfDark'
+config.color_scheme = 'Railscasts'
 
 config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
 config.win32_system_backdrop = 'Acrylic'
