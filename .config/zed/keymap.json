@@ -16,7 +16,8 @@
     "bindings": {
       "ctrl-j": "editor::GoToDiagnostic",
       "ctrl-k": "editor::GoToPrevDiagnostic",
-      "ctrl-`": "terminal_panel::ToggleFocus"
+      "ctrl-`": "terminal_panel::ToggleFocus",
+      "cmd-enter": "copilot::Suggest"
     }
   },
   {
