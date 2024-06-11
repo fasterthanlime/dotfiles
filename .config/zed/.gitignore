@@ -1,3 +1,4 @@
 .tmp*
 embeddings*
 conversations*
+prompts*
