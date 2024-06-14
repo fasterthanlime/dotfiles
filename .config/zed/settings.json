@@ -10,7 +10,7 @@
   // "theme": "Github Light",
   // "theme": "Github Dark",
   // "theme": "Gruvbox Dark Hard",
-  "theme": "Atelier Sulphurpool Dark",
+  "theme": "Summercamp",
   "terminal": {
     "dock": "bottom"
   },
@@ -58,6 +58,11 @@
   "lsp": {
     "rust-analyzer": {
       "initialization_options": {
+        "cargo": {
+          "extraEnv": {
+            "RUSTFLAGS": "--cfg stabby_nightly"
+          }
+        },
         "rustfmt": {
           "overrideCommand": [
             "rustup",
