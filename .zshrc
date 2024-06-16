@@ -48,7 +48,7 @@ fpath+=~/.zshrc.d/completions
 autoload -Uz compinit && compinit
 
 # PATH additions
-export PATH=/opt/homebrew/bin:$HOME/.ghcup/bin:$PATH:$HOME/.go/bin:$HOME/.local/bin
+export PATH=/opt/homebrew/bin:$HOME/.ghcup/bin:$PATH:$HOME/go/bin:$HOME/.local/bin
 
 ####################################################
 ## Aliases
