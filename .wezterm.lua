@@ -12,6 +12,9 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+-- cf. https://github.com/wez/wezterm/issues/431
+config.adjust_window_size_when_changing_font_size = false
+
 local is_linux = function()
 	return wezterm.target_triple:find("linux") ~= nil
 end
