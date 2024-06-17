@@ -10,7 +10,8 @@
   // "theme": "Github Light",
   // "theme": "Github Dark",
   // "theme": "Gruvbox Dark Hard",
-  "theme": "Summercamp",
+  // "theme": "Summercamp",
+  "theme": "Atelier Sulphurpool Light",
   "terminal": {
     "dock": "bottom"
   },
