@@ -59,11 +59,6 @@
   "lsp": {
     "rust-analyzer": {
       "initialization_options": {
-        "cargo": {
-          "extraEnv": {
-            "RUSTFLAGS": "--cfg stabby_nightly"
-          }
-        },
         "rustfmt": {
           "overrideCommand": [
             "rustup",
