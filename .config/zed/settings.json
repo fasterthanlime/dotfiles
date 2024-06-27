@@ -11,7 +11,10 @@
   // "theme": "Github Dark",
   // "theme": "Gruvbox Dark Hard",
   // "theme": "Summercamp",
-  "theme": "Atelier Heath Dark",
+  "outline_panel": {
+    "dock": "right"
+  },
+  "theme": "Solarized Light",
   "terminal": {
     "dock": "bottom"
   },
@@ -28,13 +31,13 @@
   "buffer_font_family": "Berkeley Mono Variable",
   "buffer_font_size": 15,
   "ui_font_size": 15,
-  "vim_mode": true,
   "inlay_hints": {
     "enabled": true
   },
   "semantic_index": {
     "enabled": true
   },
+  "vim_mode": true,
   "vim": {
     "use_system_clipboard": "always",
     "use_smartcase_find": true
@@ -76,5 +79,10 @@
         }
       }
     }
+  },
+  "indent_guides": {
+    "coloring": "indent_aware",
+    "line_width": 4
+    // "background_coloring": "indent_aware"
   }
 }

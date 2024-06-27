@@ -104,4 +104,7 @@ then
   compinit
 fi
 
-alias earthly="earthly -i"
+alias earthly="earthly --auto-skip -i"
+alias e="earthly"
+alias eb="earthly build"
+alias vim="nvim"
