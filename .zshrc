@@ -95,3 +95,13 @@ function seecert () {
 }
 
 alias mosh="mosh --server=/opt/homebrew/bin/mosh-server"
+
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
+
+alias earthly="earthly -i"
