@@ -7,21 +7,13 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  // "theme": "Github Light",
-  // "theme": "Github Dark",
-  // "theme": "Gruvbox Dark Hard",
-  // "theme": "Summercamp",
   "outline_panel": {
     "dock": "right"
   },
-  "theme": "Atelier Sulphurpool Dark",
+  "theme": "Atelier Dune Dark",
   "terminal": {
     "dock": "bottom"
   },
-  // "theme": "Rosé Pine Moon",
-  // "theme": "Atelier Cave Dark",
-  // "theme": "One Dark",
-  // "theme": "Gruvbox Dark Hard",
   "languages": {
     "Markdown": {
       "show_copilot_suggestions": false
@@ -83,6 +75,15 @@
   "indent_guides": {
     "coloring": "indent_aware",
     "line_width": 4
-    // "background_coloring": "indent_aware"
+  },
+  "features": {
+    "inline_completion_provider": "supermaven"
+  },
+  "assistant": {
+    "version": "1",
+    "provider": {
+      "default_model": "claude-3-5-sonnet-20240620",
+      "name": "anthropic"
+    }
   }
 }
