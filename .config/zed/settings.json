@@ -10,7 +10,7 @@
   "outline_panel": {
     "dock": "right"
   },
-  "theme": "Atelier Dune Dark",
+  "theme": "One Light",
   "terminal": {
     "dock": "bottom"
   },
@@ -21,8 +21,8 @@
   },
   "base_keymap": "VSCode",
   "buffer_font_family": "Berkeley Mono Variable",
-  "buffer_font_size": 15,
-  "ui_font_size": 15,
+  "buffer_font_size": 13,
+  "ui_font_size": 13,
   "inlay_hints": {
     "enabled": true
   },
@@ -36,7 +36,7 @@
   },
   "show_whitespaces": "selection",
   "tab_bar": {
-    "show": false
+    "show": true
   },
   "toolbar": {
     "breadcrumbs": true,
@@ -66,6 +66,12 @@
             "--"
           ]
         },
+        "check": {
+          "extraArgs": [
+            "-Z", "build-std",
+            "--target", "aarch64-apple-darwin"
+          ]
+        },
         "checkOnSave": {
           "command": "clippy"
         }
@@ -85,5 +91,6 @@
       "default_model": "claude-3-5-sonnet-20240620",
       "name": "anthropic"
     }
-  }
+  },
+  "show_completions_on_input": false
 }
