@@ -10,7 +10,7 @@
   "outline_panel": {
     "dock": "right"
   },
-  "theme": "One Light",
+  "theme": "Atelier Forest Dark",
   "terminal": {
     "dock": "bottom"
   },
@@ -68,8 +68,6 @@
         },
         "check": {
           "extraArgs": [
-            "-Z", "build-std",
-            "--target", "aarch64-apple-darwin"
           ]
         },
         "checkOnSave": {
