@@ -10,7 +10,10 @@
   "outline_panel": {
     "dock": "right"
   },
-  "theme": "Atelier Forest Dark",
+  "theme": {
+    "dark": "Gruvbox Dark",
+    "light": "Ayu Light"
+  },
   "terminal": {
     "dock": "bottom"
   },
@@ -67,8 +70,7 @@
           ]
         },
         "check": {
-          "extraArgs": [
-          ]
+          "extraArgs": []
         },
         "checkOnSave": {
           "command": "clippy"
