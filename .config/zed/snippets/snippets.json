@@ -1,0 +1,67 @@
+{
+  "rust": {
+    "prefix": "rs",
+    "body": ["```rust", "$1", "```"],
+    "description": "Rust code block"
+  },
+  "go": {
+    "prefix": "go",
+    "body": ["```go", "$1", "```"],
+    "description": "Go code block"
+  },
+  "c": {
+    "prefix": "c",
+    "body": ["```c", "$1", "```"],
+    "description": "C code block"
+  },
+  "cpp": {
+    "prefix": "cpp",
+    "body": ["```cpp", "$1", "```"],
+    "description": "C++ code block"
+  },
+  "javascript": {
+    "prefix": "js",
+    "body": ["```javascript", "$1", "```"],
+    "description": "JavaScript code block"
+  },
+  "typescript": {
+    "prefix": "ts",
+    "body": ["```typescript", "$1", "```"],
+    "description": "TypeScript code block"
+  },
+  "toml": {
+    "prefix": "toml",
+    "body": ["```toml", "$1", "```"],
+    "description": "TOML code block"
+  },
+  "json": {
+    "prefix": "json",
+    "body": ["```json", "$1", "```"],
+    "description": "JSON code block"
+  },
+  "nim": {
+    "prefix": "nim",
+    "body": ["```nim", "$1", "```"],
+    "description": "Nim code block"
+  },
+  "shell": {
+    "prefix": "sh",
+    "body": ["```shell", "$1", "```"],
+    "description": "Shell code block"
+  },
+  "amos": {
+    "prefix": "amos",
+    "body": ["{% sc amossays %}", "$1", "{% endsc %}"],
+    "description": "Amos says block"
+  },
+  "bear": {
+    "prefix": "bear",
+    "body": ["{% sc bearsays %}", "$1", "{% endsc %}"],
+    "description": "Bear says block"
+  },
+  "tip": {
+    "prefix": "tip",
+    "body": ["{% sc tip %}", "$1", "{% endsc %}"],
+    "description": "Tip block"
+  }
+}

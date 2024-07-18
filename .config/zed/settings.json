@@ -19,7 +19,6 @@
   },
   "languages": {
     "Markdown": {
-      "show_copilot_suggestions": false,
       "show_inline_completions": false
     }
   },
@@ -86,6 +85,7 @@
   "features": {
     "inline_completion_provider": "supermaven"
   },
+  // "show_inline_completions": false,
   "assistant": {
     "version": "1",
     "provider": {
