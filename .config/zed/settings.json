@@ -19,7 +19,8 @@
   },
   "languages": {
     "Markdown": {
-      "show_copilot_suggestions": false
+      "show_copilot_suggestions": false,
+      "show_inline_completions": false
     }
   },
   "base_keymap": "VSCode",
