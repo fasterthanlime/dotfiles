@@ -107,3 +107,5 @@ alias earthly="earthly -i"
 alias e="earthly"
 alias eb="earthly build"
 alias vim="nvim"
+
+export SOPRINTLN=1
