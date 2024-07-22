@@ -57,12 +57,11 @@ export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$HOME/.ghcup/bin:$PATH:$HOME/go
 alias k="kubectl"
 alias fact="act --rm -W .forgejo/workflows -P docker=node:16-bullseye"
 alias tf="tofu"
-alias nf="nix flake"
 
 ## Colorful ls
-alias ls="ls --color=always"
-alias l="ls --color=always -lhA"
-alias ll="ls --color=always -lh"
+alias ls="eza --color=always"
+alias l="eza --color=always -lhA"
+alias ll="eza --color=always -lh"
 
 ## I don't like AT&T syntax
 alias objdump="objdump -Mintel"

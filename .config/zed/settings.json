@@ -12,7 +12,7 @@
   },
   "theme": {
     "dark": "Gruvbox Dark",
-    "light": "Ayu Light"
+    "light": "Atelier Heath Light"
   },
   "terminal": {
     "dock": "bottom"
@@ -84,6 +84,7 @@
   },
   "features": {
     "inline_completion_provider": "supermaven"
+    // "inline_completion_provider": "copilot"
   },
   // "show_inline_completions": false,
   "assistant": {
