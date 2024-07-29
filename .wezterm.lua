@@ -103,7 +103,7 @@ end
 
 function scheme_for_appearance(appearance)
     if appearance:find 'Dark' then
-        return 'Builtin Solarized Dark'
+        return 'Gruvbox Dark (Gogh)'
     else
         -- return 'Builtin Solarized Light'
         -- return 'ayu_light'

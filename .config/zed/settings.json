@@ -7,6 +7,9 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "language_models": {
+    "anthropic": {}
+  },
   "outline_panel": {
     "dock": "right"
   },
@@ -88,11 +91,12 @@
   },
   // "show_inline_completions": false,
   "assistant": {
-    "version": "1",
-    "provider": {
-      "default_model": "claude-3-5-sonnet-20240620",
-      "name": "anthropic"
-    }
+    "default_model": {
+      "provider": "anthropic",
+      "model": "claude-3-5-sonnet-20240620"
+    },
+    "version": "2",
+    "provider": null
   },
   "show_completions_on_input": false
 }
