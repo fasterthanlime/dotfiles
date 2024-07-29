@@ -44,7 +44,13 @@ fi
 export CDPATH=.:~/work:~/bearcove:~/hapsoc:~/ftl:~
 
 ## This apparently makes tab-complete with CDPATH work
-fpath+=~/.zshrc.d/completions
+fpath=(~/.zshrc.d/completions $fpath)
+
+if type brew &>/dev/null
+then
+  fpath=("$(brew --prefix)/share/zsh/site-functions" $fpath)
+fi
+
 autoload -Uz compinit && compinit
 
 # PATH additions
@@ -95,13 +101,6 @@ function seecert () {
 
 alias mosh="mosh --server=/opt/homebrew/bin/mosh-server"
 
-if type brew &>/dev/null
-then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
-  autoload -Uz compinit
-  compinit
-fi
 
 alias earthly="earthly -i"
 alias e="earthly"
