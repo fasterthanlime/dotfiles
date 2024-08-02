@@ -8,7 +8,9 @@
 // from the command palette or from `Zed` application menu.
 {
   "language_models": {
-    "anthropic": {}
+    "anthropic": {
+      "version": "1"
+    }
   },
   "outline_panel": {
     "dock": "right"
@@ -92,11 +94,14 @@
   // "show_inline_completions": false,
   "assistant": {
     "default_model": {
-      "provider": "anthropic",
-      "model": "claude-3-5-sonnet-20240620"
+      "provider": "openai",
+      "model": "gpt-4o"
     },
     "version": "2",
     "provider": null
   },
-  "show_completions_on_input": false
+  "show_completions_on_input": false,
+  "preview_tabs": {
+    "enabled": false
+  }
 }
