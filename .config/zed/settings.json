@@ -23,8 +23,14 @@
     "dock": "bottom"
   },
   "languages": {
+    "Markdown-Inline": {
+      "show_inline_completions": false
+    },
     "Markdown": {
       "show_inline_completions": false
+    },
+    "HTML": {
+      // "show_inline_completions": false
     }
   },
   "base_keymap": "VSCode",
@@ -94,8 +100,8 @@
   // "show_inline_completions": false,
   "assistant": {
     "default_model": {
-      "provider": "openai",
-      "model": "gpt-4o"
+      "provider": "anthropic",
+      "model": "claude-3-5-sonnet-20240620"
     },
     "version": "2",
     "provider": null

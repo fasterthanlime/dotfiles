@@ -41,7 +41,7 @@ if [[ -f ~/.cargo/env ]]; then
 fi
 
 ## Paths I often jump to
-export CDPATH=.:~/work:~/bearcove:~/bearcove/lith:~/bearcove/lith/mods:~
+export CDPATH=.:~/work:~/bearcove:~/bearcove/lith:~/bearcove/lith/mods:~/bearcove/lith/common:~
 
 ## This apparently makes tab-complete with CDPATH work
 fpath=(~/.zshrc.d/completions $fpath)
@@ -60,6 +60,7 @@ export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$HOME/.ghcup/bin:$PATH:$HOME/go
 ## Aliases
 ####################################################
 
+alias nt="cargo nextest"
 alias k="kubectl"
 alias fact="act --rm -W .forgejo/workflows -P docker=node:16-bullseye"
 alias tf="tofu"
