@@ -109,3 +109,4 @@ alias eb="earthly build"
 alias vim="nvim"
 
 export SOPRINTLN=1
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
