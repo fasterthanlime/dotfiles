@@ -138,8 +138,9 @@ else
 end
 
 config.window_frame = {
-  font = wezterm.font({ family = 'Berkeley Mono Variable', weight = 'Bold' }),
-  font_size = config.font_size
+  -- font = wezterm.font({ family = 'Berkeley Mono Variable', weight = 'Bold' }),
+  font = wezterm.font({ family = 'San Francisco', weight = 'Bold' }),
+  font_size = config.font_size - 2,
 }
 
 function trimString(str, len)
