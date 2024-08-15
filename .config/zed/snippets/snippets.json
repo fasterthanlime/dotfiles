@@ -4,6 +4,16 @@
     "body": ["```rust", "$1", "```"],
     "description": "Rust code block"
   },
+  "html": {
+    "prefix": "html",
+    "body": ["```html", "$1", "```"],
+    "description": "HTML code block"
+  },
+  "css": {
+    "prefix": "css",
+    "body": ["```css", "$1", "```"],
+    "description": "CSS code block"
+  },
   "go": {
     "prefix": "go",
     "body": ["```go", "$1", "```"],
