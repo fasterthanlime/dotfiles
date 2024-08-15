@@ -51,17 +51,22 @@
   },
   "amos": {
     "prefix": "amos",
-    "body": ["{% sc amossays %}", "$1", "{% endsc %}"],
+    "body": ["> *:amossays*", ">", "> $1"],
     "description": "Amos says block"
   },
   "bear": {
     "prefix": "bear",
-    "body": ["{% sc bearsays %}", "$1", "{% endsc %}"],
+    "body": ["> *:bearsays*", ">", "> $1"],
     "description": "Bear says block"
   },
   "tip": {
     "prefix": "tip",
-    "body": ["{% sc tip %}", "$1", "{% endsc %}"],
+    "body": ["> *:tip*", ">", "> $1"],
     "description": "Tip block"
+  },
+  "recap": {
+    "prefix": "recap",
+    "body": ["> *:recap*", ">", "> $1"],
+    "description": "Recap block"
   }
 }
