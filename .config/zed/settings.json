@@ -31,6 +31,12 @@
     },
     "HTML": {
       // "show_inline_completions": false
+    },
+    "Rust": {
+      "format_on_save": "on"
+    },
+    "TOML": {
+      "format_on_save": "on"
     }
   },
   "base_keymap": "VSCode",
@@ -100,14 +106,19 @@
   // "show_inline_completions": false,
   "assistant": {
     "default_model": {
-      "provider": "anthropic",
+      "provider": "zed.dev",
       "model": "claude-3-5-sonnet-20240620"
     },
     "version": "2",
-    "provider": null
+    "provider": "zed.dev"
   },
   "show_completions_on_input": false,
   "preview_tabs": {
     "enabled": false
+  },
+  "slash_commands": {
+    "docs": {
+      "enabled": true
+    }
   }
 }
