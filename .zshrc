@@ -41,7 +41,7 @@ if [[ -f ~/.cargo/env ]]; then
 fi
 
 ## Paths I often jump to
-export CDPATH=.:~/work:~/bearcove:~/bearcove/lith:~/bearcove/lith/mods:~/bearcove/lith/common:~/bearcove/fluke/crates:~
+export CDPATH=.:~/work:~/bearcove:~/bearcove/lith:~/bearcove/lith/mods:~/bearcove/lith/common:~/bearcove/loona/crates:~
 
 ## This apparently makes tab-complete with CDPATH work
 fpath=(~/.zshrc.d/completions $fpath)
