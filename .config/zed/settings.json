@@ -7,6 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "cursor_blink": false,
   "language_models": {
     "anthropic": {
       "version": "1"
@@ -106,8 +107,8 @@
   // "show_inline_completions": false,
   "assistant": {
     "default_model": {
-      "provider": "anthropic",
-      "model": "claude-3-5-sonnet-20240620"
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-20240620-fast-edit"
     },
     "version": "2",
     "provider": "zed.dev"

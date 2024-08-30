@@ -108,5 +108,9 @@ alias e="earthly"
 alias eb="earthly build"
 alias vim="nvim"
 
+alias git-skip='f() { echo "$1" >> .git/info/exclude; }; f'
+alias git-unskip='f() { sed -i "\|$1|d" .git/info/exclude; }; f'
+alias git-ls-skipped='cat .git/info/exclude'
+
 export SOPRINTLN=1
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
