@@ -16,8 +16,9 @@ echo "Creating symlinks..."
 basedir=$PWD
 
 mkdir -p ~/.config/
+mkdir -p ~/.config/tmux
 
-for i in .zshrc .zshrc.d .tmux.conf .wezterm.lua .config/starship.toml .config/zed; do
+for i in .zshrc .zshrc.d .wezterm.lua .config/starship.toml .config/zed .config/tmux/tmux.conf; do
 	ln -f -s $PWD/$i ~/$(dirname $i)
 done
 echo "Creating symlinks... done!"
