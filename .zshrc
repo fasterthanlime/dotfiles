@@ -91,6 +91,6 @@ function seecert () {
 eval "$(starship init zsh)"
 
 # History completion, search, etc. — see https://atuin.sh/
-eval "$(atuin init zsh --disable-up-arrow)"
+eval "$(atuin init zsh)"
 
 zprof
