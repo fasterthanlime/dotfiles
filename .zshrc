@@ -1,6 +1,7 @@
 
 ## Git editor
 export EDITOR=vim
+
 ## But keep emacs keymap
 bindkey -e
 
@@ -36,10 +37,6 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_REDUCE_BLANKS  ## Delete empty lines from history file
 setopt HIST_NO_STORE  ## Do not add history and fc commands to the history
 
-if [[ -f ~/.cargo/env ]]; then
-	source ~/.cargo/env
-fi
-
 ## Paths I often jump to
 export CDPATH=.:~/work:~/bearcove:~/bearcove/lith:~/bearcove/lith/mods:~/bearcove/lith/common:~/bearcove/loona/crates:~
 
@@ -52,9 +49,6 @@ then
 fi
 
 autoload -Uz compinit && compinit
-
-# PATH additions
-export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$HOME/.ghcup/bin:$PATH:$HOME/go/bin:$HOME/.local/bin
 
 ####################################################
 ## Aliases
@@ -76,24 +70,8 @@ alias objdump="objdump -Mintel"
 ## zprezto-like git aliases
 source $HOME/.zshrc.d/git-alias.zsh
 
-eval "$(direnv hook zsh)"
-
-## starship prompt
 eval "$(starship init zsh)"
-
-## mise
-eval "$(mise activate zsh)"
-
 eval "$(atuin init zsh --disable-up-arrow)"
-
-alias da="/opt/homebrew/bin/direnv allow"
-
-alias t="terminus"
-
-export PROVIDER=ollama
-
-# Generated for envman. Do not edit.
-[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
 function seecert () {
   nslookup $1
@@ -101,8 +79,6 @@ function seecert () {
 }
 
 alias mosh="mosh --server=/opt/homebrew/bin/mosh-server"
-
-
 alias earthly="earthly -i"
 alias e="earthly"
 alias eb="earthly build"
@@ -112,5 +88,3 @@ alias git-skip='f() { echo "$1" >> .git/info/exclude; }; f'
 alias git-unskip='f() { sed -i "\|$1|d" .git/info/exclude; }; f'
 alias git-ls-skipped='cat .git/info/exclude'
 
-export SOPRINTLN=1
-export PATH="/opt/homebrew/opt/curl/bin:$PATH"
