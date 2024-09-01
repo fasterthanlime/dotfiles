@@ -1,5 +1,3 @@
-zmodload zsh/zprof
-
 ## Git editor
 export EDITOR=vim
 
@@ -92,5 +90,3 @@ eval "$(starship init zsh)"
 
 # History completion, search, etc. — see https://atuin.sh/
 eval "$(atuin init zsh)"
-
-zprof
