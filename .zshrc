@@ -75,6 +75,7 @@ autoload -Uz compinit && compinit
 
 alias vim="nvim"
 
+alias j="just"
 alias nt="cargo nextest"
 
 alias k="kubectl"
