@@ -9,7 +9,8 @@
       "\\ d": "editor::Hover",
       "\\ t": "editor::GoToTypeDefinition",
       "\\ g": "editor::GoToDefinition",
-      "\\ r": "editor::Rename"
+      "\\ r": "editor::Rename",
+      "space w": "workspace::Save"
     }
   },
   {
