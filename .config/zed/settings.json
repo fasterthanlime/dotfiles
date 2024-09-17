@@ -42,7 +42,7 @@
   },
   "base_keymap": "VSCode",
   "buffer_font_family": "Berkeley Mono Variable",
-  "buffer_font_size": 13,
+  "buffer_font_size": 14,
   "ui_font_size": 13,
   "inlay_hints": {
     "enabled": true
