@@ -38,12 +38,16 @@
     },
     "TOML": {
       "format_on_save": "on"
+    },
+    "SCSS": {
+      "tab_size": 2
     }
   },
   "base_keymap": "VSCode",
-  "buffer_font_family": "Berkeley Mono Variable",
-  "buffer_font_size": 14,
-  "ui_font_size": 13,
+  // "buffer_font_family": "Berkeley Mono Variable",
+  "buffer_font_family": "Iosevka",
+  "buffer_font_size": 15,
+  "ui_font_size": 14,
   "inlay_hints": {
     "enabled": true
   },
