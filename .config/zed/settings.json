@@ -18,7 +18,7 @@
   },
   "theme": {
     "dark": "Gruvbox Dark",
-    "light": "Atelier Heath Light"
+    "light": "Catppuccin Latte - No Italics"
   },
   "terminal": {
     "dock": "bottom"
@@ -49,7 +49,8 @@
   "buffer_font_size": 15,
   "ui_font_size": 14,
   "inlay_hints": {
-    "enabled": true
+    "enabled": true,
+    "show_background": true
   },
   "semantic_index": {
     "enabled": true
@@ -114,7 +115,7 @@
   // "show_inline_completions": false,
   "assistant": {
     "default_model": {
-      "provider": "zed.dev",
+      "provider": "anthropic",
       "model": "claude-3-5-sonnet-20240620"
     },
     "version": "2",
