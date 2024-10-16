@@ -21,3 +21,7 @@ for i in .gitignore .zshenv .zshrc .zshrc.d .wezterm.lua .config/starship.toml .
 done
 echo "Creating symlinks... done!"
 
+# Set Git settings
+git config --global push.autoSetupRemote true
+git config --global init.defaultBranch main
+git config --global receive.denyCurrentBranch updateInstead

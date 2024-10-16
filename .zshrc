@@ -82,7 +82,7 @@ alias nt="cargo nextest"
 alias k="kubectl"
 alias tf="tofu"
 
-alias mosh="mosh --server=/opt/homebrew/bin/mosh-server"
+# alias mosh="mosh --server=/opt/homebrew/bin/mosh-server"
 
 alias earthly="earthly -i"
 alias e="earthly"
