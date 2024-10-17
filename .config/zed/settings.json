@@ -12,24 +12,16 @@
       "host": "hell",
       "projects": [
         {
-          "paths": [
-            "~/bearcove/fopro"
-          ]
+          "paths": ["~/bearcove/fopro"]
         },
         {
-          "paths": [
-            "~/bearcove/uv"
-          ]
+          "paths": ["~/bearcove/uv"]
         },
         {
-          "paths": [
-            "~/bearcove/deser-borrow"
-          ]
+          "paths": ["~/bearcove/deser-borrow"]
         },
         {
-          "paths": [
-            "~/bearcove/merde"
-          ]
+          "paths": ["~/bearcove/merde"]
         }
       ]
     }
@@ -44,8 +36,8 @@
     "dock": "right"
   },
   "theme": {
-    "dark": "Gruvbox Dark",
-    "light": "Catppuccin Latte - No Italics"
+    "dark": "Gruvbox Dark Hard",
+    "light": "Atelier Cave Light"
   },
   "terminal": {
     "dock": "bottom"
@@ -68,13 +60,23 @@
     },
     "SCSS": {
       "tab_size": 2
+    },
+    "TypeScript": {
+      "format_on_save": "on",
+      "tab_size": 4
+    },
+    "TypeScriptReact": {
+      "format_on_save": "on"
+    },
+    "Svelte": {
+      "format_on_save": "on"
     }
   },
   "base_keymap": "VSCode",
   // "buffer_font_family": "Berkeley Mono Variable",
   "buffer_font_family": "Iosevka",
   "buffer_font_size": 15,
-  "ui_font_size": 14,
+  "ui_font_size": 15,
   "inlay_hints": {
     "enabled": true,
     "show_background": true
@@ -151,6 +153,10 @@
   "show_completions_on_input": false,
   "preview_tabs": {
     "enabled": false
+  },
+  "tabs": {
+    "file_icons": true,
+    "git_status": true
   },
   "slash_commands": {
     "docs": {
