@@ -49,6 +49,7 @@ export WORDCHARS='*?_-.~=&;!#$%^(){}<>'
 cdpath=(
     .
     ~/work
+    ~/sdr-pod
     ~/axo
     ~/bearcove
     ~/bearcove/lith
