@@ -145,7 +145,7 @@
   "assistant": {
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-20240620-fast-edit"
+      "model": "claude-3-5-sonnet-latest"
     },
     "version": "2",
     "provider": "zed.dev"
