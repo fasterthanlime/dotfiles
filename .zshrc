@@ -47,7 +47,6 @@ export WORDCHARS='*?_-.~=&;!#$%^(){}<>'
 
 ## Paths I often jump to
 cdpath=(
-    .
     ~/work
     ~/sdr-pod
     ~/axo
@@ -57,6 +56,7 @@ cdpath=(
     ~/bearcove/lith/common
     ~/bearcove/loona/crates
     ~
+    .
 )
 
 ## This apparently makes tab-complete with CDPATH work
