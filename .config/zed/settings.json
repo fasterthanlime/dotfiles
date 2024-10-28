@@ -22,6 +22,12 @@
         },
         {
           "paths": ["~/bearcove/merde"]
+        },
+        {
+          "paths": ["~/axo"]
+        },
+        {
+          "paths": ["~/axo/hi"]
         }
       ]
     }
@@ -36,8 +42,8 @@
     "dock": "right"
   },
   "theme": {
-    "dark": "Gruvbox Dark Hard",
-    "light": "Atelier Cave Light"
+    "dark": "Gruvbox Dark",
+    "light": "Atelier Lakeside Light"
   },
   "terminal": {
     "dock": "bottom"
@@ -47,7 +53,8 @@
       "show_inline_completions": false
     },
     "Markdown": {
-      "show_inline_completions": false
+      "show_inline_completions": false,
+      "soft_wrap": "preferred_line_length"
     },
     "HTML": {
       // "show_inline_completions": false
@@ -162,5 +169,7 @@
     "docs": {
       "enabled": true
     }
-  }
+  },
+  "preferred_line_length": 100,
+  "soft_wrap": "none"
 }
