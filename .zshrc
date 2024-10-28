@@ -113,3 +113,10 @@ eval "$(starship init zsh)"
 
 # History completion, search, etc. — see https://atuin.sh/
 eval "$(atuin init zsh --disable-up-arrow)"
+
+function bd () {
+    cd ~/axo/cargo-dist-$1
+    cargo build
+    rm -f ~/.cargo/bin/dist
+    ln -s ~/axo/cargo-dist-$1/target/debug/dist ~/.cargo/bin/dist
+}
