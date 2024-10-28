@@ -47,6 +47,7 @@ export WORDCHARS='*?_-.~=&;!#$%^(){}<>'
 
 ## Paths I often jump to
 cdpath=(
+    .
     ~/work
     ~/sdr-pod
     ~/axo
@@ -56,7 +57,6 @@ cdpath=(
     ~/bearcove/lith/common
     ~/bearcove/loona/crates
     ~
-    .
 )
 
 ## This apparently makes tab-complete with CDPATH work
@@ -115,8 +115,7 @@ eval "$(starship init zsh)"
 eval "$(atuin init zsh --disable-up-arrow)"
 
 function bd () {
-    cd ~/axo/cargo-dist-$1
-    cargo build
-    rm -f ~/.cargo/bin/dist
-    ln -s ~/axo/cargo-dist-$1/target/debug/dist ~/.cargo/bin/dist
+    (cd ~/axo/cargo-dist-$1 && cargo build) || return 1
+    rm -f ~/.cargo/bin/dist || return 1
+    ln -s ~/axo/cargo-dist-$1/target/debug/dist ~/.cargo/bin/dist || return 1
 }
