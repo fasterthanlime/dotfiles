@@ -115,7 +115,7 @@ eval "$(starship init zsh)"
 eval "$(atuin init zsh --disable-up-arrow)"
 
 function bd () {
-    (cd ~/axo/cargo-dist-$1 && cargo build) || return 1
+    (cd ~/axo/d$1 && cargo build) || return 1
     rm -f ~/.cargo/bin/dist || return 1
-    ln -s ~/axo/cargo-dist-$1/target/debug/dist ~/.cargo/bin/dist || return 1
+    ln -s ~/axo/d$1/target/debug/dist ~/.cargo/bin/dist || return 1
 }
