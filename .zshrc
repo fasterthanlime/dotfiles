@@ -119,3 +119,5 @@ function bd () {
     rm -f ~/.cargo/bin/dist || return 1
     ln -s ~/axo/d$1/target/debug/dist ~/.cargo/bin/dist || return 1
 }
+alias db=bd
+alias d=dist
