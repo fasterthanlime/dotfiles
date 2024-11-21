@@ -62,7 +62,8 @@
       // "show_inline_completions": false
     },
     "Rust": {
-      "format_on_save": "on"
+      "format_on_save": "on",
+      "tab_size": 4
     },
     "TOML": {
       "format_on_save": "off"
@@ -146,6 +147,7 @@
     "coloring": "indent_aware",
     "line_width": 4
   },
+  "tab_size": 2,
   "features": {
     "inline_completion_provider": "supermaven"
     // "inline_completion_provider": "copilot"
@@ -173,5 +175,8 @@
     }
   },
   "preferred_line_length": 100,
-  "soft_wrap": "none"
+  "soft_wrap": "none",
+  "file_types": {
+    "Jinja2": [".j2"]
+  }
 }
