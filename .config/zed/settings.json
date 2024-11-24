@@ -12,24 +12,19 @@
       "host": "hell",
       "projects": [
         {
-          "paths": [
-            "~/bearcove/deser-borrow"
-          ]
+          "paths": ["~/bearcove/deser-borrow"]
         },
         {
-          "paths": [
-            "~/bearcove/fopro"
-          ]
+          "paths": ["~/bearcove/fopro"]
         },
         {
-          "paths": [
-            "~/bearcove/merde"
-          ]
+          "paths": ["~/bearcove/merde"]
         },
         {
-          "paths": [
-            "~/bearcove/uv"
-          ]
+          "paths": ["~/bearcove/uv"]
+        },
+        {
+          "paths": ["~/dotfiles"]
         }
       ]
     }
@@ -45,7 +40,7 @@
   },
   "theme": {
     "dark": "Gruvbox Dark",
-    "light": "Atelier Lakeside Light"
+    "light": "Atelier Estuary Light"
   },
   "terminal": {
     "dock": "bottom"
@@ -108,7 +103,7 @@
     "quick_actions": false
   },
   "scrollbar": {
-    "show": "never"
+    "show": "always"
   },
   "gutter": {
     "folds": false
