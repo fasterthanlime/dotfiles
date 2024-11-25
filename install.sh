@@ -28,7 +28,7 @@ git config --global receive.denyCurrentBranch updateInstead
 
 brew install git-delta
 
-git config --global core.pager delta
-git config --global interactive.diffFilter 'delta --color-only'
+git config --global core.pager 'delta --dark'
+git config --global interactive.diffFilter 'delta --color-only --dark'
 git config --global delta.navigate true
 git config --global merge.conflictStyle zdiff3
