@@ -40,7 +40,7 @@
   },
   "theme": {
     "dark": "Gruvbox Dark",
-    "light": "Atelier Estuary Light"
+    "light": "Atelier Estuary Dark"
   },
   "terminal": {
     "dock": "bottom"
