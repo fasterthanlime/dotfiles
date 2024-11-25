@@ -28,8 +28,8 @@ git config --global receive.denyCurrentBranch updateInstead
 
 brew install git-delta
 
-git config --global core.pager 'delta --dark --color-only --syntax-theme gruvbox-dark'
-git config --global interactive.diffFilter 'delta --color-only --dark --syntax-theme gruvbox-dark'
+git config --global core.pager 'delta --syntax-theme gruvbox-dark --minus-style "normal #2d3b4f" --plus-style "normal #4f3a1e" --minus-emph-style "normal #465f8b" --plus-emph-style "normal #9d4a02" --color-only'
+git config --global interactive.diffFilter 'delta --color-only --minus-style "normal #2d3b4f" --plus-style "normal #4f3a1e" --minus-emph-style "normal #465f8b" --plus-emph-style "normal #9d4a02" --syntax-theme gruvbox-dark'
 git config --global delta.navigate true
 git config --global merge.conflictStyle zdiff3
 

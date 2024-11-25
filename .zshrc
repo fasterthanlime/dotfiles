@@ -113,13 +113,7 @@ eval "$(starship init zsh)"
 # History completion, search, etc. — see https://atuin.sh/
 eval "$(atuin init zsh --disable-up-arrow)"
 
-function bd () {
-    (cd ~/axo/d$1 && cargo build) || return 1
-    rm -f ~/.cargo/bin/dist || return 1
-    ln -s ~/axo/d$1/target/debug/dist ~/.cargo/bin/dist || return 1
-}
-alias db=bd
-alias d=dist
+alias t="lith term"
 
 if [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
