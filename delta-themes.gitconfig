@@ -663,3 +663,12 @@
     hunk-header-file-style = darkgoldenrod
     hunk-header-line-number-style = orange
     hunk-header-style = file line-number purple
+
+  [delta "snow-panther"]
+      syntax-theme = gruvbox-dark
+      minus-style = normal "#2d3b4f"
+      plus-style = normal "#4f3a1e"
+      minus-emph-style = normal "#465f8b"
+      plus-emph-style = normal "#9d4a02"
+      color-only = true
+      dark = true
