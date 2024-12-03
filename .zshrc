@@ -119,4 +119,11 @@ if [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+alias carog="cargo"
+alias carg="cargo"
+alias cagro="cargo"
+alias carho="cargo"
+alias carho="cargo"
+alias crago="cargo"
+
 . "$HOME/.cargo/env"
