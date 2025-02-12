@@ -13,10 +13,11 @@ basedir=$PWD
 
 mkdir -p ~/.config/
 mkdir -p ~/.config/tmux
+mkdir -p ~/.config/fish
 
 git config --global core.excludesFile '~/.gitignore'
 
-for i in .gitignore .zshenv .zshrc .zshrc.d .wezterm.lua .config/starship.toml .config/zed .config/tmux/tmux.conf; do
+for i in .gitignore .zshenv .zshrc .zshrc.d .wezterm.lua .config/starship.toml .config/zed .config/tmux/tmux.conf .config/fish/config.fish .config/fish/git-alias.fish; do
 	ln -f -s $PWD/$i ~/$(dirname $i)
 done
 echo "Creating symlinks... done!"

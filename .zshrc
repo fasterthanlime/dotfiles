@@ -125,5 +125,9 @@ alias cagro="cargo"
 alias carho="cargo"
 alias carho="cargo"
 alias crago="cargo"
+alias crd="cargo run" # cargo run "dev"
+alias crp="cargo run --release" # cargo run "prod"
+
+source <(jj util completion zsh)
 
 . "$HOME/.cargo/env"

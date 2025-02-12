@@ -39,14 +39,16 @@
   },
   "languages": {
     "Markdown-Inline": {
-      "show_edit_predictions": false
+      "show_inline_completions": true
     },
     "Markdown": {
-      "show_edit_predictions": false,
+      "show_inline_completions": true,
       "preferred_line_length": 80,
       "soft_wrap": "preferred_line_length"
     },
-    "HTML": {},
+    "HTML": {
+      // "show_inline_completions": false
+    },
     "Rust": {
       "format_on_save": "on",
       "tab_size": 4
@@ -72,7 +74,7 @@
   "base_keymap": "VSCode",
   // "buffer_font_family": "Berkeley Mono Variable",
   "buffer_font_family": "Iosevka",
-  "buffer_font_size": 16.0,
+  "buffer_font_size": 14.0,
   "ui_font_size": 15,
   "inlay_hints": {
     "enabled": true,
@@ -145,14 +147,14 @@
   "tab_size": 2,
   "features": {
     // "inline_completion_provider": "supermaven"
-    "edit_prediction_provider": "zed"
+    "inline_completion_provider": "zed"
   },
   // "show_inline_completions": false,
   // "show_completions_on_input": false,
   "assistant": {
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-latest"
+      "model": "claude-3-5-sonnet-20240620-fast-edit"
     },
     "version": "2",
     "provider": "zed.dev",
@@ -174,6 +176,5 @@
   "soft_wrap": "none",
   "file_types": {
     "Jinja2": [".j2"]
-  },
-  "show_edit_predictions": false
+  }
 }
