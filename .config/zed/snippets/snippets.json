@@ -1,81 +1,81 @@
 {
   "rust": {
-    "prefix": "rs",
+    "prefix": "`rs",
     "body": ["```rust", "$1", "```"],
     "description": "Rust code block"
   },
   "html": {
-    "prefix": "html",
+    "prefix": "`html",
     "body": ["```html", "$1", "```"],
     "description": "HTML code block"
   },
   "css": {
-    "prefix": "css",
+    "prefix": "`css",
     "body": ["```css", "$1", "```"],
     "description": "CSS code block"
   },
   "go": {
-    "prefix": "go",
+    "prefix": "`go",
     "body": ["```go", "$1", "```"],
     "description": "Go code block"
   },
   "c": {
-    "prefix": "c",
+    "prefix": "`c",
     "body": ["```c", "$1", "```"],
     "description": "C code block"
   },
   "cpp": {
-    "prefix": "cpp",
+    "prefix": "`cpp",
     "body": ["```cpp", "$1", "```"],
     "description": "C++ code block"
   },
   "javascript": {
-    "prefix": "js",
+    "prefix": "`js",
     "body": ["```javascript", "$1", "```"],
     "description": "JavaScript code block"
   },
   "typescript": {
-    "prefix": "ts",
+    "prefix": "`ts",
     "body": ["```typescript", "$1", "```"],
     "description": "TypeScript code block"
   },
   "toml": {
-    "prefix": "toml",
+    "prefix": "`toml",
     "body": ["```toml", "$1", "```"],
     "description": "TOML code block"
   },
   "json": {
-    "prefix": "json",
+    "prefix": "`json",
     "body": ["```json", "$1", "```"],
     "description": "JSON code block"
   },
   "nim": {
-    "prefix": "nim",
+    "prefix": "`nim",
     "body": ["```nim", "$1", "```"],
     "description": "Nim code block"
   },
   "shell": {
-    "prefix": "sh",
+    "prefix": "`sh",
     "body": ["```shell", "$1", "```"],
     "description": "Shell code block"
   },
   "amos": {
-    "prefix": "amos",
+    "prefix": "`amos",
     "body": ["> *:amossays*", ">", "> $1"],
     "description": "Amos says block"
   },
   "bear": {
-    "prefix": "bear",
+    "prefix": "`bear",
     "body": ["> *:bearsays*", ">", "> $1"],
     "description": "Bear says block"
   },
   "tip": {
-    "prefix": "tip",
+    "prefix": "`tip",
     "body": ["> *:tip*", ">", "> $1"],
     "description": "Tip block"
   },
   "recap": {
-    "prefix": "recap",
+    "prefix": "`recap",
     "body": ["> *:recap*", ">", "> $1"],
     "description": "Recap block"
   }
