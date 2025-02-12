@@ -1,3 +1,5 @@
+set -U fish_greeting
+
 set -gx PATH \
             $HOME/.cargo/bin \
             /opt/homebrew/bin \
