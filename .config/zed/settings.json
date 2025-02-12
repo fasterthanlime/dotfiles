@@ -31,7 +31,7 @@
     "dock": "right"
   },
   "theme": {
-    "dark": "Gruvbox Dark",
+    "dark": "Catppuccin Mocha",
     "light": "Atelier Forest Light"
   },
   "terminal": {
@@ -72,7 +72,7 @@
   "base_keymap": "VSCode",
   // "buffer_font_family": "Berkeley Mono Variable",
   "buffer_font_family": "Iosevka",
-  "buffer_font_size": 14.0,
+  "buffer_font_size": 16.0,
   "ui_font_size": 15,
   "inlay_hints": {
     "enabled": true,
@@ -152,7 +152,7 @@
   "assistant": {
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-20240620-fast-edit"
+      "model": "claude-3-5-sonnet-latest"
     },
     "version": "2",
     "provider": "zed.dev",
