@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+set -x
 
 mkdir -p ~/.local/bin
 
@@ -29,8 +30,19 @@ git config --global push.autoSetupRemote true
 git config --global init.defaultBranch main
 git config --global receive.denyCurrentBranch updateInstead
 
-brew install difftastic
+if command -v difft &>/dev/null; then
+    echo "difftastic is already installed"
+else
+    brew install difftastic
+fi
 
 git config --global diff.external 'difft --color=always --syntax-highlight=on --display=inline'
-# git config --global core.pager 'less -R'
-# git config --global merge.conflictStyle zdiff3
+git config --global core.pager 'less -R'
+git config --global merge.conflictStyle zdiff3
+
+git config --global diff.tool difftastic
+git config --global difftool.difftastic.cmd 'difft --color=always --display=inline --syntax-highlight=on "$LOCAL" "$REMOTE"'
+git config --global difftool.prompt false
+git config --global alias.dft difftool
+
+echo "Setup completed successfully!"
