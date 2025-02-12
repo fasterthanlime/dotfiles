@@ -34,6 +34,10 @@ git config --global interactive.diffFilter 'delta'
 git config --global delta.navigate true
 git config --global merge.conflictStyle zdiff3
 
+git config --global alias.dlog '-c diff.external=difft log --ext-diff'
+git config --global alias.dshow '-c diff.external=difft show --ext-diff'
+git config --global alias.ddiff '-c diff.external=difft diff'
+
 # get the path of the current script
 script_dir="$(cd "$(dirname "${(%):-%N}")"; pwd -P)"
 delta_themes_path="$script_dir/delta-themes.gitconfig"

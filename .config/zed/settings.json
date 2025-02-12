@@ -72,7 +72,7 @@
   "base_keymap": "VSCode",
   // "buffer_font_family": "Berkeley Mono Variable",
   "buffer_font_family": "Iosevka",
-  "buffer_font_size": 14.0,
+  "buffer_font_size": 15.0,
   "ui_font_size": 15,
   "inlay_hints": {
     "enabled": true,
