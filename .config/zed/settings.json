@@ -44,7 +44,8 @@
     "Markdown": {
       "show_edit_predictions": false,
       "preferred_line_length": 80,
-      "soft_wrap": "preferred_line_length"
+      "soft_wrap": "preferred_line_length",
+      "tab_size": 4
     },
     "HTML": {},
     "Rust": {
@@ -72,7 +73,7 @@
   "base_keymap": "VSCode",
   // "buffer_font_family": "Berkeley Mono Variable",
   "buffer_font_family": "Iosevka",
-  "buffer_font_size": 16.0,
+  "buffer_font_size": 15.0,
   "ui_font_size": 15,
   "inlay_hints": {
     "enabled": true,
@@ -144,8 +145,9 @@
   },
   "tab_size": 2,
   "features": {
-    // "inline_completion_provider": "supermaven"
-    "edit_prediction_provider": "zed"
+    // "edit_prediction_provider": "supermaven"
+    "edit_prediction_provider": "copilot"
+    // "edit_prediction_provider": "zed"
   },
   // "show_inline_completions": false,
   // "show_completions_on_input": false,
