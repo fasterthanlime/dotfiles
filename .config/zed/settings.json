@@ -60,7 +60,7 @@
     },
     "TypeScript": {
       "format_on_save": "on",
-      "tab_size": 4
+      "tab_size": 2
     },
     "TypeScriptReact": {
       "format_on_save": "on"
@@ -73,8 +73,8 @@
   "base_keymap": "VSCode",
   // "buffer_font_family": "Berkeley Mono Variable",
   "buffer_font_family": "Iosevka",
-  "buffer_font_size": 15.0,
-  "ui_font_size": 15,
+  "buffer_font_size": 17.0,
+  "ui_font_size": 16,
   "inlay_hints": {
     "enabled": true,
     "show_background": true
@@ -146,7 +146,7 @@
   "tab_size": 2,
   "features": {
     // "edit_prediction_provider": "supermaven"
-    "edit_prediction_provider": "copilot"
+    // "edit_prediction_provider": "copilot"
     // "edit_prediction_provider": "zed"
   },
   // "show_inline_completions": false,
