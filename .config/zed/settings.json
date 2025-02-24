@@ -31,8 +31,8 @@
     "dock": "right"
   },
   "theme": {
-    "dark": "Catppuccin Mocha",
-    "light": "Atelier Forest Light"
+    "dark": "Catppuccin Mocha - No Italics",
+    "light": "Catppuccin Latte - No Italics"
   },
   "terminal": {
     "dock": "bottom"
@@ -70,12 +70,11 @@
       "tab_size": 2
     }
   },
+
   "base_keymap": "VSCode",
-  // "buffer_font_family": "Berkeley Mono Variable",
   "buffer_font_family": "Iosevka",
   "buffer_font_size": 16.0,
   "ui_font_size": 15,
-  // "ui_font_family": "Zed Text L",
   "inlay_hints": {
     "enabled": true,
     "show_background": true
@@ -172,7 +171,8 @@
   "preferred_line_length": 100,
   "soft_wrap": "none",
   "file_types": {
-    "Jinja2": [".j2"]
+    "Jinja2": ["jinja", "js"],
+    "XML": ["svg"]
   },
   "show_edit_predictions": true
 }
