@@ -73,8 +73,9 @@
   "base_keymap": "VSCode",
   // "buffer_font_family": "Berkeley Mono Variable",
   "buffer_font_family": "Iosevka",
-  "buffer_font_size": 17.0,
-  "ui_font_size": 16,
+  "buffer_font_size": 16.0,
+  "ui_font_size": 15,
+  // "ui_font_family": "Zed Text L",
   "inlay_hints": {
     "enabled": true,
     "show_background": true
@@ -145,20 +146,16 @@
   },
   "tab_size": 2,
   "features": {
-    // "edit_prediction_provider": "supermaven"
-    // "edit_prediction_provider": "copilot"
-    // "edit_prediction_provider": "zed"
+    "edit_prediction_provider": "copilot"
   },
-  // "show_inline_completions": false,
-  // "show_completions_on_input": false,
   "assistant": {
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-latest"
+      "provider": "mistral",
+      "model": "codestral-latest"
     },
     "version": "2",
     "provider": "zed.dev",
-    "enable_experimental_live_diffs": true
+    "enable_experimental_live_diffs": false
   },
   "preview_tabs": {
     "enabled": false
