@@ -145,16 +145,26 @@
   },
   "tab_size": 2,
   "features": {
-    "edit_prediction_provider": "copilot"
+    "edit_prediction_provider": "zed"
   },
   "assistant": {
     "default_model": {
-      "provider": "mistral",
-      "model": "codestral-latest"
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-20240620-fast-edit"
     },
     "version": "2",
     "provider": "zed.dev",
-    "enable_experimental_live_diffs": false
+    "enable_experimental_live_diffs": true,
+    "inline_alternatives": [
+      // {
+      //   "provider": "mistral",
+      //   "model": "codestral-latest"
+      // },
+      // {
+      //   "provider": "openai",
+      //   "model": "o3-mini"
+      // }
+    ]
   },
   "preview_tabs": {
     "enabled": false
