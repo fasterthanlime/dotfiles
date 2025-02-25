@@ -149,12 +149,12 @@
   },
   "assistant": {
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-20240620-fast-edit"
+      "provider": "anthropic",
+      "model": "claude-3-7-sonnet-latest"
     },
     "version": "2",
     "provider": "zed.dev",
-    "enable_experimental_live_diffs": true,
+    "enable_experimental_live_diffs": false,
     "inline_alternatives": [
       // {
       //   "provider": "mistral",
