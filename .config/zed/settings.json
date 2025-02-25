@@ -181,7 +181,7 @@
   "preferred_line_length": 100,
   "soft_wrap": "none",
   "file_types": {
-    "Jinja2": ["jinja", "js"],
+    "Jinja2": ["jinja", "j2"],
     "XML": ["svg"]
   },
   "show_edit_predictions": true
