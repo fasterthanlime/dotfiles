@@ -127,6 +127,8 @@ alias carho="cargo"
 alias crago="cargo"
 alias crd="cargo run" # cargo run "dev"
 alias crp="cargo run --release" # cargo run "prod"
+alias lg="lazygit"
+alias p="pnpm"
 
 source <(jj util completion zsh)
 

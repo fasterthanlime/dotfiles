@@ -149,8 +149,8 @@
   },
   "assistant": {
     "default_model": {
-      "provider": "anthropic",
-      "model": "claude-3-7-sonnet-latest"
+      "provider": "copilot_chat",
+      "model": "claude-3-7-sonnet"
     },
     "version": "2",
     "provider": "zed.dev",
@@ -182,7 +182,8 @@
   "soft_wrap": "none",
   "file_types": {
     "Jinja2": ["jinja", "j2"],
-    "XML": ["svg"]
+    "XML": ["svg"],
+    "TypeScript": ["ts", "tsx"]
   },
   "show_edit_predictions": true
 }

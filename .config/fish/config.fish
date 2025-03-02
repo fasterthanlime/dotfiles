@@ -85,6 +85,7 @@ alias crago cargo
 alias crd "cargo run"
 alias crp "cargo run --release"
 alias lg "lazygit"
+alias p "pnpm"
 
 # Load additional completions from jj util
 if type -q jj
