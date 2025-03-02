@@ -183,7 +183,8 @@
   "file_types": {
     "Jinja2": ["jinja", "j2"],
     "XML": ["svg"],
-    "TypeScript": ["ts", "tsx"]
+    "TypeScript": ["ts", "tsx"],
+    "XML": ["svg"]
   },
   "show_edit_predictions": true
 }
