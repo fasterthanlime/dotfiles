@@ -31,10 +31,13 @@
     "dock": "right"
   },
   "theme": {
-    "dark": "Catppuccin Mocha - No Italics",
+    "dark": "Catppuccin Frappé",
     "light": "Catppuccin Latte - No Italics"
   },
   "terminal": {
+    "shell": {
+      "program": "fish"
+    },
     "dock": "bottom"
   },
   "languages": {

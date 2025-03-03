@@ -23,7 +23,7 @@ bind \e\[F end-of-line
 set -gx WORDCHARS '*?_-.~=&;!#$%^(){}<>'
 
 # Paths I often jump to
-set -gx CDPATH . ~/work ~/sdr-pod ~/bearcove ~/bearcove/lith ~/bearcove/lith/mods ~/bearcove/lith/common ~/bearcove/loona/crates ~
+set -gx CDPATH . ~/work ~/sdr-pod ~/bearcove ~/bearcove/snug ~/bearcove/snug/crates ~/bearcove/snug/common ~
 
 # Extend function path with additional completions directory
 set -gx fish_function_path ~/.zshrc.d/completions $fish_function_path
@@ -86,6 +86,7 @@ alias crd "cargo run"
 alias crp "cargo run --release"
 alias lg "lazygit"
 alias p "pnpm"
+alias npm "echo no"
 
 # Load additional completions from jj util
 if type -q jj
