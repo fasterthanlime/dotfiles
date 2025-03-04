@@ -93,3 +93,10 @@ alias npm "echo no"
 if type -q jj
     jj util completion fish | source
 end
+
+# pnpm
+set -gx PNPM_HOME "/Users/amos/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end

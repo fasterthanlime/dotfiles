@@ -134,3 +134,11 @@ alias npm="echo no"
 source <(jj util completion zsh)
 
 . "$HOME/.cargo/env"
+
+# pnpm
+export PNPM_HOME="/Users/amos/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
