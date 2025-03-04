@@ -82,6 +82,7 @@ alias carg cargo
 alias cagro cargo
 alias carho cargo
 alias crago cargo
+alias c cargo
 alias crd "cargo run"
 alias crp "cargo run --release"
 alias lg "lazygit"
