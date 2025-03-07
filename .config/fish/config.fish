@@ -88,8 +88,14 @@ alias crp "cargo run --release"
 alias lg "lazygit"
 alias p "pnpm"
 alias npm "echo use_pnpm"
-alias terraform "echo use_tofu"
-alias tf "echo use_tofu"
+alias ntr "cargo nextest run"
+alias nt "cargo nextest"
+# alias terraform "echo use_tofu"
+# alias tf "echo use_tofu"
+
+function ipinfo
+    curl -s "https://ipinfo.io/$argv[1]/json" | jq -C '.'
+end
 
 # Load additional completions from jj util
 if type -q jj
