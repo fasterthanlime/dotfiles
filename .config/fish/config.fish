@@ -87,7 +87,9 @@ alias crd "cargo run"
 alias crp "cargo run --release"
 alias lg "lazygit"
 alias p "pnpm"
-alias npm "echo no"
+alias npm "echo use_pnpm"
+alias terraform "echo use_tofu"
+alias tf "echo use_tofu"
 
 # Load additional completions from jj util
 if type -q jj
