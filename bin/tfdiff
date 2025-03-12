@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# This script compares the contents of terraform.tfstate.backup and terraform.tfstate files
+# It formats both files as sorted JSON, saves them to temporary files, and shows a colored diff
+
+jq -S '.' terraform.tfstate.backup > /tmp/1.json && \
+jq -S '.' terraform.tfstate > /tmp/2.json && \
+git diff --no-index --color /tmp/1.json /tmp/2.json
