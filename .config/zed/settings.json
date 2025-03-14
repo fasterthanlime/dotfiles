@@ -47,30 +47,24 @@
     "Markdown": {
       "show_edit_predictions": false,
       "preferred_line_length": 80,
-      "soft_wrap": "preferred_line_length",
-      "tab_size": 4
+      "soft_wrap": "preferred_line_length"
     },
     "HTML": {},
     "Rust": {
-      "format_on_save": "on",
-      "tab_size": 2
+      "format_on_save": "on"
     },
     "TOML": {
       "format_on_save": "on"
     },
-    "SCSS": {
-      "tab_size": 2
-    },
+    "SCSS": {},
     "TypeScript": {
-      "format_on_save": "on",
-      "tab_size": 2
+      "format_on_save": "on"
     },
     "TypeScriptReact": {
       "format_on_save": "on"
     },
     "Svelte": {
-      "format_on_save": "on",
-      "tab_size": 2
+      "format_on_save": "on"
     }
   },
 
@@ -146,7 +140,7 @@
     "coloring": "indent_aware",
     "line_width": 4
   },
-  "tab_size": 2,
+  "tab_size": 4,
   "features": {
     "edit_prediction_provider": "copilot"
   },
