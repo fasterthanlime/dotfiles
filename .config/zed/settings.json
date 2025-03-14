@@ -53,7 +53,7 @@
     "HTML": {},
     "Rust": {
       "format_on_save": "on",
-      "tab_size": 4
+      "tab_size": 2
     },
     "TOML": {
       "format_on_save": "on"
