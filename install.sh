@@ -45,6 +45,8 @@ git config --global difftool.difftastic.cmd 'difft --color=always --display=inli
 git config --global difftool.prompt false
 git config --global alias.dft difftool
 
+git config --global alias.tagpush '!f() { git tag "$1" && git push origin "$1"; }; f'
+
 # For everything inside `~/dotfiles/bin`, create a symlink in `~/.local/bin`
 for file in ~/dotfiles/bin/*; do
     if [[ -f "$file" ]]; then
