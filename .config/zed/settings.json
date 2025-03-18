@@ -65,6 +65,9 @@
         },
         "Svelte": {
             "format_on_save": "on"
+        },
+        "Just": {
+            "format_on_save": "on"
         }
     },
 
@@ -107,18 +110,7 @@
                 "path_lookup": true
             },
             "initialization_options": {
-                "rustfmt": {
-                    "overrideCommand": [
-                        "rustup",
-                        "run",
-                        "nightly",
-                        "--",
-                        "rustfmt",
-                        "--edition",
-                        "2018",
-                        "--"
-                    ]
-                },
+                "rustfmt": {},
                 "check": {
                     "extraArgs": []
                 },
