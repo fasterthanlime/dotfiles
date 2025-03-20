@@ -31,7 +31,7 @@
         "dock": "right"
     },
     "theme": {
-        "dark": "Catppuccin Macchiato",
+        "dark": "Catppuccin Frappé - No Italics",
         "light": "Catppuccin Latte"
     },
     "terminal": {
@@ -138,8 +138,8 @@
     },
     "assistant": {
         "default_model": {
-            "provider": "zed.dev",
-            "model": "claude-3-5-sonnet-20240620-fast-edit"
+            "provider": "copilot_chat",
+            "model": "claude-3-7-sonnet"
         },
         "version": "2",
         "provider": "zed.dev",
