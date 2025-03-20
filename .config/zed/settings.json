@@ -47,7 +47,9 @@
         "Markdown": {
             "show_edit_predictions": false,
             "preferred_line_length": 80,
-            "soft_wrap": "preferred_line_length"
+            // soft wrap fucks with vim's "I" — it inserts where the soft wrap happens,
+            // which adds strays `>` when quoting long pasted things.
+            "soft_wrap": "none"
         },
         "HTML": {},
         "Rust": {
@@ -176,6 +178,7 @@
     },
     "show_edit_predictions": true,
     "completions": {
-        "words": "disabled"
-    }
+        "words": "fallback"
+    },
+    "show_completions_on_input": false
 }
