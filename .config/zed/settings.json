@@ -138,8 +138,8 @@
     },
     "assistant": {
         "default_model": {
-            "provider": "copilot_chat",
-            "model": "claude-3-7-sonnet"
+            "provider": "zed.dev",
+            "model": "claude-3-5-sonnet-20240620-fast-edit"
         },
         "version": "2",
         "provider": "zed.dev",
@@ -174,5 +174,8 @@
         "XML": ["svg"],
         "TypeScript": ["ts", "tsx"]
     },
-    "show_edit_predictions": true
+    "show_edit_predictions": true,
+    "completions": {
+        "words": "disabled"
+    }
 }
