@@ -8,16 +8,22 @@
 // from the command palette or from `Zed` application menu.
 {
     "ssh_connections": [
+    {
+      "host": "brat",
+      "projects": [
         {
-            "host": "brat",
-            "username": "amos",
-            "projects": [
-                {
-                    "paths": ["~/bearcove/sansioex"]
-                }
-            ]
+          "paths": [
+            "~/bearcove"
+          ]
+        },
+        {
+          "paths": [
+            "~/bearcove/snug"
+          ]
         }
-    ],
+      ]
+    }
+  ],
     "cursor_blink": false,
     "language_models": {
         "anthropic": {
