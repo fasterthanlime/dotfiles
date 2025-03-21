@@ -113,4 +113,6 @@ if not string match -q -- $PNPM_HOME $PATH
 end
 # pnpm end
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if test (uname) = "Linux"
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+end
