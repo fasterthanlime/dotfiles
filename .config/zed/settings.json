@@ -22,6 +22,16 @@
           ]
         }
       ]
+    },
+    {
+      "host": "souffle",
+      "projects": [
+        {
+          "paths": [
+            "~/bearcove/timelord"
+          ]
+        }
+      ]
     }
   ],
     "cursor_blink": false,
