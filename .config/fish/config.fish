@@ -10,6 +10,8 @@ set -gx PATH \
             $PATH
 set -gx EDITOR vim
 
+set -gx BEARDIST_CACHE_DIR /tmp/beardist-cache
+
 # Key bindings
 bind \e\[1\;5C forward-word
 bind \e\[1\;5D backward-word
