@@ -93,6 +93,18 @@ alias nt "cargo nextest"
 # alias terraform "echo use_tofu"
 # alias tf "echo use_tofu"
 
+# mnemonic: "git add commit push"
+function acp
+    git add .
+    git commit -m "$argv"
+    git push
+end
+
+# mnemonic: "cargo install dot"
+function cid
+    cargo install --path . --locked
+end
+
 function ipinfo
     curl -s "https://ipinfo.io/$argv[1]/json" | jq -C '.'
 end
