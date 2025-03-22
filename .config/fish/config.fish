@@ -129,4 +129,5 @@ end
 
 if test (uname) = "Linux"
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    set -gx PKG_CONFIG_PATH /home/linuxbrew/.linuxbrew/lib/pkgconfig
 end
