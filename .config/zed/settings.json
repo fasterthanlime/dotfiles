@@ -13,17 +13,7 @@
       "projects": [
         {
           "paths": [
-            "~/bearcove"
-          ]
-        },
-        {
-          "paths": [
             "~/bearcove/beardist"
-          ]
-        },
-        {
-          "paths": [
-            "~/bearcove/snug"
           ]
         }
       ]
@@ -31,6 +21,11 @@
     {
       "host": "souffle",
       "projects": [
+        {
+          "paths": [
+            "~/bearcove/home"
+          ]
+        },
         {
           "paths": [
             "~/bearcove/timelord"
