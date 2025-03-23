@@ -18,6 +18,11 @@
         },
         {
           "paths": [
+            "~/bearcove/beardist"
+          ]
+        },
+        {
+          "paths": [
             "~/bearcove/snug"
           ]
         }
