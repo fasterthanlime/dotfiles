@@ -94,6 +94,7 @@ alias ntr "cargo nextest run"
 alias nt "cargo nextest"
 # alias terraform "echo use_tofu"
 # alias tf "echo use_tofu"
+alias bd beardist
 
 # mnemonic: "git add commit push"
 function acp
