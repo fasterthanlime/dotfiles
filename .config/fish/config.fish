@@ -131,8 +131,13 @@ end
 if test (uname) = "Linux"
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
     set -gx PKG_CONFIG_PATH /home/linuxbrew/.linuxbrew/lib/pkgconfig
+    set -gx LD_LIBRARY_PATH /home/linuxbrew/.linuxbrew/lib
 end
 
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
