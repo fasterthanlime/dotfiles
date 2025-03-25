@@ -9,16 +9,6 @@
 {
     "ssh_connections": [
     {
-      "host": "brat",
-      "projects": [
-        {
-          "paths": [
-            "~/bearcove/beardist"
-          ]
-        }
-      ]
-    },
-    {
       "host": "souffle",
       "projects": [
         {
@@ -29,6 +19,16 @@
         {
           "paths": [
             "~/bearcove/timelord"
+          ]
+        }
+      ]
+    },
+    {
+      "host": "brat",
+      "projects": [
+        {
+          "paths": [
+            "~/bearcove/beardist"
           ]
         }
       ]
