@@ -8,32 +8,26 @@
 // from the command palette or from `Zed` application menu.
 {
     "ssh_connections": [
-    {
-      "host": "souffle",
-      "projects": [
         {
-          "paths": [
-            "~/bearcove/home"
-          ]
+            "host": "souffle",
+            "projects": [
+                {
+                    "paths": ["~/bearcove/home"]
+                },
+                {
+                    "paths": ["~/bearcove/timelord"]
+                }
+            ]
         },
         {
-          "paths": [
-            "~/bearcove/timelord"
-          ]
+            "host": "brat",
+            "projects": [
+                {
+                    "paths": ["~/bearcove/beardist"]
+                }
+            ]
         }
-      ]
-    },
-    {
-      "host": "brat",
-      "projects": [
-        {
-          "paths": [
-            "~/bearcove/beardist"
-          ]
-        }
-      ]
-    }
-  ],
+    ],
     "cursor_blink": false,
     "language_models": {
         "anthropic": {
@@ -196,5 +190,6 @@
     "completions": {
         "words": "fallback"
     },
-    "show_completions_on_input": false
+    "show_completions_on_input": false,
+    "use_system_path_prompts": false
 }
