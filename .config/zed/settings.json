@@ -188,7 +188,7 @@
     },
     "show_edit_predictions": true,
     "completions": {
-        "words": "fallback"
+        "words": "enabled"
     },
     "show_completions_on_input": false,
     "use_system_path_prompts": false
