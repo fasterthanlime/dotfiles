@@ -41,7 +41,7 @@
         "dock": "right"
     },
     "theme": {
-        "dark": "Catppuccin Frappé - No Italics",
+        "dark": "Catppuccin Macchiato",
         "light": "Catppuccin Latte"
     },
     "terminal": {
@@ -188,7 +188,7 @@
     },
     "show_edit_predictions": true,
     "completions": {
-        "words": "enabled"
+        "words": "fallback"
     },
     "show_completions_on_input": false,
     "use_system_path_prompts": false
