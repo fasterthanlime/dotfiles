@@ -91,7 +91,7 @@
     "base_keymap": "VSCode",
     "buffer_font_family": "Iosevka Term",
     "buffer_font_size": 16.0,
-    "ui_font_size": 13,
+    "ui_font_size": 16,
     "inlay_hints": {
         "enabled": true,
         "show_background": true
@@ -154,13 +154,7 @@
         "edit_prediction_provider": "supermaven"
     },
     "assistant": {
-        "always_allow_tool_actions": true,
         "inline_assistant_model": {
-            "provider": "zed.dev",
-            "model": "claude-3-7-sonnet-thinking-latest"
-        },
-        "default_profile": "write",
-        "default_model": {
             "provider": "zed.dev",
             "model": "claude-3-5-sonnet-latest"
         },
@@ -217,11 +211,11 @@
                 "context_servers": {}
             }
         },
-        "default_profile": "doc-writing",
+        "default_profile": "write",
         "always_allow_tool_actions": true,
         "default_model": {
             "provider": "zed.dev",
-            "model": "claude-3-7-sonnet-thinking-latest"
+            "model": "claude-3-5-sonnet-latest"
         },
         "version": "2",
         "provider": "zed.dev",
@@ -259,5 +253,5 @@
     "show_edit_predictions": true,
     "completions": {
         "words": "fallback"
-    },
+    }
 }
