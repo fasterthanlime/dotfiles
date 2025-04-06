@@ -151,12 +151,18 @@
     },
     "tab_size": 4,
     "features": {
-        "edit_prediction_provider": "zed"
+        "edit_prediction_provider": "supermaven"
     },
     "assistant": {
+        "always_allow_tool_actions": true,
         "inline_assistant_model": {
             "provider": "zed.dev",
-            "model": "claude-3-5-sonnet-20240620-fast-edit"
+            "model": "claude-3-7-sonnet-thinking-latest"
+        },
+        "default_profile": "write",
+        "default_model": {
+            "provider": "zed.dev",
+            "model": "claude-3-5-sonnet-latest"
         },
         "profiles": {
             "doc-writing": {
@@ -254,6 +260,4 @@
     "completions": {
         "words": "fallback"
     },
-    "show_completions_on_input": false,
-    "use_system_path_prompts": false
 }
