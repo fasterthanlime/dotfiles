@@ -12,6 +12,12 @@ set -gx EDITOR vim
 
 set -gx BEARDIST_CACHE_DIR /tmp/beardist-cache
 
+if test (uname) = "Linux"
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    set -gx PKG_CONFIG_PATH /home/linuxbrew/.linuxbrew/lib/pkgconfig
+    set -gx LD_LIBRARY_PATH /home/linuxbrew/.linuxbrew/lib
+end
+
 # Key bindings
 bind \e\[1\;5C forward-word
 bind \e\[1\;5D backward-word
@@ -127,12 +133,6 @@ if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
-
-if test (uname) = "Linux"
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    set -gx PKG_CONFIG_PATH /home/linuxbrew/.linuxbrew/lib/pkgconfig
-    set -gx LD_LIBRARY_PATH /home/linuxbrew/.linuxbrew/lib
-end
 
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
