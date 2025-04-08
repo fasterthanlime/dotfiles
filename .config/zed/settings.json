@@ -7,276 +7,273 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-    "use_system_path_prompts": false,
-    "ssh_connections": [
+  "use_system_path_prompts": false,
+  "ssh_connections": [
+    {
+      "host": "souffle",
+      "projects": [
         {
-            "host": "souffle",
-            "projects": [
-                {
-                    "paths": ["~/bearcove/home"]
-                },
-                {
-                    "paths": ["~/bearcove/lib-skill"]
-                },
-                {
-                    "paths": ["~/bearcove/shapely"]
-                },
-                {
-                    "paths": ["~/bearcove/timelord"]
-                }
-            ]
+          "paths": ["~/bearcove/home"]
         },
         {
-            "host": "brat",
-            "projects": [
-                {
-                    "paths": ["~/bearcove/beardist"]
-                }
-            ]
+          "paths": ["~/bearcove/lib-skill"]
         },
         {
-            "host": "styx",
-            "projects": [
-                {
-                    "paths": ["~/beardist"]
-                }
-            ]
+          "paths": ["~/bearcove/shapely"]
         },
         {
-            "host": "domino",
-            "projects": [
-                {
-                    "paths": ["~/Desktop"]
-                },
-                {
-                    "paths": ["~/ktls"]
-                }
-            ]
+          "paths": ["~/bearcove/timelord"]
         }
-    ],
-    "cursor_blink": false,
-    "outline_panel": {
-        "dock": "right"
+      ]
     },
-    "theme": {
-        "dark": "Catppuccin Macchiato",
-        "light": "Catppuccin Latte"
-    },
-    "terminal": {
-        "shell": {
-            "program": "fish"
-        },
-        "dock": "bottom",
-        "cursor_shape": "bar",
-        "blinking": "terminal_controlled",
-        "copy_on_select": true,
-        "font_features": {}
-    },
-    "languages": {
-        "Markdown-Inline": {
-            "show_edit_predictions": false
-        },
-        "Markdown": {
-            "show_edit_predictions": false,
-            "preferred_line_length": 80,
-            // soft wrap fucks with vim's "I" — it inserts where the soft wrap happens,
-            // which adds strays `>` when quoting long pasted things.
-            "soft_wrap": "none"
-        },
-        "HTML": {},
-        "Rust": {
-            "format_on_save": "on"
-        },
-        "TOML": {
-            "format_on_save": "on"
-        },
-        "SCSS": {},
-        "TypeScript": {
-            "format_on_save": "on"
-        },
-        "TypeScriptReact": {
-            "format_on_save": "on"
-        },
-        "Svelte": {
-            "format_on_save": "on"
-        },
-        "Just": {
-            "format_on_save": "on"
-        },
-        "Terraform": {
-            "format_on_save": "on",
-            "tab_size": 2
-        },
-        "YAML": {
-            "tab_size": 2
+    {
+      "host": "brat",
+      "projects": [
+        {
+          "paths": ["~/bearcove/beardist"]
         }
+      ]
     },
-    "base_keymap": "VSCode",
-    "buffer_font_family": "Iosevka Term",
-    "buffer_font_size": 16.0,
-    "ui_font_size": 16,
-    "inlay_hints": {
-        "enabled": true,
-        "show_background": true
-    },
-    "semantic_index": {
-        "enabled": true
-    },
-    "vim_mode": true,
-    "vim": {
-        "use_system_clipboard": "always",
-        "use_smartcase_find": true
-    },
-    "show_whitespaces": "selection",
-    "tab_bar": {
-        "show": true
-    },
-    "toolbar": {
-        "breadcrumbs": true,
-        "quick_actions": false
-    },
-    "scrollbar": {
-        "show": "always"
-    },
-    "gutter": {
-        "folds": false
-    },
-    "project_panel": {
-        "button": false
-    },
-    "lsp": {
-        "rust-analyzer": {
-            "binary": {
-                "path_lookup": true
-            },
-            "initialization_options": {
-                "rustfmt": {},
-                "check": {
-                    "extraArgs": []
-                },
-                "checkOnSave": {
-                    "command": "clippy"
-                },
-                "cargo": {
-                    "buildScripts": {
-                        "enable": true
-                    }
-                },
-                "procMacro": {
-                    "enable": true
-                }
-            }
+    {
+      "host": "styx",
+      "projects": [
+        {
+          "paths": ["~/beardist"]
         }
+      ]
     },
-    "indent_guides": {
-        "coloring": "indent_aware",
-        "line_width": 4
-    },
-    "tab_size": 4,
-    "features": {
-        "edit_prediction_provider": "supermaven"
-    },
-    "assistant": {
-        "inline_assistant_model": {
-            "version": "2",
-            "version": "2",
-            "provider": "zed.dev",
-            "model": "claude-3-7-sonnet-latest"
+    {
+      "host": "domino",
+      "projects": [
+        {
+          "paths": ["~/Desktop"]
         },
-        "default_profile": "write",
-        "default_model": {
-            "provider": "zed.dev",
-            "model": "claude-3-7-sonnet-latest"
-        },
-        "profiles": {
-            "doc-writing": {
-                "name": "Doc writing",
-                "tools": {
-                    "bash": true,
-                    "batch_tool": true,
-                    "code_symbols": true,
-                    "copy_path": true,
-                    "create_file": true,
-                    "delete_path": false,
-                    "diagnostics": false,
-                    "find_replace_file": true,
-                    "edit_files": false,
-                    "fetch": true,
-                    "list_directory": true,
-                    "move_path": false,
-                    "now": false,
-                    "path_search": true,
-                    "read_file": true,
-                    "regex_search": true,
-                    "symbol_info": true,
-                    "thinking": true
-                },
-                "enable_all_context_servers": true,
-                "context_servers": {}
-            },
-            "no-diags": {
-                "name": "No diags",
-                "tools": {
-                    "open": true,
-                    "bash": false,
-                    "batch_tool": true,
-                    "code_symbols": true,
-                    "copy_path": true,
-                    "create_file": true,
-                    "delete_path": false,
-                    "diagnostics": true,
-                    "find_replace_file": true,
-                    "edit_files": false,
-                    "fetch": true,
-                    "list_directory": true,
-                    "move_path": false,
-                    "now": true,
-                    "path_search": true,
-                    "read_file": true,
-                    "regex_search": true,
-                    "symbol_info": true,
-                    "thinking": true
-                },
-                "enable_all_context_servers": true,
-                "context_servers": {}
-            }
-        },
-        "always_allow_tool_actions": true,
-        "version": "2",
-        "provider": "zed.dev",
-        "enable_experimental_live_diffs": false,
-        "inline_alternatives": [
-            // {
-            //   "provider": "mistral",
-            //   "model": "codestral-latest"
-            // },
-            // {
-            //   "provider": "openai",
-            //   "model": "o3-mini"
-            // }
-        ]
-    },
-    "preview_tabs": {
-        "enabled": false
-    },
-    "tabs": {
-        "file_icons": true,
-        "git_status": true
-    },
-    "slash_commands": {
-        "docs": {
-            "enabled": true
+        {
+          "paths": ["~/ktls"]
         }
-    },
-    "preferred_line_length": 100,
-    "soft_wrap": "none",
-    "file_types": {
-        "Jinja2": ["jinja", "j2"],
-        "XML": ["svg"],
-        "TypeScript": ["ts", "tsx"]
-    },
-    "show_edit_predictions": true,
-    "completions": {
-        "words": "fallback"
+      ]
     }
+  ],
+  "cursor_blink": false,
+  "outline_panel": {
+    "dock": "right"
+  },
+  "theme": {
+    "dark": "Catppuccin Macchiato",
+    "light": "Catppuccin Latte"
+  },
+  "terminal": {
+    "shell": {
+      "program": "fish"
+    },
+    "dock": "bottom",
+    "cursor_shape": "bar",
+    "blinking": "terminal_controlled",
+    "copy_on_select": true,
+    "font_features": {}
+  },
+  "languages": {
+    "Markdown-Inline": {
+      "show_edit_predictions": false
+    },
+    "Markdown": {
+      "show_edit_predictions": false,
+      "preferred_line_length": 80,
+      // soft wrap fucks with vim's "I" — it inserts where the soft wrap happens,
+      // which adds strays `>` when quoting long pasted things.
+      "soft_wrap": "none"
+    },
+    "HTML": {},
+    "Rust": {
+      "format_on_save": "on"
+    },
+    "TOML": {
+      "format_on_save": "on"
+    },
+    "SCSS": {},
+    "TypeScript": {
+      "format_on_save": "on"
+    },
+    "TypeScriptReact": {
+      "format_on_save": "on"
+    },
+    "Svelte": {
+      "format_on_save": "on"
+    },
+    "Just": {
+      "format_on_save": "on"
+    },
+    "Terraform": {
+      "format_on_save": "on"
+    },
+    "YAML": {
+      "format_on_save": "on"
+    }
+  },
+  "base_keymap": "VSCode",
+  "buffer_font_family": "Iosevka Term",
+  "buffer_font_size": 16.0,
+  "ui_font_size": 16,
+  "inlay_hints": {
+    "enabled": true,
+    "show_background": true
+  },
+  "semantic_index": {
+    "enabled": true
+  },
+  "vim_mode": true,
+  "vim": {
+    "use_system_clipboard": "always",
+    "use_smartcase_find": true
+  },
+  "show_whitespaces": "selection",
+  "tab_bar": {
+    "show": true
+  },
+  "toolbar": {
+    "breadcrumbs": true,
+    "quick_actions": false
+  },
+  "scrollbar": {
+    "show": "always"
+  },
+  "gutter": {
+    "folds": false
+  },
+  "project_panel": {
+    "button": false
+  },
+  "lsp": {
+    "rust-analyzer": {
+      "binary": {
+        "path_lookup": true
+      },
+      "initialization_options": {
+        "rustfmt": {},
+        "check": {
+          "extraArgs": []
+        },
+        "checkOnSave": {
+          "command": "clippy"
+        },
+        "cargo": {
+          "buildScripts": {
+            "enable": true
+          }
+        },
+        "procMacro": {
+          "enable": true
+        }
+      }
+    }
+  },
+  "indent_guides": {
+    "coloring": "indent_aware",
+    "line_width": 4
+  },
+  "features": {
+    "edit_prediction_provider": "supermaven"
+  },
+  "assistant": {
+    "inline_assistant_model": {
+      "version": "2",
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-20240620-fast-edit"
+    },
+    "default_profile": "write",
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-7-sonnet-latest"
+    },
+    "profiles": {
+      "doc-writing": {
+        "name": "Doc writing",
+        "tools": {
+          "bash": true,
+          "batch_tool": true,
+          "code_symbols": true,
+          "copy_path": true,
+          "create_file": true,
+          "delete_path": false,
+          "diagnostics": false,
+          "find_replace_file": true,
+          "edit_files": false,
+          "fetch": true,
+          "list_directory": true,
+          "move_path": false,
+          "now": false,
+          "path_search": true,
+          "read_file": true,
+          "regex_search": true,
+          "symbol_info": true,
+          "thinking": true
+        },
+        "enable_all_context_servers": true,
+        "context_servers": {}
+      },
+      "no-diags": {
+        "name": "No diags",
+        "tools": {
+          "open": true,
+          "bash": false,
+          "batch_tool": true,
+          "code_symbols": true,
+          "copy_path": true,
+          "create_file": true,
+          "delete_path": false,
+          "diagnostics": true,
+          "find_replace_file": true,
+          "edit_files": false,
+          "fetch": true,
+          "list_directory": true,
+          "move_path": false,
+          "now": true,
+          "path_search": true,
+          "read_file": true,
+          "regex_search": true,
+          "symbol_info": true,
+          "thinking": true
+        },
+        "enable_all_context_servers": true,
+        "context_servers": {}
+      }
+    },
+    "always_allow_tool_actions": true,
+    "version": "2",
+    "provider": "zed.dev",
+    "enable_experimental_live_diffs": false,
+    "inline_alternatives": [
+      // {
+      //   "provider": "mistral",
+      //   "model": "codestral-latest"
+      // },
+      // {
+      //   "provider": "openai",
+      //   "model": "o3-mini"
+      // }
+    ]
+  },
+  "preview_tabs": {
+    "enabled": false
+  },
+  "tabs": {
+    "file_icons": true,
+    "git_status": true
+  },
+  "slash_commands": {
+    "docs": {
+      "enabled": true
+    }
+  },
+  "preferred_line_length": 100,
+  "soft_wrap": "none",
+  "file_types": {
+    "Jinja2": ["jinja", "j2"],
+    "XML": ["svg"],
+    "TypeScript": ["ts", "tsx"]
+  },
+  "show_edit_predictions": true,
+  "completions": {
+    "words": "fallback"
+  }
 }
