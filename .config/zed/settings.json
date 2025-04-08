@@ -7,53 +7,53 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+    "use_system_path_prompts": false,
     "ssh_connections": [
-    {
-      "host": "souffle",
-      "projects": [
         {
-          "paths": [
-            "~/bearcove/home"
-          ]
+            "host": "souffle",
+            "projects": [
+                {
+                    "paths": ["~/bearcove/home"]
+                },
+                {
+                    "paths": ["~/bearcove/lib-skill"]
+                },
+                {
+                    "paths": ["~/bearcove/shapely"]
+                },
+                {
+                    "paths": ["~/bearcove/timelord"]
+                }
+            ]
         },
         {
-          "paths": [
-            "~/bearcove/lib-skill"
-          ]
+            "host": "brat",
+            "projects": [
+                {
+                    "paths": ["~/bearcove/beardist"]
+                }
+            ]
         },
         {
-          "paths": [
-            "~/bearcove/shapely"
-          ]
+            "host": "styx",
+            "projects": [
+                {
+                    "paths": ["~/beardist"]
+                }
+            ]
         },
         {
-          "paths": [
-            "~/bearcove/timelord"
-          ]
+            "host": "domino",
+            "projects": [
+                {
+                    "paths": ["~/Desktop"]
+                },
+                {
+                    "paths": ["~/ktls"]
+                }
+            ]
         }
-      ]
-    },
-    {
-      "host": "brat",
-      "projects": [
-        {
-          "paths": [
-            "~/bearcove/beardist"
-          ]
-        }
-      ]
-    },
-    {
-      "host": "styx",
-      "projects": [
-        {
-          "paths": [
-            "~/beardist"
-          ]
-        }
-      ]
-    }
-  ],
+    ],
     "cursor_blink": false,
     "outline_panel": {
         "dock": "right"
@@ -105,6 +105,9 @@
         },
         "Terraform": {
             "format_on_save": "on",
+            "tab_size": 2
+        },
+        "YAML": {
             "tab_size": 2
         }
     },
@@ -175,8 +178,15 @@
     },
     "assistant": {
         "inline_assistant_model": {
+            "version": "2",
+            "version": "2",
             "provider": "zed.dev",
-            "model": "claude-3-5-sonnet-latest"
+            "model": "claude-3-7-sonnet-latest"
+        },
+        "default_profile": "write",
+        "default_model": {
+            "provider": "zed.dev",
+            "model": "claude-3-7-sonnet-latest"
         },
         "profiles": {
             "doc-writing": {
@@ -231,12 +241,7 @@
                 "context_servers": {}
             }
         },
-        "default_profile": "write",
         "always_allow_tool_actions": true,
-        "default_model": {
-            "provider": "zed.dev",
-            "model": "claude-3-7-sonnet-thinking-latest"
-        },
         "version": "2",
         "provider": "zed.dev",
         "enable_experimental_live_diffs": false,
