@@ -5,6 +5,7 @@ set -gx PATH \
             /opt/homebrew/bin \
             /opt/homebrew/sbin \
             /opt/homebrew/opt/curl/bin \
+            /usr/local/go/bin \
             $HOME/.local/bin \
             $HOME/go/bin \
             $PATH
