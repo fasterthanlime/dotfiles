@@ -67,6 +67,26 @@ then
   fpath=("$(brew --prefix)/share/zsh/site-functions" $fpath)
 fi
 
+## Path setup
+export PATH="$HOME/.cargo/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/opt/homebrew/opt/curl/bin:/usr/local/go/bin:$HOME/.local/bin:$HOME/go/bin:$PATH"
+
+## BeardDist cache dir
+export BEARDIST_CACHE_DIR=/tmp/beardist-cache
+
+## Linux-specific setup
+if [[ $(uname) == "Linux" ]]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    export PKG_CONFIG_PATH=/home/linuxbrew/.linuxbrew/lib/pkgconfig
+    export LD_LIBRARY_PATH=/home/linuxbrew/.linuxbrew/lib
+fi
+
+## Git alias: Add commit push (acp)
+function acp() {
+    git add .
+    git commit -m "$*"
+    git push
+}
+
 # Load zsh completions
 autoload -Uz compinit && compinit
 
@@ -131,7 +151,7 @@ alias lg="lazygit"
 alias p="pnpm"
 alias npm="echo no"
 
-source <(jj util completion zsh)
+# source <(jj util completion zsh)
 
 . "$HOME/.cargo/env"
 
