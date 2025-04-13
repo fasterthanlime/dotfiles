@@ -46,6 +46,8 @@ end
 alias vim nvim
 alias j just
 alias nt "cargo nextest"
+alias nrc "cargo nextest run --no-capture"
+alias nr "cargo nextest run"
 alias k kubectl
 alias tf tofu
 alias earthly "earthly -i"
