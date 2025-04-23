@@ -9,7 +9,7 @@ set -gx PATH \
             $HOME/.local/bin \
             $HOME/go/bin \
             $PATH
-set -gx EDITOR vim
+set -gx EDITOR nvim
 
 set -gx BEARDIST_CACHE_DIR /tmp/beardist-cache
 
@@ -32,7 +32,7 @@ bind \e\[F end-of-line
 set -gx WORDCHARS '*?_-.~=&;!#$%^(){}<>'
 
 # Paths I often jump to
-set -gx CDPATH . ~/work ~/sdr-pod ~/sdr ~/bearcove ~/bearcove/snug ~/bearcove/snug/crates ~/bearcove/snug/common ~
+set -gx CDPATH . ~/work ~/sdr-pod ~/sdr ~/bearcove ~/bearcove/home ~/bearcove/home/crates ~/bearcove/home/common ~/bearcove/home/libs ~
 
 # Extend function path with additional completions directory
 set -gx fish_function_path ~/.zshrc.d/completions $fish_function_path
@@ -47,6 +47,7 @@ alias vim nvim
 alias j just
 alias nt "cargo nextest"
 alias nrc "cargo nextest run --no-capture"
+alias nff "cargo nextest run --no-fail-fast"
 alias nr "cargo nextest run"
 alias k kubectl
 alias tf tofu
@@ -104,6 +105,8 @@ alias nt "cargo nextest"
 # alias terraform "echo use_tofu"
 # alias tf "echo use_tofu"
 alias bd beardist
+alias ci "cargo insta"
+alias cir "cargo insta review"
 
 # mnemonic: "git add commit push"
 function acp
@@ -144,3 +147,6 @@ source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /Users/amos/.lmstudio/bin
