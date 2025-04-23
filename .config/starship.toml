@@ -6,6 +6,7 @@ $localip\
 $shlvl\
 $directory\
 $vcsh\
+$jj\
 $git_branch\
 $git_commit\
 $git_state\
@@ -24,3 +25,4 @@ $os\
 $container\
 $shell\
 $character"""
+

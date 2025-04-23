@@ -2,8 +2,8 @@
   {
     "context": "Editor && vim_mode == normal",
     "bindings": {
-      "t w": "pane::CloseAllItems",
-      "t k": "pane::ActivatePrevItem",
+      "t w": "pane::CloseActiveItem",
+      "t k": "pane::ActivatePreviousItem",
       "t j": "pane::ActivateNextItem",
       "\\ d": "editor::Hover",
       "\\ t": "editor::GoToTypeDefinition",
@@ -22,7 +22,9 @@
     "context": "Editor",
     "bindings": {
       "ctrl-j": "editor::GoToDiagnostic",
-      "ctrl-k": "editor::GoToPrevDiagnostic",
+      "ctrl-k": "editor::GoToPreviousDiagnostic",
+      "ctrl-tab": "pane::ActivateNextItem",
+      "ctrl-shift-tab": "pane::ActivatePreviousItem",
       "ctrl-`": "terminal_panel::ToggleFocus",
       "cmd-enter": "copilot::Suggest"
     }
@@ -32,8 +34,8 @@
     "bindings": {
       "ctrl-`": "workspace::ToggleBottomDock",
       "ctrl-tab": "pane::ActivateNextItem",
-      "ctrl-shift-tab": "pane::ActivatePrevItem",
-      "ctrl-pageup": "pane::ActivatePrevItem",
+      "ctrl-shift-tab": "pane::ActivatePreviousItem",
+      "ctrl-pageup": "pane::ActivatePreviousItem",
       "ctrl-pagedown": "pane::ActivateNextItem",
       "cmd-t": "workspace::NewTerminal",
       "cmd-1": ["pane::ActivateItem", 0],

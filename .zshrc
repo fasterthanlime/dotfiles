@@ -1,5 +1,5 @@
 ## Git editor
-export EDITOR=vim
+export EDITOR=nvim
 
 ####################################################
 ## History stuff
@@ -165,3 +165,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/amos/.lmstudio/bin"

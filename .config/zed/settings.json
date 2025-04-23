@@ -7,30 +7,41 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "icon_theme": "Bearded Icon Theme",
+  "context_servers": {
+    "cursor-rust-tools": {
+      "command": {
+        "path": "npx",
+        "args": ["mcpgate", "http://localhost:4000/sse"],
+        "env": null
+      },
+      "settings": {}
+    },
+    "daipendency": {
+      "command": {
+        "path": "npx",
+        "args": ["-y", "@daipendency/mcp"],
+        "env": null
+      },
+      "settings": {}
+    }
+  },
   "use_system_path_prompts": false,
   "ssh_connections": [
     {
       "host": "souffle",
       "projects": [
         {
-          "paths": [
-            "~/bearcove/home"
-          ]
+          "paths": ["~/bearcove/home"]
         },
         {
-          "paths": [
-            "~/bearcove/lib-skill"
-          ]
+          "paths": ["~/bearcove/lib-skill"]
         },
         {
-          "paths": [
-            "~/bearcove/shapely"
-          ]
+          "paths": ["~/bearcove/shapely"]
         },
         {
-          "paths": [
-            "~/bearcove/timelord"
-          ]
+          "paths": ["~/bearcove/timelord"]
         }
       ]
     },
@@ -38,9 +49,7 @@
       "host": "brat",
       "projects": [
         {
-          "paths": [
-            "~/bearcove/beardist"
-          ]
+          "paths": ["~/bearcove/beardist"]
         }
       ]
     },
@@ -48,24 +57,7 @@
       "host": "styx",
       "projects": [
         {
-          "paths": [
-            "~/beardist"
-          ]
-        }
-      ]
-    },
-    {
-      "host": "domino",
-      "projects": [
-        {
-          "paths": [
-            "~/Desktop"
-          ]
-        },
-        {
-          "paths": [
-            "~/ktls"
-          ]
+          "paths": ["~/beardist"]
         }
       ]
     },
@@ -74,9 +66,15 @@
       "username": "amos@clutter",
       "projects": [
         {
-          "paths": [
-            "/home/amos"
-          ]
+          "paths": ["/home/amos"]
+        }
+      ]
+    },
+    {
+      "host": "trollop",
+      "projects": [
+        {
+          "paths": ["~/bearcove/beardist"]
         }
       ]
     }
@@ -86,7 +84,7 @@
     "dock": "right"
   },
   "theme": {
-    "dark": "Catppuccin Macchiato",
+    "dark": "Catppuccin Mocha",
     "light": "Catppuccin Latte"
   },
   "terminal": {
@@ -137,8 +135,14 @@
       "format_on_save": "on"
     }
   },
+  "language_models": {
+    "lmstudio": {
+      "api_url": "http://192.168.1.156:1234/api/v0"
+    }
+  },
   "base_keymap": "VSCode",
-  "buffer_font_family": "Iosevka Term",
+  // "buffer_font_family": "IosevkaTerm Nerd Font",
+  "buffer_font_family": "Berkeley Mono Condensed",
   "buffer_font_size": 16.0,
   "ui_font_size": 16,
   "inlay_hints": {
@@ -176,20 +180,18 @@
         "path_lookup": true
       },
       "initialization_options": {
-        "rustfmt": {},
-        "check": {
-          "extraArgs": []
-        },
-        "checkOnSave": {
-          "command": "clippy"
-        },
         "cargo": {
+          "features": "all",
           "buildScripts": {
             "enable": true
           }
         },
         "procMacro": {
           "enable": true
+        },
+        "check": {
+          "command": "lint-doc",
+          "features": "all"
         }
       }
     }
@@ -199,31 +201,31 @@
     "line_width": 4
   },
   "features": {
-    "edit_prediction_provider": "supermaven"
+    "edit_prediction_provider": "zed"
   },
   "assistant": {
     "inline_assistant_model": {
       "version": "2",
       "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-20240620-fast-edit"
+      "model": "claude-3-7-sonnet-latest"
     },
     "default_profile": "write",
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-3-7-sonnet-latest"
+      "model": "claude-3-7-sonnet-thinking-latest"
     },
     "profiles": {
       "doc-writing": {
         "name": "Doc writing",
         "tools": {
-          "bash": true,
+          "terminal": true,
           "batch_tool": true,
           "code_symbols": true,
           "copy_path": true,
           "create_file": true,
           "delete_path": false,
           "diagnostics": false,
-          "find_replace_file": true,
+          "edit_file": true,
           "edit_files": false,
           "fetch": true,
           "list_directory": true,
@@ -231,7 +233,7 @@
           "now": false,
           "path_search": true,
           "read_file": true,
-          "regex_search": true,
+          "grep": true,
           "symbol_info": true,
           "thinking": true
         },
@@ -242,14 +244,14 @@
         "name": "No diags",
         "tools": {
           "open": true,
-          "bash": false,
+          "terminal": false,
           "batch_tool": true,
           "code_symbols": true,
           "copy_path": true,
           "create_file": true,
           "delete_path": false,
           "diagnostics": true,
-          "find_replace_file": true,
+          "edit_file": true,
           "edit_files": false,
           "fetch": true,
           "list_directory": true,
@@ -257,7 +259,7 @@
           "now": true,
           "path_search": true,
           "read_file": true,
-          "regex_search": true,
+          "grep": true,
           "symbol_info": true,
           "thinking": true
         },
@@ -269,16 +271,7 @@
     "version": "2",
     "provider": "zed.dev",
     "enable_experimental_live_diffs": false,
-    "inline_alternatives": [
-      // {
-      //   "provider": "mistral",
-      //   "model": "codestral-latest"
-      // },
-      // {
-      //   "provider": "openai",
-      //   "model": "o3-mini"
-      // }
-    ]
+    "inline_alternatives": []
   },
   "preview_tabs": {
     "enabled": false
@@ -297,7 +290,9 @@
   "file_types": {
     "Jinja2": ["jinja", "j2"],
     "XML": ["svg"],
-    "TypeScript": ["ts", "tsx"]
+    "TypeScript": ["ts", "tsx"],
+    "Markdown": ["in"],
+    "CSS": ["css.jinja"]
   },
   "show_edit_predictions": true,
   "completions": {
