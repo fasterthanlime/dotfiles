@@ -32,7 +32,7 @@ bind \e\[F end-of-line
 set -gx WORDCHARS '*?_-.~=&;!#$%^(){}<>'
 
 # Paths I often jump to
-set -gx CDPATH . ~/work ~/sdr-pod ~/sdr ~/bearcove ~/bearcove/home ~/bearcove/home/crates ~/bearcove/home/common ~/bearcove/home/libs ~
+set -gx CDPATH . ~/work ~/sdr-pod ~/sdr ~/bearcove ~/bearcove/home ~/bearcove/home/crates ~/bearcove/home/common ~/bearcove/facet ~
 
 # Extend function path with additional completions directory
 set -gx fish_function_path ~/.zshrc.d/completions $fish_function_path

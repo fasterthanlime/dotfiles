@@ -84,8 +84,8 @@
     "dock": "right"
   },
   "theme": {
-    "dark": "Catppuccin Macchiato",
-    "light": "Catppuccin Latte"
+    "dark": "Catppuccin Frappé - No Italics",
+    "light": "One Dark"
   },
   "terminal": {
     "shell": {
@@ -137,7 +137,8 @@
   },
   "language_models": {
     "lmstudio": {
-      "api_url": "http://192.168.1.156:1234/api/v0"
+      // "api_url": "http://192.168.1.156:1234/api/v0"
+      "api_url": "http://127.0.0.1:1234/api/v0"
     }
   },
   "base_keymap": "VSCode",
@@ -207,14 +208,44 @@
     "inline_assistant_model": {
       "version": "2",
       "provider": "openai",
-      "model": "gpt-4.1"
+      "model": "o4-mini"
     },
     "default_profile": "write",
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-7-sonnet-latest"
+      "provider": "google",
+      "model": "gemini-2.5-pro-preview-03-25"
     },
     "profiles": {
+      "write": {
+        "name": "Write",
+        "tools": {
+          "open": true,
+          "create_directory": true,
+          "batch_tool": true,
+          "code_actions": true,
+          "code_symbols": true,
+          "contents": true,
+          "copy_path": true,
+          "create_file": true,
+          "delete_path": true,
+          "diagnostics": true,
+          "edit_file": true,
+          "fetch": true,
+          "list_directory": true,
+          "move_path": true,
+          "now": true,
+          "find_path": true,
+          "read_file": true,
+          "grep": true,
+          "rename": true,
+          "symbol_info": true,
+          "terminal": true,
+          "thinking": true,
+          "web_search": true
+        },
+        "enable_all_context_servers": true,
+        "context_servers": {}
+      },
       "doc-writing": {
         "name": "Doc writing",
         "tools": {
@@ -225,7 +256,7 @@
           "create_file": true,
           "delete_path": false,
           "diagnostics": false,
-          "find_replace_file": true,
+          "edit_file": true,
           "edit_files": false,
           "fetch": true,
           "list_directory": true,
@@ -233,7 +264,7 @@
           "now": false,
           "path_search": true,
           "read_file": true,
-          "regex_search": true,
+          "grep": true,
           "symbol_info": true,
           "thinking": true
         },
@@ -243,25 +274,27 @@
       "no-diags": {
         "name": "No diags",
         "tools": {
-          "open": true,
+          "find_path": false,
+          "create_directory": false,
+          "open": false,
           "terminal": false,
-          "batch_tool": true,
-          "code_symbols": true,
-          "copy_path": true,
-          "create_file": true,
+          "batch_tool": false,
+          "code_symbols": false,
+          "copy_path": false,
+          "create_file": false,
           "delete_path": false,
-          "diagnostics": true,
-          "find_replace_file": true,
+          "diagnostics": false,
+          "edit_file": false,
           "edit_files": false,
-          "fetch": true,
-          "list_directory": true,
+          "fetch": false,
+          "list_directory": false,
           "move_path": false,
-          "now": true,
+          "now": false,
           "path_search": true,
-          "read_file": true,
-          "regex_search": true,
-          "symbol_info": true,
-          "thinking": true
+          "read_file": false,
+          "grep": false,
+          "symbol_info": false,
+          "thinking": false
         },
         "enable_all_context_servers": true,
         "context_servers": {}
