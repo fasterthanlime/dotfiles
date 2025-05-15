@@ -7,25 +7,19 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "icon_theme": "Bearded Icon Theme",
-  "context_servers": {
-    "cursor-rust-tools": {
-      "command": {
-        "path": "npx",
-        "args": ["mcpgate", "http://localhost:4000/sse"],
-        "env": null
-      },
-      "settings": {}
+  "agent": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-7-sonnet-latest"
     },
-    "daipendency": {
-      "command": {
-        "path": "npx",
-        "args": ["-y", "@daipendency/mcp"],
-        "env": null
-      },
-      "settings": {}
-    }
+    "inline_assistant_model": {
+      "provider": "google",
+      "model": "gemini-2.5-pro-preview-03-25"
+    },
+    "version": "2"
   },
+  "icon_theme": "Bearded Icon Theme",
+  "context_servers": {},
   "use_system_path_prompts": false,
   "ssh_connections": [
     {
@@ -58,6 +52,9 @@
       "projects": [
         {
           "paths": ["~/beardist"]
+        },
+        {
+          "paths": ["~/facet"]
         }
       ]
     },
@@ -84,8 +81,8 @@
     "dock": "right"
   },
   "theme": {
-    "dark": "Catppuccin Frappé - No Italics",
-    "light": "One Dark"
+    "dark": "Melange Dark",
+    "light": "Melange Light"
   },
   "terminal": {
     "shell": {
@@ -94,8 +91,8 @@
     "dock": "bottom",
     "cursor_shape": "bar",
     "blinking": "terminal_controlled",
-    "copy_on_select": true,
-    "font_features": {}
+    "copy_on_select": true
+    // "font_features": {}
   },
   "languages": {
     "Markdown-Inline": {
@@ -143,9 +140,9 @@
   },
   "base_keymap": "VSCode",
   // "buffer_font_family": "IosevkaTerm Nerd Font",
-  "buffer_font_family": "Berkeley Mono Condensed",
+  "buffer_font_family": "Berkeley Mono",
   "buffer_font_size": 16.0,
-  "ui_font_size": 16,
+  "ui_font_size": 18,
   "inlay_hints": {
     "enabled": true,
     "show_background": true
@@ -207,8 +204,8 @@
   "assistant": {
     "inline_assistant_model": {
       "version": "2",
-      "provider": "openai",
-      "model": "o4-mini"
+      "provider": "zed.dev",
+      "model": "claude-3-7-sonnet-latest"
     },
     "default_profile": "write",
     "default_model": {
@@ -245,66 +242,14 @@
         },
         "enable_all_context_servers": true,
         "context_servers": {}
-      },
-      "doc-writing": {
-        "name": "Doc writing",
-        "tools": {
-          "terminal": true,
-          "batch_tool": true,
-          "code_symbols": true,
-          "copy_path": true,
-          "create_file": true,
-          "delete_path": false,
-          "diagnostics": false,
-          "edit_file": true,
-          "edit_files": false,
-          "fetch": true,
-          "list_directory": true,
-          "move_path": false,
-          "now": false,
-          "path_search": true,
-          "read_file": true,
-          "grep": true,
-          "symbol_info": true,
-          "thinking": true
-        },
-        "enable_all_context_servers": true,
-        "context_servers": {}
-      },
-      "no-diags": {
-        "name": "No diags",
-        "tools": {
-          "find_path": false,
-          "create_directory": false,
-          "open": false,
-          "terminal": false,
-          "batch_tool": false,
-          "code_symbols": false,
-          "copy_path": false,
-          "create_file": false,
-          "delete_path": false,
-          "diagnostics": false,
-          "edit_file": false,
-          "edit_files": false,
-          "fetch": false,
-          "list_directory": false,
-          "move_path": false,
-          "now": false,
-          "path_search": true,
-          "read_file": false,
-          "grep": false,
-          "symbol_info": false,
-          "thinking": false
-        },
-        "enable_all_context_servers": true,
-        "context_servers": {}
       }
     },
     "always_allow_tool_actions": true,
     "version": "2",
     "provider": "zed.dev",
-    "enable_experimental_live_diffs": false,
-    "inline_alternatives": []
+    "inline_alternatives": [],
+    "enable_experimental_live_diffs": true,
+    "stream_edits": true
   },
   "preview_tabs": {
     "enabled": false

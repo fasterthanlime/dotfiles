@@ -100,6 +100,7 @@ alias vim="nvim"
 alias j="just"
 alias nt="cargo nextest"
 alias nrc="cargo nextest run --no-capture"
+alias nff="cargo nextest run --no-fail-fast"
 alias nr="cargo nextest run"
 
 alias k="kubectl"
@@ -168,3 +169,4 @@ esac
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/amos/.lmstudio/bin"
+alias claude="/Users/amos/.claude/local/claude"

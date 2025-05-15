@@ -32,7 +32,7 @@ bind \e\[F end-of-line
 set -gx WORDCHARS '*?_-.~=&;!#$%^(){}<>'
 
 # Paths I often jump to
-set -gx CDPATH . ~/work ~/sdr-pod ~/sdr ~/bearcove ~/bearcove/home ~/bearcove/home/crates ~/bearcove/home/common ~/bearcove/facet ~
+set -gx CDPATH . ~/work ~/sdr-pod ~/sdr ~/bearcove ~/facet-rs ~/bearcove/home ~/bearcove/home/crates ~/bearcove/home/common ~/bearcove/facet ~
 
 # Extend function path with additional completions directory
 set -gx fish_function_path ~/.zshrc.d/completions $fish_function_path
@@ -107,6 +107,7 @@ alias nt "cargo nextest"
 alias bd beardist
 alias ci "cargo insta"
 alias cir "cargo insta review"
+alias claude "/Users/amos/.claude/local/claude"
 
 # mnemonic: "git add commit push"
 function acp
@@ -150,3 +151,4 @@ set --export PATH $BUN_INSTALL/bin $PATH
 
 # Added by LM Studio CLI (lms)
 set -gx PATH $PATH /Users/amos/.lmstudio/bin
+
