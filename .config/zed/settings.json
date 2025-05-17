@@ -8,8 +8,10 @@
 // from the command palette or from `Zed` application menu.
 {
   "icon_theme": "Bearded Icon Theme",
-  "context_servers": {},
   "use_system_path_prompts": false,
+  "minimap": {
+    "show": "auto"
+  },
   "ssh_connections": [
     {
       "host": "souffle",
@@ -164,7 +166,7 @@
   "lsp": {
     "rust-analyzer": {
       "binary": {
-        "path_lookup": true
+        "path_lookup": false
       },
       "initialization_options": {
         "cargo": {
@@ -177,7 +179,7 @@
           "enable": true
         },
         "check": {
-          "command": "lint-doc",
+          // "command": "lint-doc",
           "features": "all"
         }
       }
@@ -193,13 +195,13 @@
   "agent": {
     "inline_assistant_model": {
       "version": "2",
-      "provider": "zed.dev",
-      "model": "claude-3-7-sonnet-latest"
+      "provider": "deepseek",
+      "model": "deepseek-chat"
     },
     "default_profile": "write",
     "default_model": {
-      "provider": "openai",
-      "model": "gpt-4.1"
+      "provider": "deepseek",
+      "model": "deepseek-chat"
     },
     "profiles": {
       "write": {
@@ -235,9 +237,7 @@
     },
     "always_allow_tool_actions": true,
     "version": "2",
-    "provider": "zed.dev",
     "inline_alternatives": [],
-    "enable_experimental_live_diffs": true,
     "stream_edits": true
   },
   "preview_tabs": {
@@ -245,7 +245,12 @@
   },
   "tabs": {
     "file_icons": true,
-    "git_status": true
+    "git_status": true,
+    "show_diagnostics": "all"
+  },
+  "diagnostics": {
+    "button": true,
+    "include_warnings": true
   },
   "slash_commands": {
     "docs": {
