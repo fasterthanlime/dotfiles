@@ -32,7 +32,7 @@ bind \e\[F end-of-line
 set -gx WORDCHARS '*?_-.~=&;!#$%^(){}<>'
 
 # Paths I often jump to
-set -gx CDPATH . ~/work ~/sdr-pod ~/sdr ~/bearcove ~/facet-rs ~/bearcove/home ~/bearcove/home/crates ~/bearcove/home/common ~/bearcove/facet ~
+set -gx CDPATH . ~/work ~/sdr-pod ~/sdr ~/bearcove ~/facet-rs/facet ~/facet-rs ~/bearcove/home ~/bearcove/home/crates ~/bearcove/home/common ~/bearcove/facet ~
 
 # Extend function path with additional completions directory
 set -gx fish_function_path ~/.zshrc.d/completions $fish_function_path
@@ -48,6 +48,7 @@ alias j just
 alias nt "cargo nextest"
 alias nrc "cargo nextest run --no-capture"
 alias nff "cargo nextest run --no-fail-fast"
+alias nffa "cargo nextest run --no-fail-fast --all-features"
 alias nr "cargo nextest run"
 alias k kubectl
 alias tf tofu
