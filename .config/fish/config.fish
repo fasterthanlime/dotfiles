@@ -109,6 +109,9 @@ alias ci "cargo insta"
 alias cir "cargo insta review"
 alias claude "/Users/amos/.claude/local/claude"
 
+alias gpnv "git push --no-verify"
+alias gpfnv "git push --force-with-lease --no-verify"
+
 # mnemonic: "git add commit push"
 function acp
     git add .

@@ -179,7 +179,7 @@
           "enable": true
         },
         "check": {
-          // "command": "lint-doc",
+          "command": "lint-doc",
           "features": "all"
         }
       }
