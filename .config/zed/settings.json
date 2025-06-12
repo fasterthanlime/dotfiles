@@ -7,10 +7,12 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "context_servers": {
+  },
   "icon_theme": "Bearded Icon Theme",
   "use_system_path_prompts": false,
   "minimap": {
-    "show": "auto"
+    "show": "never"
   },
   "ssh_connections": [
     {
@@ -125,15 +127,13 @@
   },
   "language_models": {
     "lmstudio": {
-      // "api_url": "http://192.168.1.156:1234/api/v0"
-      "api_url": "http://127.0.0.1:1234/api/v0"
     }
   },
   "base_keymap": "VSCode",
   // "buffer_font_family": "IosevkaTerm Nerd Font",
   "buffer_font_family": "Berkeley Mono",
   "buffer_font_size": 16.0,
-  "ui_font_size": 18,
+  "ui_font_size": 16,
   "inlay_hints": {
     "enabled": true,
     "show_background": true
@@ -193,15 +193,16 @@
     "edit_prediction_provider": "zed"
   },
   "agent": {
+    "play_sound_when_agent_done": true,
     "inline_assistant_model": {
       "version": "2",
-      "provider": "deepseek",
-      "model": "deepseek-chat"
+      "provider": "openai",
+      "model": "o3"
     },
     "default_profile": "write",
     "default_model": {
-      "provider": "deepseek",
-      "model": "deepseek-chat"
+      "provider": "google",
+      "model": "gemini-2.5-pro-preview-03-25"
     },
     "profiles": {
       "write": {
