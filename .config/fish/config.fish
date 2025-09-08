@@ -32,7 +32,7 @@ bind \e\[F end-of-line
 set -gx WORDCHARS '*?_-.~=&;!#$%^(){}<>'
 
 # Paths I often jump to
-set -gx CDPATH . ~/work ~/sdr-pod ~/sdr ~/bearcove ~/facet-rs/facet ~/facet-rs ~/bearcove/home ~/bearcove/home/crates ~/bearcove/home/binaries ~/bearcove/facet ~
+set -gx CDPATH . ~/work ~/play ~/sdr-pod ~/sdr ~/bearcove ~/facet-rs/facet ~/facet-rs ~/bearcove/home ~/bearcove/home/crates ~/bearcove/home/binaries ~/bearcove/facet ~
 
 # Extend function path with additional completions directory
 set -gx fish_function_path ~/.zshrc.d/completions $fish_function_path
@@ -61,6 +61,7 @@ alias ls "eza --color=always"
 alias l "eza --color=always -lhA"
 alias ll "eza --color=always -lh"
 alias objdump "objdump -Mintel"
+alias rp "release-plz"
 
 # Git aliases and functions
 if test -f ~/.config/fish/git-alias.fish
@@ -158,3 +159,7 @@ set --export PATH $BUN_INSTALL/bin $PATH
 # Added by LM Studio CLI (lms)
 set -gx PATH $PATH /Users/amos/.lmstudio/bin
 alias claude="/Users/amos/.claude/local/claude"
+
+set -gx CEF_PATH "$HOME/.local/share/cef"
+set -gx DYLD_FALLBACK_LIBRARY_PATH $DYLD_FALLBACK_LIBRARY_PATH $CEF_PATH "$CEF_PATH/Chromium Embedded Framework.framework/Libraries"
+
