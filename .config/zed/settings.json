@@ -7,6 +7,8 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "show_signature_help_after_edits": true,
+  "use_system_window_tabs": false,
   "edit_predictions": {
     "mode": "subtle",
     "copilot": {
@@ -16,7 +18,25 @@
     },
     "enabled_in_text_threads": false
   },
-  "context_servers": {},
+  "context_servers": {
+    "chrome-devtools": {
+      "source": "custom",
+      "enabled": true,
+      "command": "npx",
+      "args": ["chrome-devtools-mcp@latest"]
+    },
+    "rust-analyzer": {
+      "source": "custom",
+      "enabled": false,
+      "command": "rust-analyzer-mcp",
+      "args": []
+    },
+    "mcp-server-sequential-thinking": {
+      "source": "extension",
+      "enabled": false,
+      "settings": {}
+    }
+  },
   "icon_theme": "Bearded Icon Theme",
   "use_system_path_prompts": false,
   "minimap": {
@@ -27,24 +47,16 @@
       "host": "souffle",
       "projects": [
         {
-          "paths": [
-            "~/bearcove/home"
-          ]
+          "paths": ["~/bearcove/home"]
         },
         {
-          "paths": [
-            "~/bearcove/lib-skill"
-          ]
+          "paths": ["~/bearcove/lib-skill"]
         },
         {
-          "paths": [
-            "~/bearcove/shapely"
-          ]
+          "paths": ["~/bearcove/shapely"]
         },
         {
-          "paths": [
-            "~/bearcove/timelord"
-          ]
+          "paths": ["~/bearcove/timelord"]
         }
       ]
     },
@@ -52,9 +64,7 @@
       "host": "brat",
       "projects": [
         {
-          "paths": [
-            "~/bearcove/beardist"
-          ]
+          "paths": ["~/bearcove/beardist"]
         }
       ]
     },
@@ -62,14 +72,10 @@
       "host": "styx",
       "projects": [
         {
-          "paths": [
-            "~/beardist"
-          ]
+          "paths": ["~/beardist"]
         },
         {
-          "paths": [
-            "~/facet"
-          ]
+          "paths": ["~/facet"]
         }
       ]
     },
@@ -77,19 +83,13 @@
       "host": "trollop",
       "projects": [
         {
-          "paths": [
-            "/home/amos/bearcove/limpid"
-          ]
+          "paths": ["/home/amos/bearcove/limpid"]
         },
         {
-          "paths": [
-            "/home/amos/bearcove/ymbo"
-          ]
+          "paths": ["/home/amos/bearcove/ymbo"]
         },
         {
-          "paths": [
-            "~/bearcove/beardist"
-          ]
+          "paths": ["~/bearcove/beardist"]
         }
       ]
     }
@@ -104,7 +104,7 @@
   },
   "terminal": {
     "shell": {
-      "program": "fish"
+      "program": "zsh"
     },
     "dock": "bottom",
     "cursor_shape": "bar",
@@ -181,37 +181,17 @@
     "folds": false
   },
   "project_panel": {
-    "button": false
-  },
-  "lsp": {
-    "rust-analyzer": {
-      "initialization_options": {
-        "cargo": {
-          "features": "all",
-          "allTargets": true,
-          "buildScripts": {
-            "enable": true
-          }
-        },
-        "procMacro": {
-          "enable": true
-        },
-        "check": {
-          "command": "clippy",
-          "allTargets": true,
-          "features": "all"
-        }
-      }
-    }
+    "button": true
   },
   "indent_guides": {
     "coloring": "indent_aware",
     "line_width": 4
   },
   "features": {
-    "edit_prediction_provider": "zed"
+    "edit_prediction_provider": "supermaven"
   },
   "agent": {
+    "single_file_review": false,
     "play_sound_when_agent_done": true,
     "inline_assistant_model": {
       "provider": "zed.dev",

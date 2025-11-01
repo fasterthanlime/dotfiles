@@ -82,7 +82,6 @@ fi
 
 ## Git alias: Add commit push (acp)
 function acp() {
-    cargo fmt || true
     git add .
     git commit -m "$*"
     git push
@@ -167,6 +166,14 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+eval "$(direnv hook zsh)"
+
+
 # Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/amos/.lmstudio/bin"
-alias claude="/Users/amos/.claude/local/claude"
+export PATH="$PATH:/Users/amos/.lmstudio/bin:/Users/amos/.claude/local"
+
+alias rp="release-plz"
+alias claude="claude --dangerously-skip-permissions"
+alias clau="claude --dangerously-skip-permissions --model haiku"
+alias codex="codex --full-auto --search"
+alias timeout="gtimeout"
