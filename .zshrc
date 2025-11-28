@@ -48,13 +48,11 @@ export WORDCHARS='*?_-.~=&;!#$%^(){}<>'
 ## Paths I often jump to
 cdpath=(
     .
-    ~/work
-    ~/sdr-pod
     ~/bearcove
-    ~/bearcove/lith
-    ~/bearcove/lith/mods
-    ~/bearcove/lith/common
-    ~/bearcove/loona/crates
+    ~/bearcove/cove
+    ~/bearcove/cove/crates
+    ~/facet-rs/facet
+    ~/facet-rs
     ~
 )
 
@@ -102,7 +100,8 @@ alias nrc="cargo nextest run --no-capture"
 alias nff="cargo nextest run --no-fail-fast"
 alias nr="cargo nextest run"
 
-alias k="kubectl"
+alias kubectl="tsh kubectl"
+alias k="tsh kubectl"
 alias tf="tofu"
 
 # alias mosh="mosh --server=/opt/homebrew/bin/mosh-server"
@@ -159,7 +158,7 @@ alias npm="echo no"
 . "$HOME/.cargo/env"
 
 # pnpm
-export PNPM_HOME="/Users/amos/Library/pnpm"
+export PNPM_HOME="$HOME/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -173,7 +172,16 @@ eval "$(direnv hook zsh)"
 export PATH="$PATH:/Users/amos/.lmstudio/bin:/Users/amos/.claude/local"
 
 alias rp="release-plz"
-alias claude="claude --dangerously-skip-permissions"
-alias clau="claude --dangerously-skip-permissions --model haiku"
+alias claude="claude --allow-dangerously-skip-permissions"
+alias clau="claude --model haiku --allow-dangerously-skip-permissions"
 alias codex="codex --full-auto --search"
 alias timeout="gtimeout"
+
+alias gid="git diff --staged"
+
+# mocap likes its process
+ulimit -n 4096
+
+# Added by Helix CLI installer
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.amvm/bin:$PATH"

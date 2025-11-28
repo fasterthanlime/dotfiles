@@ -158,7 +158,6 @@ set --export PATH $BUN_INSTALL/bin $PATH
 
 # Added by LM Studio CLI (lms)
 set -gx PATH $PATH /Users/amos/.lmstudio/bin
-alias claude="/Users/amos/.claude/local/claude"
 
 set -gx CEF_PATH "$HOME/.local/share/cef"
 set -gx DYLD_FALLBACK_LIBRARY_PATH $DYLD_FALLBACK_LIBRARY_PATH $CEF_PATH "$CEF_PATH/Chromium Embedded Framework.framework/Libraries"

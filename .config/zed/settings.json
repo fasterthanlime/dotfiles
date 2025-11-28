@@ -20,19 +20,16 @@
   },
   "context_servers": {
     "chrome-devtools": {
-      "source": "custom",
-      "enabled": true,
+      "enabled": false,
       "command": "npx",
       "args": ["chrome-devtools-mcp@latest"]
     },
     "rust-analyzer": {
-      "source": "custom",
       "enabled": false,
       "command": "rust-analyzer-mcp",
       "args": []
     },
     "mcp-server-sequential-thinking": {
-      "source": "extension",
       "enabled": false,
       "settings": {}
     }
@@ -44,52 +41,24 @@
   },
   "ssh_connections": [
     {
-      "host": "souffle",
+      "host": "golem",
+      "username": "amos",
+      "args": [],
       "projects": [
         {
-          "paths": ["~/bearcove/home"]
+          "paths": [
+            "/home/amos"
+          ]
         },
         {
-          "paths": ["~/bearcove/lib-skill"]
+          "paths": [
+            "/home/amos/cove"
+          ]
         },
         {
-          "paths": ["~/bearcove/shapely"]
-        },
-        {
-          "paths": ["~/bearcove/timelord"]
-        }
-      ]
-    },
-    {
-      "host": "brat",
-      "projects": [
-        {
-          "paths": ["~/bearcove/beardist"]
-        }
-      ]
-    },
-    {
-      "host": "styx",
-      "projects": [
-        {
-          "paths": ["~/beardist"]
-        },
-        {
-          "paths": ["~/facet"]
-        }
-      ]
-    },
-    {
-      "host": "trollop",
-      "projects": [
-        {
-          "paths": ["/home/amos/bearcove/limpid"]
-        },
-        {
-          "paths": ["/home/amos/bearcove/ymbo"]
-        },
-        {
-          "paths": ["~/bearcove/beardist"]
+          "paths": [
+            "/home/amos/facet"
+          ]
         }
       ]
     }
@@ -103,14 +72,7 @@
     "light": "Melange Light"
   },
   "terminal": {
-    "shell": {
-      "program": "zsh"
-    },
-    "dock": "bottom",
-    "cursor_shape": "bar",
-    "blinking": "terminal_controlled",
-    "copy_on_select": true
-    // "font_features": {}
+    "keep_selection_on_copy": false
   },
   "languages": {
     "Markdown-Inline": {
@@ -267,5 +229,13 @@
   "show_edit_predictions": true,
   "completions": {
     "words": "fallback"
+  },
+  "agent_servers": {
+    "kimi": {
+      "type": "custom",
+      "command": "kimi",
+      "args": ["--acp"],
+      "env": {}
+    }
   }
 }
