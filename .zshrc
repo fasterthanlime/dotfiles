@@ -158,7 +158,7 @@ alias npm="echo no"
 . "$HOME/.cargo/env"
 
 # pnpm
-export PNPM_HOME="$HOME/pnpm"
+export PNPM_HOME="/home/amos/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -185,3 +185,4 @@ ulimit -n 4096
 # Added by Helix CLI installer
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.amvm/bin:$PATH"
+source ~/.iterm2_shell_integration.zsh
