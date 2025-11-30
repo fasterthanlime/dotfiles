@@ -169,7 +169,7 @@ eval "$(direnv hook zsh)"
 
 
 # Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/amos/.lmstudio/bin:/Users/amos/.claude/local"
+export PATH="$PATH:/Users/amos/.lmstudio/bin"
 
 alias rp="release-plz"
 alias claude="claude --allow-dangerously-skip-permissions"
@@ -186,3 +186,7 @@ ulimit -n 4096
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.amvm/bin:$PATH"
 source ~/.iterm2_shell_integration.zsh
+
+# macOS clang suxx
+export PATH="$(brew --prefix llvm)/bin:$PATH"
+
