@@ -26,7 +26,7 @@ config.adjust_window_size_when_changing_font_size = true
 
 -- Pick whatever scheme you like here
 -- See https://wezterm.org/colorschemes/ for builtins
-config.color_scheme = 'OneDark (base16)'
+config.color_scheme = 'Kanagawa (Gogh)'
 
 -- No transparency
 config.window_background_opacity = 1.0
@@ -205,7 +205,7 @@ end)
 
 -- Slightly darker OneDark-based tab styling
 config.colors = config.colors or {}
-config.colors.background = '#1e2127'  -- darker terminal background
+-- config.colors.background = '#1a1c22'  -- uncomment to override scheme background
 config.colors.tab_bar = {
     background = '#1e2127',
 
@@ -330,23 +330,41 @@ config.keys = {
     { key = '9', mods = 'SUPER',       action = act.ActivateTab(-1) }, -- last tab
 
     --------------------------------------------------------------
-    -- Ghostty-style pane splits
+    -- Ghostty-style pane splits (with CWD for tmux CC mode)
     --------------------------------------------------------------
 
     -- New split (right) — Ghostty: Cmd + D
-    -- In WezTerm: horizontal split = side-by-side (left/right)
     {
         key = 'd',
         mods = 'SUPER',
-        action = act.SplitHorizontal { domain = 'CurrentPaneDomain' },
+        action = wezterm.action_callback(function(window, pane)
+            local cwd = pane:get_current_working_dir()
+            local cwd_path = cwd and cwd.file_path or nil
+            window:perform_action(act.SplitHorizontal { domain = 'CurrentPaneDomain' }, pane)
+            if cwd_path then
+                -- Wait for new pane to be ready, then cd
+                wezterm.time.call_after(0.1, function()
+                    window:active_pane():send_text('cd ' .. cwd_path .. ' && clear\n')
+                end)
+            end
+        end),
     },
 
     -- New split (down) — Ghostty: Cmd + Shift + D
-    -- Vertical split = stacked (top/bottom)
     {
         key = 'D',
         mods = 'SUPER|SHIFT',
-        action = act.SplitVertical { domain = 'CurrentPaneDomain' },
+        action = wezterm.action_callback(function(window, pane)
+            local cwd = pane:get_current_working_dir()
+            local cwd_path = cwd and cwd.file_path or nil
+            window:perform_action(act.SplitVertical { domain = 'CurrentPaneDomain' }, pane)
+            if cwd_path then
+                -- Wait for new pane to be ready, then cd
+                wezterm.time.call_after(0.1, function()
+                    window:active_pane():send_text('cd ' .. cwd_path .. ' && clear\n')
+                end)
+            end
+        end),
     },
 
     -- Close pane (like closing a split)
@@ -427,6 +445,9 @@ config.keys = {
         mods = 'SUPER|CTRL',
         action = act.AdjustPaneSize { 'Right', 3 },
     },
+
+    -- Shell integration: Shift+Enter sends Escape+Return
+    { key = 'Enter', mods = 'SHIFT', action = wezterm.action { SendString = '\x1b\r' } },
 }
 
 return config
