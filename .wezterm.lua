@@ -203,6 +203,18 @@ wezterm.on('update-right-status', function(window, pane)
     }))
 end)
 
+----------------------------------------------------------------
+-- Remote clipboard (wezcopy)
+-- Allows `echo "text" | wezcopy` from remote machines to copy
+-- to local macOS clipboard via OSC 1337 SetUserVar
+----------------------------------------------------------------
+
+wezterm.on('user-var-changed', function(window, pane, name, value)
+    if name == 'wez_copy' then
+        window:copy_to_clipboard(value, 'Clipboard')
+    end
+end)
+
 -- Slightly darker OneDark-based tab styling
 config.colors = config.colors or {}
 -- config.colors.background = '#1a1c22'  -- uncomment to override scheme background
