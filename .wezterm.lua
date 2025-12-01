@@ -49,12 +49,14 @@ config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
 -- Tab bar styling to match macOS
 config.window_frame = {
     font = wezterm.font('SF Pro'),
-    font_size = 13.0,
+    font_size = 15.0,
     active_titlebar_bg = '#1e2127',
     inactive_titlebar_bg = '#181a1f',
     -- Offset tabs from the traffic lights
     border_left_width = '2cell',
     border_right_width = '0.25cell',
+    border_top_height = '0.1cell',
+    border_bottom_height = '0.1cell',
 }
 
 -- Padding inside the window
@@ -208,13 +210,13 @@ config.colors.tab_bar = {
     background = '#1e2127',
 
     active_tab = {
-        bg_color = '#31353f',
-        fg_color = '#abb2bf',
+        bg_color = '#3e4451',
+        fg_color = '#e5e9f0',
         intensity = 'Bold',
     },
 
     inactive_tab = {
-        bg_color = '#1e2127',
+        bg_color = '#23272e',
         fg_color = '#5c6370',
     },
 
