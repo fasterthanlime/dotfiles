@@ -190,3 +190,5 @@ source ~/.iterm2_shell_integration.zsh
 # macOS clang suxx
 export PATH="$(brew --prefix llvm)/bin:$PATH"
 
+# export COLORTERM=truecolor
+# export TERM=screen-256color

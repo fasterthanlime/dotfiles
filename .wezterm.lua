@@ -1,250 +1,309 @@
--- vim: softtabstop=2 shiftwidth=2
-
--- Pull in the wezterm API
 local wezterm = require 'wezterm'
+local act = wezterm.action
 
--- Returns a bool based on whether the host operating system's
--- appearance is light or dark.
-function is_dark()
-    -- wezterm.gui is not always available, depending on what
-    -- environment wezterm is operating in. Just return true
-    -- if it's not defined.
-    if wezterm.gui then
-        -- Some systems report appearance like "Dark High Contrast"
-        -- so let's just look for the string "Dark" and if we find
-        -- it assume appearance is dark.
-        return wezterm.gui.get_appearance():find("Dark")
-    end
-    return true
-end
-
--- This table will hold the configuration.
 local config = {}
 
--- In newer versions of wezterm, use the config_builder which will
--- help provide clearer error messages
+-- Use the newer config builder when available
 if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
--- cf. https://github.com/wez/wezterm/issues/431
-config.adjust_window_size_when_changing_font_size = false
+----------------------------------------------------------------
+-- Appearance / fonts
+----------------------------------------------------------------
 
-local is_linux = function()
-    return wezterm.target_triple:find("linux") ~= nil
-end
-
-local is_darwin = function()
-    return wezterm.target_triple:find("darwin") ~= nil
-end
-
-local is_windows = function()
-    return wezterm.target_triple:find("windows") ~= nil
-end
-
-if is_windows() then
-    config.default_prog = { 'pwsh' }
-end
-
-config.font = wezterm.font 'Iosevka'
--- config.font = wezterm.font 'Berkeley Mono Variable'
---
-if is_windows() then
-    config.font_size = 11
-else
-    config.font_size = 13
-end
-
-local act = wezterm.action
-
-config.keys = {
-    {
-        -- '1' key
-        key = 'raw:49',
-        mods = 'CTRL|SHIFT',
-        action = act.SpawnTab {
-            DomainName = 'local',
-        }
-    },
-    { key = "Enter", mods = "SHIFT", action = wezterm.action { SendString = "\x1b\r" } },
-    {
-        key = 'T',
-        mods = 'CTRL|SHIFT',
-        action = act.SpawnTab {
-            DomainName = 'local',
-        },
-    },
-    {
-        -- '4' key
-        key = 'raw:52',
-        mods = 'CTRL|SHIFT',
-        action = act.SpawnTab {
-            DomainName = 'WSL:Debian',
-        },
-    },
-    {
-        key = 'w',
-        mods = 'CTRL|SHIFT',
-        action = act.CloseCurrentTab {
-            confirm = false,
-        },
-    },
+config.font = wezterm.font_with_fallback {
+    'IosevkaTerm Nerd Font',
+    'SF Mono',
+    'Menlo',
 }
 
-config.window_close_confirmation = 'NeverPrompt'
-config.skip_close_confirmation_for_processes_named = {
-    'bash',
-    'sh',
-    'zsh',
-    'fish',
-    'tmux',
-    'nu',
-    'cmd.exe',
-    'pwsh.exe',
-    'powershell.exe',
-    'wsl.exe',
-    'wslhost.exe',
-}
-config.default_cursor_style = 'BlinkingBar'
-config.enable_scroll_bar = true
-config.freetype_load_target = 'HorizontalLcd'
+config.font_size = 14.75
 
--- wezterm.gui is not available to the mux server, so take care to
--- do something reasonable when this config is evaluated by the mux
-function get_appearance()
-    if wezterm.gui then
-        return wezterm.gui.get_appearance()
-    end
-    return 'Dark'
-end
+-- Avoid resizing the whole window on every Cmd+= / Cmd+-
+-- This makes font-size changes noticeably less laggy.
+config.adjust_window_size_when_changing_font_size = true
 
-function scheme_for_appearance(appearance)
-    if appearance:find 'Dark' then
-        return 'Gruvbox Dark (Gogh)'
-    else
-        -- return 'Builtin Solarized Light'
-        -- return 'ayu_light'
-        return 'Atelierheath (light) (terminal.sexy)'
-    end
-end
+-- Pick whatever scheme you like here
+-- See https://wezterm.org/colorschemes/ for builtins
+config.color_scheme = 'OneDark (base16)'
 
-config.color_scheme = scheme_for_appearance(get_appearance())
+-- No transparency
+config.window_background_opacity = 1.0
+config.macos_window_background_blur = 0
 
-config.window_decorations = 'RESIZE'
-config.win32_system_backdrop = 'Acrylic'
-if is_windows() then
-    config.window_background_opacity = 0.73
-else
-    config.window_background_opacity = 0.9
-    config.macos_window_background_blur = 30
-end
+----------------------------------------------------------------
+-- Native macOS-style tabs
+----------------------------------------------------------------
 
+config.enable_tab_bar = true
+config.use_fancy_tab_bar = true
+config.tab_bar_at_bottom = false
+config.hide_tab_bar_if_only_one_tab = false
+config.show_tab_index_in_tab_bar = false
+config.tab_max_width = 200
+
+-- Integrated title bar with tabs
+config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
+
+-- Tab bar styling to match macOS
 config.window_frame = {
-    -- font = wezterm.font({ family = 'Berkeley Mono Variable', weight = 'Bold' }),
-    font = wezterm.font({ family = 'San Francisco', weight = 'Bold' }),
-    font_size = config.font_size - 2,
+    font = wezterm.font('SF Pro'),
+    font_size = 13.0,
+    active_titlebar_bg = '#323234',
+    inactive_titlebar_bg = '#2c2c2e',
+    -- Offset tabs from the traffic lights
+    border_left_width = '2cell',
+    border_right_width = '0.25cell',
 }
 
-function trimString(str, len)
-    if string.len(str) > len then
-        return string.sub(str, 1, len - 3) .. '...'
-    else
-        return str
-    end
-end
+-- Padding inside the window
+config.window_padding = {
+    left = 12,
+    right = 12,
+    top = 12,
+    bottom = 8,
+}
 
-function formatDomain(input)
-    local map = {
-        ["WSL"] = function() return " Debian" end
-    }
-
-    if is_windows() then
-        map["local"] = function() return " PowerShell" end
-    elseif is_linux() then
-        map["local"] = function() return " zsh" end
-    elseif is_darwin() then
-        map["local"] = function() return " zsh" end
-    end
-
-    local prefix, name = string.match(input, "(%w+)(.*)")
-
-    if map[prefix] then
-        return map[prefix](name)
-    else
-        return input
-    end
-end
-
-wezterm.on('format-tab-title', function(tab)
+-- Custom tab title: show directory name for shells, process name otherwise
+wezterm.on('format-tab-title', function(tab, tabs, panes, cfg, hover, max_width)
     local pane = tab.active_pane
     local title = pane.title
-    if pane.domain_name then
-        -- title = formatDomain(pane.domain_name) .. ' ' .. trimString(title, 10)
-        title = formatDomain(pane.domain_name)
-    end
-    return title
-end)
-
-local function segments_for_right_status(window)
-    return {
-        window:active_workspace(),
-        wezterm.strftime('%a %b %-d %H:%M'),
-        wezterm.hostname(),
-    }
-end
-
-wezterm.on('update-status', function(window, _)
-    local SOLID_LEFT_ARROW = utf8.char(0xe0b2)
-    local segments = segments_for_right_status(window)
-
-    local color_scheme = window:effective_config().resolved_palette
-    -- Note the use of wezterm.color.parse here, this returns
-    -- a Color object, which comes with functionality for lightening
-    -- or darkening the colour (amongst other things).
-    local bg = wezterm.color.parse(color_scheme.background)
-    local fg = color_scheme.foreground
-
-    -- Each powerline segment is going to be coloured progressively
-    -- darker/lighter depending on whether we're on a dark/light colour
-    -- scheme. Let's establish the "from" and "to" bounds of our gradient.
-    local gradient_to, gradient_from = bg
-    if is_dark() then
-        gradient_from = gradient_to:lighten(0.2)
-    else
-        gradient_from = gradient_to:darken(0.2)
-    end
-
-    -- Yes, WezTerm supports creating gradients, because why not?! Although
-    -- they'd usually be used for setting high fidelity gradients on your terminal's
-    -- background, we'll use them here to give us a sample of the powerline segment
-    -- colours we need.
-    local gradient = wezterm.color.gradient(
-        {
-            orientation = 'Horizontal',
-            colors = { gradient_from, gradient_to },
-        },
-        #segments -- only gives us as many colours as we have segments.
-    )
-
-    -- We'll build up the elements to send to wezterm.format in this table.
-    local elements = {}
-
-    for i, seg in ipairs(segments) do
-        local is_first = i == 1
-
-        if is_first then
-            table.insert(elements, { Background = { Color = 'none' } })
+    if title == 'zsh' or title == 'bash' or title == 'fish' then
+        local cwd = pane.current_working_dir
+        if cwd then
+            title = cwd.file_path:match('([^/]+)/?$') or title
         end
-        table.insert(elements, { Foreground = { Color = gradient[i] } })
-        table.insert(elements, { Text = SOLID_LEFT_ARROW })
-
-        table.insert(elements, { Foreground = { Color = fg } })
-        table.insert(elements, { Background = { Color = gradient[i] } })
-        table.insert(elements, { Text = ' ' .. seg .. ' ' })
     end
-
-    window:set_right_status(wezterm.format(elements))
+    if #title > max_width - 4 then
+        title = title:sub(1, max_width - 7) .. '...'
+    end
+    return '  ' .. title .. '  '
 end)
 
--- and finally, return the configuration to wezterm
+-- Subtle, “native-ish” tab styling
+config.colors = config.colors or {}
+config.colors.tab_bar = {
+    background = '#282c34',
+
+    active_tab = {
+        bg_color = '#3e4451',
+        fg_color = '#abb2bf',
+        intensity = 'Bold',
+    },
+
+    inactive_tab = {
+        bg_color = '#282c34',
+        fg_color = '#5c6370',
+    },
+
+    inactive_tab_hover = {
+        bg_color = '#3e4451',
+        fg_color = '#abb2bf',
+    },
+
+    new_tab = {
+        bg_color = '#282c34',
+        fg_color = '#5c6370',
+    },
+
+    new_tab_hover = {
+        bg_color = '#3e4451',
+        fg_color = '#abb2bf',
+    },
+}
+
+----------------------------------------------------------------
+-- Behaviour
+----------------------------------------------------------------
+
+-- macOS-style fullscreen (no separate “Spaces” screen)
+config.native_macos_fullscreen_mode = true
+
+-- Scrollback
+config.scrollback_lines = 5000
+
+----------------------------------------------------------------
+-- Ghostty-like keybindings
+-- SUPER = Cmd on macOS
+----------------------------------------------------------------
+
+config.keys = {
+    --------------------------------------------------------------
+    -- Font size (0.5pt increments for finer control)
+    --------------------------------------------------------------
+    {
+        key = '=',
+        mods = 'SUPER',
+        action = wezterm.action_callback(function(window, pane)
+            local overrides = window:get_config_overrides() or {}
+            local current = overrides.font_size or config.font_size
+            overrides.font_size = current + 0.5
+            window:set_config_overrides(overrides)
+        end)
+    },
+    {
+        key = '-',
+        mods = 'SUPER',
+        action = wezterm.action_callback(function(window, pane)
+            local overrides = window:get_config_overrides() or {}
+            local current = overrides.font_size or config.font_size
+            overrides.font_size = math.max(6, current - 0.5)
+            window:set_config_overrides(overrides)
+        end)
+    },
+    {
+        key = '0',
+        mods = 'SUPER',
+        action = wezterm.action_callback(function(window, pane)
+            local overrides = window:get_config_overrides() or {}
+            overrides.font_size = nil
+            window:set_config_overrides(overrides)
+        end)
+    },
+
+    -- Quick font size presets via callback
+    {
+        key = '1',
+        mods = 'SUPER|SHIFT',
+        action = wezterm.action_callback(function(window)
+            window:set_config_overrides({ font_size = 11.0 })
+        end)
+    },
+    {
+        key = '2',
+        mods = 'SUPER|SHIFT',
+        action = wezterm.action_callback(function(window)
+            window:set_config_overrides({ font_size = 13.0 })
+        end)
+    },
+    {
+        key = '3',
+        mods = 'SUPER|SHIFT',
+        action = wezterm.action_callback(function(window)
+            window:set_config_overrides({ font_size = 16.0 })
+        end)
+    },
+
+    --------------------------------------------------------------
+    -- Tabs (roughly macOS / Ghostty-ish)
+    --------------------------------------------------------------
+    { key = 't', mods = 'SUPER',       action = act.SpawnTab 'CurrentPaneDomain' },
+    { key = 'w', mods = 'SUPER',       action = act.CloseCurrentTab { confirm = true } },
+
+    -- Switch tabs: Cmd+Shift+[ / ] like Terminal/Ghostty
+    { key = '[', mods = 'SUPER|SHIFT', action = act.ActivateTabRelative(-1) },
+    { key = ']', mods = 'SUPER|SHIFT', action = act.ActivateTabRelative(1) },
+
+    -- Cmd+Number to jump to tab N
+    { key = '1', mods = 'SUPER',       action = act.ActivateTab(0) },
+    { key = '2', mods = 'SUPER',       action = act.ActivateTab(1) },
+    { key = '3', mods = 'SUPER',       action = act.ActivateTab(2) },
+    { key = '4', mods = 'SUPER',       action = act.ActivateTab(3) },
+    { key = '5', mods = 'SUPER',       action = act.ActivateTab(4) },
+    { key = '6', mods = 'SUPER',       action = act.ActivateTab(5) },
+    { key = '7', mods = 'SUPER',       action = act.ActivateTab(6) },
+    { key = '8', mods = 'SUPER',       action = act.ActivateTab(7) },
+    { key = '9', mods = 'SUPER',       action = act.ActivateTab(-1) }, -- last tab
+
+    --------------------------------------------------------------
+    -- Ghostty-style pane splits
+    --------------------------------------------------------------
+
+    -- New split (right) — Ghostty: Cmd + D
+    -- In WezTerm: horizontal split = side-by-side (left/right)
+    {
+        key = 'd',
+        mods = 'SUPER',
+        action = act.SplitHorizontal { domain = 'CurrentPaneDomain' },
+    },
+
+    -- New split (down) — Ghostty: Cmd + Shift + D
+    -- Vertical split = stacked (top/bottom)
+    {
+        key = 'D',
+        mods = 'SUPER|SHIFT',
+        action = act.SplitVertical { domain = 'CurrentPaneDomain' },
+    },
+
+    -- Close pane (like closing a split)
+    {
+        key = 'W',
+        mods = 'SUPER|SHIFT',
+        action = act.CloseCurrentPane { confirm = true },
+    },
+
+    --------------------------------------------------------------
+    -- Pane focus movement
+    --------------------------------------------------------------
+
+    -- Ghostty: Cmd + [ / ] for prev/next split
+    -- Here: move left/right between panes
+    {
+        key = '[',
+        mods = 'SUPER',
+        action = act.ActivatePaneDirection 'Left',
+    },
+    {
+        key = ']',
+        mods = 'SUPER',
+        action = act.ActivatePaneDirection 'Right',
+    },
+
+    -- Ghostty: Cmd + Option + Arrow to move focus
+    {
+        key = 'UpArrow',
+        mods = 'SUPER|ALT',
+        action = act.ActivatePaneDirection 'Up',
+    },
+    {
+        key = 'DownArrow',
+        mods = 'SUPER|ALT',
+        action = act.ActivatePaneDirection 'Down',
+    },
+    {
+        key = 'LeftArrow',
+        mods = 'SUPER|ALT',
+        action = act.ActivatePaneDirection 'Left',
+    },
+    {
+        key = 'RightArrow',
+        mods = 'SUPER|ALT',
+        action = act.ActivatePaneDirection 'Right',
+    },
+
+    --------------------------------------------------------------
+    -- Pane zoom & resize
+    --------------------------------------------------------------
+
+    -- Ghostty: Cmd + Shift + Enter to zoom split
+    {
+        key = 'Enter',
+        mods = 'SUPER|SHIFT',
+        action = act.TogglePaneZoomState,
+    },
+
+    -- Ghostty: Cmd + Ctrl + Arrow to resize
+    {
+        key = 'UpArrow',
+        mods = 'SUPER|CTRL',
+        action = act.AdjustPaneSize { 'Up', 3 },
+    },
+    {
+        key = 'DownArrow',
+        mods = 'SUPER|CTRL',
+        action = act.AdjustPaneSize { 'Down', 3 },
+    },
+    {
+        key = 'LeftArrow',
+        mods = 'SUPER|CTRL',
+        action = act.AdjustPaneSize { 'Left', 3 },
+    },
+    {
+        key = 'RightArrow',
+        mods = 'SUPER|CTRL',
+        action = act.AdjustPaneSize { 'Right', 3 },
+    },
+}
+
 return config
