@@ -50,8 +50,8 @@ config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
 config.window_frame = {
     font = wezterm.font('SF Pro'),
     font_size = 13.0,
-    active_titlebar_bg = '#323234',
-    inactive_titlebar_bg = '#2c2c2e',
+    active_titlebar_bg = '#1e2127',
+    inactive_titlebar_bg = '#181a1f',
     -- Offset tabs from the traffic lights
     border_left_width = '2cell',
     border_right_width = '0.25cell',
@@ -65,50 +65,75 @@ config.window_padding = {
     bottom = 8,
 }
 
--- Custom tab title: show directory name for shells, process name otherwise
+-- Custom tab title: domain (SSH/tmux) first, then title/directory
 wezterm.on('format-tab-title', function(tab, tabs, panes, cfg, hover, max_width)
     local pane = tab.active_pane
-    local title = pane.title
+    local domain = pane.domain_name or ''
+    local title = pane.title or ''
+    local cwd = pane.current_working_dir
+
+    -- Get directory name from CWD
+    local dir = nil
+    if cwd and cwd.file_path then
+        dir = cwd.file_path:match('([^/]+)/?$')
+    end
+
+    -- For shells, prefer directory name over "zsh"/"bash"
     if title == 'zsh' or title == 'bash' or title == 'fish' then
-        local cwd = pane.current_working_dir
-        if cwd then
-            title = cwd.file_path:match('([^/]+)/?$') or title
-        end
+        title = dir or title
     end
-    if #title > max_width - 4 then
-        title = title:sub(1, max_width - 7) .. '...'
+
+    -- Build the display string
+    local display
+    if domain == 'local' or domain == '' then
+        -- Local: just show title/directory
+        display = title
+    elseif domain:match('^SSH:') then
+        -- SSH: extract host, show "host: title"
+        local host = domain:gsub('^SSH:', ''):gsub('^[^@]*@', '')
+        display = host .. ': ' .. (dir or title)
+    else
+        -- tmux or other domains: show "domain: title"
+        display = domain .. ': ' .. title
     end
-    return '  ' .. title .. '  '
+
+    -- Truncate if needed
+    if #display > max_width - 4 then
+        display = display:sub(1, max_width - 7) .. '…'
+    end
+
+    return '    ' .. display .. '    '
 end)
 
--- Subtle, “native-ish” tab styling
+-- Slightly darker OneDark-based tab styling
 config.colors = config.colors or {}
+config.colors.background = '#1e2127'  -- darker terminal background
 config.colors.tab_bar = {
-    background = '#282c34',
+    background = '#1e2127',
 
     active_tab = {
-        bg_color = '#3e4451',
+        bg_color = '#31353f',
         fg_color = '#abb2bf',
         intensity = 'Bold',
     },
 
     inactive_tab = {
-        bg_color = '#282c34',
+        bg_color = '#1e2127',
         fg_color = '#5c6370',
     },
 
     inactive_tab_hover = {
-        bg_color = '#3e4451',
+        bg_color = '#31353f',
         fg_color = '#abb2bf',
     },
 
     new_tab = {
-        bg_color = '#282c34',
+        bg_color = '#1e2127',
         fg_color = '#5c6370',
     },
 
     new_tab_hover = {
-        bg_color = '#3e4451',
+        bg_color = '#31353f',
         fg_color = '#abb2bf',
     },
 }
