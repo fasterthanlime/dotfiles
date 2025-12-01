@@ -208,3 +208,10 @@ __wezterm_title() {
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd __wezterm_osc7
 add-zsh-hook precmd __wezterm_title
+
+wezcopy() {
+    local data b64
+    data=$(cat)
+    b64=$(printf '%s' "$data" | base64 | tr -d '\n')
+    printf '\033]1337;SetUserVar=%s=%s\007' wez_copy "$b64"
+}
