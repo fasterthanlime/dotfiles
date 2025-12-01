@@ -185,10 +185,26 @@ ulimit -n 4096
 # Added by Helix CLI installer
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.amvm/bin:$PATH"
-source ~/.iterm2_shell_integration.zsh
 
-# macOS clang suxx
+# iTerm2 integration
+# source ~/.iterm2_shell_integration.zsh
+
+# macOS clang suxx (no wasm32)
 export PATH="$(brew --prefix llvm)/bin:$PATH"
 
-# export COLORTERM=truecolor
-# export TERM=screen-256color
+# WezTerm shell integration - send OSC 7 with hostname + cwd
+__wezterm_osc7() {
+    if [[ -n "$WEZTERM_PANE" || -n "$TMUX" ]]; then
+        printf '\e]7;file://%s%s\e\\' "${HOST}" "${PWD}"
+    fi
+}
+
+# Set terminal title to user@host:dir
+__wezterm_title() {
+    print -Pn '\e]0;%n@%m:%~\e\\'
+}
+
+# Hook into prompt
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd __wezterm_osc7
+add-zsh-hook precmd __wezterm_title

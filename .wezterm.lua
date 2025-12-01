@@ -65,11 +65,12 @@ config.window_padding = {
     bottom = 8,
 }
 
--- Custom tab title: domain (SSH/tmux) first, then title/directory
+-- Custom tab title: show host › command/process › dir
 wezterm.on('format-tab-title', function(tab, tabs, panes, cfg, hover, max_width)
     local pane = tab.active_pane
     local domain = pane.domain_name or ''
     local title = pane.title or ''
+    local process = pane.foreground_process_name or ''
     local cwd = pane.current_working_dir
 
     -- Get directory name from CWD
@@ -78,24 +79,66 @@ wezterm.on('format-tab-title', function(tab, tabs, panes, cfg, hover, max_width)
         dir = cwd.file_path:match('([^/]+)/?$')
     end
 
-    -- For shells, prefer directory name over "zsh"/"bash"
-    if title == 'zsh' or title == 'bash' or title == 'fish' then
-        title = dir or title
+    -- Get hostname from CWD (OSC 7) or title
+    local host = nil
+    if cwd and cwd.host and cwd.host ~= '' then
+        host = cwd.host:gsub('%.local$', '')  -- strip .local suffix
+    end
+    if not host then
+        host = title:match('@([^:]+):')
     end
 
-    -- Build the display string
-    local display
-    if domain == 'local' or domain == '' then
-        -- Local: just show title/directory
-        display = title
-    elseif domain:match('^SSH:') then
-        -- SSH: extract host, show "host: title"
-        local host = domain:gsub('^SSH:', ''):gsub('^[^@]*@', '')
-        display = host .. ': ' .. (dir or title)
+    -- Check if title contains a running command (user@host: command format)
+    local cmd_from_title = title:match('@[^:]+:%s*(.+)$')
+    if cmd_from_title and not cmd_from_title:match('^[~/]') then
+        -- It's a command, not a path
+        cmd_from_title = cmd_from_title
     else
-        -- tmux or other domains: show "domain: title"
-        display = domain .. ': ' .. title
+        cmd_from_title = nil
     end
+
+    -- Clean up process name (just basename)
+    process = process:match('([^/]+)$') or process
+
+    -- Is this an interesting process (not just a shell)?
+    local dominated_procs = { zsh = true, bash = true, fish = true, sh = true, [''] = true }
+    local show_process = not dominated_procs[process]
+
+    -- Build the display string
+    local parts = {}
+
+    if domain == 'local' or domain == '' then
+        -- Local: show command/process and directory
+        if cmd_from_title then
+            table.insert(parts, cmd_from_title)
+        elseif show_process then
+            table.insert(parts, process)
+        end
+        table.insert(parts, dir or title)
+    elseif domain:match('^SSH:') then
+        -- SSH domain
+        local ssh_host = domain:gsub('^SSH:', ''):gsub('^[^@]*@', '')
+        table.insert(parts, ssh_host)
+        if cmd_from_title then
+            table.insert(parts, cmd_from_title)
+        elseif show_process then
+            table.insert(parts, process)
+        end
+        table.insert(parts, dir or '~')
+    else
+        -- tmux or other domain
+        if host then
+            table.insert(parts, host)
+        end
+        if cmd_from_title then
+            table.insert(parts, cmd_from_title)
+        elseif show_process then
+            table.insert(parts, process)
+        end
+        table.insert(parts, dir or '~')
+    end
+
+    local display = table.concat(parts, ' › ')
 
     -- Truncate if needed
     if #display > max_width - 4 then
@@ -103,6 +146,59 @@ wezterm.on('format-tab-title', function(tab, tabs, panes, cfg, hover, max_width)
     end
 
     return '    ' .. display .. '    '
+end)
+
+-- Right status: show useful info for current pane
+wezterm.on('update-right-status', function(window, pane)
+    local domain = pane:get_domain_name() or ''
+    local title = pane:get_title() or ''
+    local process = pane:get_foreground_process_name() or ''
+    local cwd = pane:get_current_working_dir()
+
+    local parts = {}
+
+    -- Extract hostname from title (often user@host or host:path)
+    local host_from_title = title:match('@([^:]+):')
+
+    -- Get hostname from CWD if available
+    local host_from_cwd = cwd and cwd.host and cwd.host ~= '' and cwd.host or nil
+
+    -- Get directory from CWD
+    local dir = nil
+    if cwd and cwd.file_path then
+        dir = cwd.file_path:match('([^/]+)/?$')
+    end
+
+    -- For non-local domains, show info
+    if domain ~= 'local' and domain ~= '' then
+        local host = nil
+        if domain:match('^SSH:') then
+            host = domain:gsub('^SSH:', ''):gsub('^[^@]*@', '')
+        else
+            host = host_from_cwd or host_from_title
+        end
+
+        if host then
+            table.insert(parts, host)
+        end
+
+        -- Show domain type if not just SSH
+        if not domain:match('^SSH:') then
+            table.insert(parts, domain)
+        end
+
+        -- Current process (if not just a shell)
+        if process ~= '' and process ~= 'zsh' and process ~= 'bash' and process ~= 'fish' then
+            table.insert(parts, process)
+        end
+    end
+
+    local status = table.concat(parts, ' › ')
+
+    window:set_right_status(wezterm.format({
+        { Foreground = { Color = '#5c6370' } },
+        { Text = status .. '   ' },
+    }))
 end)
 
 -- Slightly darker OneDark-based tab styling
