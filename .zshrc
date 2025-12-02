@@ -175,7 +175,6 @@ alias rp="release-plz"
 alias claude="claude --allow-dangerously-skip-permissions"
 alias clau="claude --model haiku --allow-dangerously-skip-permissions"
 alias codex="codex --full-auto --search"
-alias timeout="gtimeout"
 
 alias gid="git diff --staged"
 
@@ -208,6 +207,8 @@ __wezterm_title() {
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd __wezterm_osc7
 add-zsh-hook precmd __wezterm_title
+
+export DISABLE_COST_WARNINGS=1
 
 wezcopy() {
     local data b64
