@@ -46,9 +46,9 @@ read_only = " 󰌾"
 read_only_style = "bold #D47766"
 
 [git_branch]
-symbol = ""
+symbol = " "
 style = "bold #85B695"
-format = "on [$symbol$branch(:$remote_branch)]($style) "
+format = "[$symbol$branch(:$remote_branch)]($style) "
 
 [git_status]
 style = "bold #E49B5D"
