@@ -334,14 +334,26 @@ config.keys = {
         action = wezterm.action_callback(function(window, pane)
             local cwd_uri = pane:get_current_working_dir()
             local cwd = cwd_uri and cwd_uri.file_path or nil
+            local domain = pane:get_domain_name()
+            local is_ssh = domain:match('^SSH:')
 
-            window:perform_action(
-                act.SpawnCommandInNewTab {
-                    domain = 'CurrentPaneDomain',
-                    cwd = cwd,
-                },
-                pane
-            )
+            if is_ssh and cwd then
+                window:perform_action(
+                    act.SpawnCommandInNewTab {
+                        domain = 'CurrentPaneDomain',
+                        args = { 'zsh', '-c', 'cd ' .. wezterm.shell_quote_arg(cwd) .. ' && exec zsh' },
+                    },
+                    pane
+                )
+            else
+                window:perform_action(
+                    act.SpawnCommandInNewTab {
+                        domain = 'CurrentPaneDomain',
+                        cwd = cwd,
+                    },
+                    pane
+                )
+            end
         end),
     },
     { key = 'w', mods = 'SUPER',       action = act.CloseCurrentTab { confirm = true } },
