@@ -26,7 +26,7 @@ config.adjust_window_size_when_changing_font_size = true
 
 -- Pick whatever scheme you like here
 -- See https://wezterm.org/colorschemes/ for builtins
-config.color_scheme = 'Kanagawa (Gogh)'
+config.color_scheme = 'melange_dark'
 
 -- No transparency
 config.window_background_opacity = 1.0
@@ -84,7 +84,7 @@ wezterm.on('format-tab-title', function(tab, tabs, panes, cfg, hover, max_width)
     -- Get hostname from CWD (OSC 7) or title
     local host = nil
     if cwd and cwd.host and cwd.host ~= '' then
-        host = cwd.host:gsub('%.local$', '')  -- strip .local suffix
+        host = cwd.host:gsub('%.local$', '') -- strip .local suffix
     end
     if not host then
         host = title:match('@([^:]+):')
@@ -323,7 +323,37 @@ config.keys = {
     --------------------------------------------------------------
     -- Tabs (roughly macOS / Ghostty-ish)
     --------------------------------------------------------------
-    { key = 't', mods = 'SUPER',       action = act.SpawnTab 'CurrentPaneDomain' },
+    {
+        key = 'G',
+        mods = 'SUPER|SHIFT',
+        action = act.SpawnCommandInNewTab {
+            domain = { DomainName = 'SSH:golem' },
+        },
+    },
+    {
+        key = 'S',
+        mods = 'SUPER|SHIFT',
+        action = act.SpawnCommandInNewTab {
+            domain = { DomainName = 'SSH:souffle' },
+        },
+    },
+
+    {
+        key = 't',
+        mods = 'SUPER',
+        action = wezterm.action_callback(function(window, pane)
+            local cwd_uri = pane:get_current_working_dir()
+            local cwd = cwd_uri and cwd_uri.file_path or nil
+
+            window:perform_action(
+                act.SpawnCommandInNewTab {
+                    domain = 'CurrentPaneDomain',
+                    cwd = cwd,
+                },
+                pane
+            )
+        end),
+    },
     { key = 'w', mods = 'SUPER',       action = act.CloseCurrentTab { confirm = true } },
 
     -- Switch tabs: Cmd+Shift+[ / ] like Terminal/Ghostty
@@ -345,37 +375,35 @@ config.keys = {
     -- Ghostty-style pane splits (with CWD for tmux CC mode)
     --------------------------------------------------------------
 
-    -- New split (right) — Ghostty: Cmd + D
+    -- New split (right) — Cmd + D
     {
         key = 'd',
         mods = 'SUPER',
         action = wezterm.action_callback(function(window, pane)
-            local cwd = pane:get_current_working_dir()
-            local cwd_path = cwd and cwd.file_path or nil
-            window:perform_action(act.SplitHorizontal { domain = 'CurrentPaneDomain' }, pane)
-            if cwd_path then
-                -- Wait for new pane to be ready, then cd
-                wezterm.time.call_after(0.1, function()
-                    window:active_pane():send_text('cd ' .. cwd_path .. ' && clear\n')
-                end)
-            end
+            local cwd_uri = pane:get_current_working_dir()
+            local cwd = cwd_uri and cwd_uri.file_path or nil -- works for local + SSH
+
+            pane:split {
+                direction = 'Right',
+                domain = 'CurrentPaneDomain',
+                cwd = cwd,
+            }
         end),
     },
 
-    -- New split (down) — Ghostty: Cmd + Shift + D
+    -- New split (down) — Cmd + Shift + D
     {
         key = 'D',
         mods = 'SUPER|SHIFT',
         action = wezterm.action_callback(function(window, pane)
-            local cwd = pane:get_current_working_dir()
-            local cwd_path = cwd and cwd.file_path or nil
-            window:perform_action(act.SplitVertical { domain = 'CurrentPaneDomain' }, pane)
-            if cwd_path then
-                -- Wait for new pane to be ready, then cd
-                wezterm.time.call_after(0.1, function()
-                    window:active_pane():send_text('cd ' .. cwd_path .. ' && clear\n')
-                end)
-            end
+            local cwd_uri = pane:get_current_working_dir()
+            local cwd = cwd_uri and cwd_uri.file_path or nil
+
+            pane:split {
+                direction = 'Bottom',
+                domain = 'CurrentPaneDomain',
+                cwd = cwd,
+            }
         end),
     },
 
