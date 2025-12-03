@@ -67,15 +67,15 @@ time_format = "%H:%M"
 [git_status]
 style = "bold #E49B5D"
 format = '( [$all_status$ahead_behind]($style))'
-staged = '[󰐕$count](bold #85B695)'
-modified = '[󰏫$count](bold #EBC06D)'
-untracked = '[󰋗$count](bold #89B3B6)'
-deleted = '[󰍶$count](bold #D47766)'
-conflicted = '[󰀨$count](bold #D47766)'
-ahead = '[󰁝$count](bold #85B695)'
-behind = '[󰁅$count](bold #D47766)'
-diverged = '[󰁝$ahead_count󰁅$behind_count](bold #E49B5D)'
-stashed = '[󰏗$count](bold #A3A9CE)'
+staged = '[󰐕 $count](bold #85B695)'
+modified = '[󰏫 $count](bold #EBC06D)'
+untracked = '[󰋗 $count](bold #89B3B6)'
+deleted = '[󰍶 $count](bold #D47766)'
+conflicted = '[󰀨 $count](bold #D47766)'
+ahead = '[󰁝 $count](bold #85B695)'
+behind = '[󰁅 $count](bold #D47766)'
+diverged = '[󰁝 $ahead_count 󰁅 $behind_count](bold #E49B5D)'
+stashed = '[󰏗 $count](bold #A3A9CE)'
 
 [git_commit]
 tag_symbol = '  '
