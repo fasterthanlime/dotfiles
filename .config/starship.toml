@@ -28,7 +28,7 @@ disabled = true
 ssh_only = true
 ssh_symbol = "󰣀"
 style = "bold #D47766"
-format = "[($ssh_symbol $hostname)]($style) "
+format = "[ $ssh_symbol $hostname]($style)"
 
 # Disable version info I don't care about
 [package]
