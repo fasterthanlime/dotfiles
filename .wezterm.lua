@@ -37,27 +37,14 @@ config.macos_window_background_blur = 0
 ----------------------------------------------------------------
 
 config.enable_tab_bar = true
-config.use_fancy_tab_bar = true
+config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = false
 config.hide_tab_bar_if_only_one_tab = false
 config.show_tab_index_in_tab_bar = false
 config.tab_max_width = 200
 
--- Integrated title bar with tabs
-config.window_decorations = 'INTEGRATED_BUTTONS|RESIZE'
-
--- Tab bar styling to match macOS
-config.window_frame = {
-    font = wezterm.font('SF Pro'),
-    font_size = 15.0,
-    active_titlebar_bg = '#1e2127',
-    inactive_titlebar_bg = '#181a1f',
-    -- Offset tabs from the traffic lights
-    border_left_width = '2cell',
-    border_right_width = '0.25cell',
-    border_top_height = '0.1cell',
-    border_bottom_height = '0.1cell',
-}
+-- Standard window decorations
+config.window_decorations = 'RESIZE'
 
 -- Padding inside the window
 config.window_padding = {
@@ -147,7 +134,11 @@ wezterm.on('format-tab-title', function(tab, tabs, panes, cfg, hover, max_width)
         display = display:sub(1, max_width - 7) .. '…'
     end
 
-    return '    ' .. display .. '    '
+    -- Return formatted text for taller tabs
+    return wezterm.format {
+        { Attribute = { Intensity = tab.is_active and 'Bold' or 'Normal' } },
+        { Text = '  ' .. display .. '  ' },
+    }
 end)
 
 -- Right status: show useful info for current pane
@@ -215,36 +206,35 @@ wezterm.on('user-var-changed', function(window, pane, name, value)
     end
 end)
 
--- Slightly darker OneDark-based tab styling
+-- Melange dark tab styling
 config.colors = config.colors or {}
--- config.colors.background = '#1a1c22'  -- uncomment to override scheme background
 config.colors.tab_bar = {
-    background = '#1e2127',
+    background = '#292522',
 
     active_tab = {
-        bg_color = '#3e4451',
-        fg_color = '#e5e9f0',
+        bg_color = '#403A36',
+        fg_color = '#ECE1D7',
         intensity = 'Bold',
     },
 
     inactive_tab = {
-        bg_color = '#23272e',
-        fg_color = '#5c6370',
+        bg_color = '#34302C',
+        fg_color = '#867462',
     },
 
     inactive_tab_hover = {
-        bg_color = '#31353f',
-        fg_color = '#abb2bf',
+        bg_color = '#403A36',
+        fg_color = '#C1A78E',
     },
 
     new_tab = {
-        bg_color = '#1e2127',
-        fg_color = '#5c6370',
+        bg_color = '#292522',
+        fg_color = '#867462',
     },
 
     new_tab_hover = {
-        bg_color = '#31353f',
-        fg_color = '#abb2bf',
+        bg_color = '#34302C',
+        fg_color = '#C1A78E',
     },
 }
 
