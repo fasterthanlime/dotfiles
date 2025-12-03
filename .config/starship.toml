@@ -61,7 +61,7 @@ format = " [› took $duration]($style)"
 [time]
 disabled = false
 style = "bold #867462"
-format = " [› $time]($style)"
+format = " [› $time 🪴]($style)"
 time_format = "%H:%M"
 
 [git_status]
