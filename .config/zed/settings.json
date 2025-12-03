@@ -52,6 +52,11 @@
         },
         {
           "paths": [
+            "/home/amos/bearcove/pikru"
+          ]
+        },
+        {
+          "paths": [
             "/home/amos/cove"
           ]
         },
