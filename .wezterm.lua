@@ -327,6 +327,13 @@ config.keys = {
             domain = { DomainName = 'SSH:souffle' },
         },
     },
+    {
+        key = 'L',
+        mods = 'SUPER|SHIFT',
+        action = act.SpawnCommandInNewTab {
+            domain = { DomainName = 'local' },
+        },
+    },
 
     {
         key = 't',
