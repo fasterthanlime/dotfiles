@@ -1,14 +1,32 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+# Put hostname at the end of the prompt (right before newline/character)
+format = """
+$directory\
+$git_branch\
+$git_status\
+$c\
+$golang\
+$java\
+$kotlin\
+$nodejs\
+$python\
+$zig\
+$nix_shell\
+$conda\
+$hostname\
+$line_break\
+$character"""
+
 # Don't show username, but show hostname with a prominent icon when remote
 [username]
 disabled = true
 
 [hostname]
 ssh_only = true
-ssh_symbol = "󰣀 "
+ssh_symbol = "󰣀"
 style = "bold #D47766"
-format = "[$ssh_symbol$hostname]($style) "
+format = "[($ssh_symbol $hostname)]($style) "
 
 # Disable version info I don't care about
 [package]
@@ -28,8 +46,9 @@ read_only = " 󰌾"
 read_only_style = "bold #D47766"
 
 [git_branch]
-symbol = " "
+symbol = ""
 style = "bold #85B695"
+format = "on [$symbol$branch(:$remote_branch)]($style) "
 
 [git_status]
 style = "bold #E49B5D"
