@@ -158,7 +158,7 @@ alias npm="echo no"
 . "$HOME/.cargo/env"
 
 # pnpm
-export PNPM_HOME="/home/amos/pnpm"
+export PNPM_HOME="$HOME/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -192,10 +192,10 @@ export PATH="$HOME/.amvm/bin:$PATH"
 export PATH="$(brew --prefix llvm)/bin:$PATH"
 
 # WezTerm shell integration - send OSC 7 with hostname + cwd
+# Always emit for interactive shells - WezTerm needs this for cwd tracking
+# (WEZTERM_PANE may not be set over SSH due to AcceptEnv restrictions)
 __wezterm_osc7() {
-    if [[ -n "$WEZTERM_PANE" || -n "$TMUX" ]]; then
-        printf '\e]7;file://%s%s\e\\' "${HOST}" "${PWD}"
-    fi
+    printf '\e]7;file://%s%s\e\\' "${HOST}" "${PWD}"
 }
 
 # Set terminal title to user@host:dir
