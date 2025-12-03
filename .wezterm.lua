@@ -382,12 +382,22 @@ config.keys = {
         action = wezterm.action_callback(function(window, pane)
             local cwd_uri = pane:get_current_working_dir()
             local cwd = cwd_uri and cwd_uri.file_path or nil
+            local domain = pane:get_domain_name()
+            local is_ssh = domain:match('^SSH:')
 
-            pane:split {
-                direction = 'Right',
-                domain = 'CurrentPaneDomain',
-                cwd = cwd,
-            }
+            if is_ssh and cwd then
+                pane:split {
+                    direction = 'Right',
+                    domain = 'CurrentPaneDomain',
+                    args = { 'zsh', '-c', 'cd ' .. wezterm.shell_quote_arg(cwd) .. ' && exec zsh' },
+                }
+            else
+                pane:split {
+                    direction = 'Right',
+                    domain = 'CurrentPaneDomain',
+                    cwd = cwd,
+                }
+            end
         end),
     },
 
@@ -398,12 +408,22 @@ config.keys = {
         action = wezterm.action_callback(function(window, pane)
             local cwd_uri = pane:get_current_working_dir()
             local cwd = cwd_uri and cwd_uri.file_path or nil
+            local domain = pane:get_domain_name()
+            local is_ssh = domain:match('^SSH:')
 
-            pane:split {
-                direction = 'Bottom',
-                domain = 'CurrentPaneDomain',
-                cwd = cwd,
-            }
+            if is_ssh and cwd then
+                pane:split {
+                    direction = 'Bottom',
+                    domain = 'CurrentPaneDomain',
+                    args = { 'zsh', '-c', 'cd ' .. wezterm.shell_quote_arg(cwd) .. ' && exec zsh' },
+                }
+            else
+                pane:split {
+                    direction = 'Bottom',
+                    domain = 'CurrentPaneDomain',
+                    cwd = cwd,
+                }
+            end
         end),
     },
 
