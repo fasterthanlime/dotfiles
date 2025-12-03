@@ -372,7 +372,7 @@ config.keys = {
     { key = '9', mods = 'SUPER',       action = act.ActivateTab(-1) }, -- last tab
 
     --------------------------------------------------------------
-    -- Ghostty-style pane splits (with CWD for tmux CC mode)
+    -- Ghostty-style pane splits (with CWD)
     --------------------------------------------------------------
 
     -- New split (right) — Cmd + D
@@ -381,7 +381,7 @@ config.keys = {
         mods = 'SUPER',
         action = wezterm.action_callback(function(window, pane)
             local cwd_uri = pane:get_current_working_dir()
-            local cwd = cwd_uri and cwd_uri.file_path or nil -- works for local + SSH
+            local cwd = cwd_uri and cwd_uri.file_path or nil
 
             pane:split {
                 direction = 'Right',
