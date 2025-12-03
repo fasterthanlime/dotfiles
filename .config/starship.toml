@@ -52,7 +52,7 @@ format = "[$symbol$branch(:$remote_branch)]($style) "
 
 [git_status]
 style = "bold #E49B5D"
-format = '([$all_status$ahead_behind]($style) )'
+format = '[$all_status$ahead_behind]($style)'
 staged = '[+$count](bold #85B695)'
 modified = '[~$count](bold #EBC06D)'
 untracked = '[?$count](bold #89B3B6)'
