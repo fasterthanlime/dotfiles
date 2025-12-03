@@ -242,7 +242,10 @@ config.colors.tab_bar = {
 -- Behaviour
 ----------------------------------------------------------------
 
--- macOS-style fullscreen (no separate “Spaces” screen)
+-- Always prompt before closing tabs/panes (even if just a shell is running)
+config.skip_close_confirmation_for_processes_named = {}
+
+-- macOS-style fullscreen (no separate "Spaces" screen)
 config.native_macos_fullscreen_mode = true
 
 -- Scrollback
