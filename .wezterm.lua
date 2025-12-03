@@ -24,9 +24,18 @@ config.font_size = 14.75
 -- This makes font-size changes noticeably less laggy.
 config.adjust_window_size_when_changing_font_size = true
 
--- Pick whatever scheme you like here
--- See https://wezterm.org/colorschemes/ for builtins
-config.color_scheme = 'melange_dark'
+-- Automatic dark/light theme based on macOS appearance
+local function scheme_for_appearance(appearance)
+    if appearance:find 'Dark' then
+        return 'melange_dark'
+    else
+        return 'melange_light'
+    end
+end
+
+-- Set initial color scheme based on current appearance
+local appearance = wezterm.gui and wezterm.gui.get_appearance() or 'Dark'
+config.color_scheme = scheme_for_appearance(appearance)
 
 -- No transparency
 config.window_background_opacity = 1.0
@@ -206,37 +215,63 @@ wezterm.on('user-var-changed', function(window, pane, name, value)
     end
 end)
 
--- Melange dark tab styling
+-- Melange tab bar styling (switches with appearance)
+local function tab_bar_for_appearance(appear)
+    if appear:find 'Dark' then
+        return {
+            background = '#292522',
+            active_tab = {
+                bg_color = '#403A36',
+                fg_color = '#ECE1D7',
+                intensity = 'Bold',
+            },
+            inactive_tab = {
+                bg_color = '#34302C',
+                fg_color = '#867462',
+            },
+            inactive_tab_hover = {
+                bg_color = '#403A36',
+                fg_color = '#C1A78E',
+            },
+            new_tab = {
+                bg_color = '#292522',
+                fg_color = '#867462',
+            },
+            new_tab_hover = {
+                bg_color = '#34302C',
+                fg_color = '#C1A78E',
+            },
+        }
+    else
+        return {
+            background = '#E9E1DB',
+            active_tab = {
+                bg_color = '#F1F1F1',
+                fg_color = '#54433A',
+                intensity = 'Bold',
+            },
+            inactive_tab = {
+                bg_color = '#D9D3CE',
+                fg_color = '#7D6658',
+            },
+            inactive_tab_hover = {
+                bg_color = '#F1F1F1',
+                fg_color = '#54433A',
+            },
+            new_tab = {
+                bg_color = '#E9E1DB',
+                fg_color = '#7D6658',
+            },
+            new_tab_hover = {
+                bg_color = '#D9D3CE',
+                fg_color = '#54433A',
+            },
+        }
+    end
+end
+
 config.colors = config.colors or {}
-config.colors.tab_bar = {
-    background = '#292522',
-
-    active_tab = {
-        bg_color = '#403A36',
-        fg_color = '#ECE1D7',
-        intensity = 'Bold',
-    },
-
-    inactive_tab = {
-        bg_color = '#34302C',
-        fg_color = '#867462',
-    },
-
-    inactive_tab_hover = {
-        bg_color = '#403A36',
-        fg_color = '#C1A78E',
-    },
-
-    new_tab = {
-        bg_color = '#292522',
-        fg_color = '#867462',
-    },
-
-    new_tab_hover = {
-        bg_color = '#34302C',
-        fg_color = '#C1A78E',
-    },
-}
+config.colors.tab_bar = tab_bar_for_appearance(appearance)
 
 ----------------------------------------------------------------
 -- Behaviour
@@ -522,4 +557,26 @@ config.keys = {
     { key = 'Enter', mods = 'SHIFT', action = wezterm.action { SendString = '\x1b\r' } },
 }
 
+config.mouse_bindings = {
+    -- Normal click: start selection
+    {
+        event = { Down = { streak = 1, button = 'Left' } },
+        mods = 'NONE',
+        action = wezterm.action.SelectTextAtMouseCursor 'Cell',
+    },
+    {
+        event = { Drag = { streak = 1, button = 'Left' } },
+        mods = 'NONE',
+        action = wezterm.action.ExtendSelectionToMouseCursor 'Cell',
+    },
+
+    -- Cmd + Click opens links
+    {
+        event = { Up = { streak = 1, button = 'Left' } },
+        mods = 'CMD',
+        action = wezterm.action.OpenLinkAtMouseCursor,
+    },
+}
+
 return config
+
