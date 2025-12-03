@@ -14,7 +14,9 @@ $python\
 $zig\
 $nix_shell\
 $conda\
+$cmd_duration\
 $hostname\
+$time\
 $line_break\
 $character"""
 
@@ -42,13 +44,25 @@ error_symbol = "[›](bold #D47766)"
 
 [directory]
 style = "bold #C1A78E"
+format = "[ $path]($style)[$read_only]($read_only_style) "
 read_only = " 󰌾"
 read_only_style = "bold #D47766"
 
 [git_branch]
 symbol = ""
 style = "bold #85B695"
-format = "[$symbol $branch(:$remote_branch)]($style)"
+format = "[› $symbol $branch(:$remote_branch)]($style)"
+
+[cmd_duration]
+min_time = 500
+style = "bold #867462"
+format = " [› took $duration]($style)"
+
+[time]
+disabled = false
+style = "bold #867462"
+format = " [› $time]($style)"
+time_format = "%H:%M"
 
 [git_status]
 style = "bold #E49B5D"
