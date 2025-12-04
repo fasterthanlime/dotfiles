@@ -53,6 +53,7 @@ config.show_tab_index_in_tab_bar = false
 config.tab_max_width = 400
 
 -- Tab bar styling (Chrome-like)
+-- Note: window_frame colors are set dynamically below based on appearance
 config.window_frame = {
     font = wezterm.font('PT Sans Narrow', { weight = 'Bold' }),
     font_size = 16.0,
@@ -61,6 +62,25 @@ config.window_frame = {
     border_top_height = '0.25cell',
     border_bottom_height = '0.25cell',
 }
+
+-- Set window frame colors to match terminal background
+local function frame_colors_for_appearance(appear)
+    if appear:find 'Dark' then
+        return {
+            active_titlebar_bg = '#292522',
+            inactive_titlebar_bg = '#292522',
+        }
+    else
+        return {
+            active_titlebar_bg = '#F1E9E0',
+            inactive_titlebar_bg = '#F1E9E0',
+        }
+    end
+end
+
+local frame_colors = frame_colors_for_appearance(appearance)
+config.window_frame.active_titlebar_bg = frame_colors.active_titlebar_bg
+config.window_frame.inactive_titlebar_bg = frame_colors.inactive_titlebar_bg
 
 -- Standard window decorations
 config.window_decorations = 'RESIZE'
@@ -205,54 +225,57 @@ wezterm.on('user-var-changed', function(window, pane, name, value)
     end
 end)
 
--- Tab bar styling - high contrast UI colors
+-- Tab bar styling - matches melange theme colors (with boosted contrast)
 local function tab_bar_for_appearance(appear)
     if appear:find 'Dark' then
+        -- Melange dark base: bg=#292522, fg=#ECE1D7
+        -- Boosted contrast: active tab pops, inactive still readable
         return {
-            background = '#1e1e1e',
+            background = '#292522',
             active_tab = {
-                bg_color = '#3c3c3c',
-                fg_color = '#ffffff',
+                bg_color = '#C1A78E',  -- light tan from melange palette
+                fg_color = '#292522',  -- dark text for contrast
             },
             inactive_tab = {
-                bg_color = '#2d2d2d',
-                fg_color = '#a0a0a0',
+                bg_color = '#292522',  -- blends with bar
+                fg_color = '#C1A78E',  -- brighter than #867462, still muted
             },
             inactive_tab_hover = {
-                bg_color = '#3c3c3c',
-                fg_color = '#ffffff',
+                bg_color = '#34302C',
+                fg_color = '#ECE1D7',
             },
             new_tab = {
-                bg_color = '#1e1e1e',
-                fg_color = '#808080',
+                bg_color = '#292522',
+                fg_color = '#C1A78E',
             },
             new_tab_hover = {
-                bg_color = '#2d2d2d',
-                fg_color = '#ffffff',
+                bg_color = '#34302C',
+                fg_color = '#ECE1D7',
             },
         }
     else
+        -- Melange light colors (adjust if you have melange_light.toml)
         return {
-            background = '#e8e8e8',
+            background = '#F1E9E0',
             active_tab = {
                 bg_color = '#ffffff',
-                fg_color = '#1a1a1a',
+                fg_color = '#34302C',
             },
             inactive_tab = {
-                bg_color = '#d4d4d4',
-                fg_color = '#505050',
+                bg_color = '#F1E9E0',
+                fg_color = '#867462',
             },
             inactive_tab_hover = {
-                bg_color = '#ffffff',
-                fg_color = '#1a1a1a',
+                bg_color = '#E8DED5',
+                fg_color = '#34302C',
             },
             new_tab = {
-                bg_color = '#e8e8e8',
-                fg_color = '#606060',
+                bg_color = '#F1E9E0',
+                fg_color = '#867462',
             },
             new_tab_hover = {
-                bg_color = '#d4d4d4',
-                fg_color = '#1a1a1a',
+                bg_color = '#E8DED5',
+                fg_color = '#34302C',
             },
         }
     end
