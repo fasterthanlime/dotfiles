@@ -274,6 +274,36 @@ config.native_macos_fullscreen_mode = true
 -- Scrollback
 config.scrollback_lines = 5000
 
+-- No blinking cursor
+config.cursor_blink_rate = 0
+
+-- No audible bell, subtle visual flash instead
+config.audible_bell = 'Disabled'
+config.visual_bell = {
+    fade_in_duration_ms = 75,
+    fade_out_duration_ms = 75,
+    target = 'CursorColor',
+}
+
+-- Dim inactive panes slightly
+config.inactive_pane_hsb = {
+    saturation = 0.9,
+    brightness = 0.7,
+}
+
+-- Custom hyperlink rules (in addition to defaults)
+config.hyperlink_rules = wezterm.default_hyperlink_rules()
+-- GitHub issues/PRs: owner/repo#123
+table.insert(config.hyperlink_rules, {
+    regex = [[\b([A-Za-z0-9_-]+/[A-Za-z0-9_-]+)#(\d+)\b]],
+    format = 'https://github.com/$1/issues/$2',
+})
+-- Rust crate names: crate::foo or ::foo
+table.insert(config.hyperlink_rules, {
+    regex = [[\b([a-z_][a-z0-9_]*)::]],
+    format = 'https://docs.rs/$1',
+})
+
 ----------------------------------------------------------------
 -- Ghostty-like keybindings
 -- SUPER = Cmd on macOS
@@ -390,6 +420,22 @@ config.keys = {
         end),
     },
     { key = 'w', mods = 'SUPER',       action = act.CloseCurrentTab { confirm = true } },
+
+    -- Tab navigator (fuzzy find tabs) - Cmd+Shift+T
+    { key = 'T', mods = 'SUPER|SHIFT', action = act.ShowTabNavigator },
+
+    -- Workspace switcher - Cmd+Shift+W
+    {
+        key = 'W',
+        mods = 'SUPER|SHIFT|CTRL',
+        action = act.ShowLauncherArgs { flags = 'WORKSPACES' },
+    },
+
+    -- Quick select mode (select URLs, hashes, etc) - Cmd+Shift+Space
+    { key = 'Space', mods = 'SUPER|SHIFT', action = act.QuickSelect },
+
+    -- Copy mode (vim-like selection) - Cmd+Shift+X
+    { key = 'X', mods = 'SUPER|SHIFT', action = act.ActivateCopyMode },
 
     -- Switch tabs: Cmd+Shift+[ / ] like Terminal/Ghostty
     { key = '[', mods = 'SUPER|SHIFT', action = act.ActivateTabRelative(-1) },
