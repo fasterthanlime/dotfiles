@@ -46,11 +46,21 @@ config.macos_window_background_blur = 0
 ----------------------------------------------------------------
 
 config.enable_tab_bar = true
-config.use_fancy_tab_bar = false
+config.use_fancy_tab_bar = true
 config.tab_bar_at_bottom = false
 config.hide_tab_bar_if_only_one_tab = false
 config.show_tab_index_in_tab_bar = false
-config.tab_max_width = 200
+config.tab_max_width = 400
+
+-- Tab bar styling (Chrome-like)
+config.window_frame = {
+    font = wezterm.font('PT Sans Narrow', { weight = 'Bold' }),
+    font_size = 16.0,
+    border_left_width = '0.5cell',
+    border_right_width = '0.5cell',
+    border_top_height = '0.25cell',
+    border_bottom_height = '0.25cell',
+}
 
 -- Standard window decorations
 config.window_decorations = 'RESIZE'
@@ -63,87 +73,72 @@ config.window_padding = {
     bottom = 8,
 }
 
--- Custom tab title: show [domain] prefix + command/process › dir
--- Domain is shown first so it's always visible even in narrow tabs
+-- Custom tab title: show domain›dir›title
+-- We do our own right-truncation so icon+folder are always visible
 wezterm.on('format-tab-title', function(tab, tabs, panes, cfg, hover, max_width)
     local pane = tab.active_pane
     local domain = pane.domain_name or ''
     local title = pane.title or ''
-    local process = pane.foreground_process_name or ''
     local cwd = pane.current_working_dir
 
-    -- Get directory name from CWD
-    local dir = nil
-    if cwd and cwd.file_path then
-        dir = cwd.file_path:match('([^/]+)/?$')
-    end
-
-    -- Get hostname from CWD (OSC 7) or title
-    local host = nil
-    if cwd and cwd.host and cwd.host ~= '' then
-        host = cwd.host:gsub('%.local$', '') -- strip .local suffix
-    end
-    if not host then
-        host = title:match('@([^:]+):')
-    end
-
-    -- Check if title contains a running command (user@host: command format)
-    local cmd_from_title = title:match('@[^:]+:%s*(.+)$')
-    if cmd_from_title and not cmd_from_title:match('^[~/]') then
-        -- It's a command, not a path
-        cmd_from_title = cmd_from_title
-    else
-        cmd_from_title = nil
-    end
-
-    -- Clean up process name (just basename)
-    process = process:match('([^/]+)$') or process
-
-    -- Is this an interesting process (not just a shell)?
-    local dominated_procs = { zsh = true, bash = true, fish = true, sh = true, [''] = true }
-    local show_process = not dominated_procs[process]
-
-    -- Determine domain label (shown first, always visible)
-    local domain_label = nil
-    if domain == 'local' or domain == '' then
-        domain_label = 'local'
+    -- Determine domain label (emoji)
+    local icon = '💻'
+    if domain:match('^SSH:golem') then
+        icon = '🗿'
+    elseif domain:match('^SSH:souffle') then
+        icon = '💨'
     elseif domain:match('^SSH:') then
-        domain_label = domain:gsub('^SSH:', ''):gsub('^[^@]*@', '')
+        local ssh_host = domain:gsub('^SSH:', ''):gsub('^[^@]*@', '')
+        icon = ssh_host:sub(1, 3)
+    elseif domain ~= 'local' and domain ~= '' then
+        icon = domain:sub(1, 3)
+    end
+
+    -- Directory emoji mappings
+    local dir_icons = {
+        arborium = '🌲',
+        dodeca = '📐',
+        facet = '🎲',
+        cove = '🦊',
+    }
+
+    -- Get directory name from CWD
+    local dir_name = nil
+    if cwd and cwd.file_path then
+        dir_name = cwd.file_path:match('([^/]+)/?$')
+    end
+    local dir = dir_icons[dir_name] or dir_name or '~'
+
+    -- Clean up title - strip user@host: prefix if present
+    local display_title = title:gsub('^[^@]+@[^:]+:%s*', '')
+    -- Strip leading emoji/symbol if any (like ✳)
+    display_title = display_title:gsub('^[✳%s]+', '')
+
+    -- Calculate how much space we have for the title
+    -- Format: "  icon›dir›title  " (4 chars padding + 2 separators)
+    -- icon is ~2 chars visually (emoji), dir varies
+    local prefix = icon .. '›' .. dir .. '›'
+    local prefix_len = #dir + 4  -- rough estimate (emoji counts weird)
+    local available = max_width - prefix_len - 4  -- 4 for padding
+
+    -- Truncate title from the right if needed
+    if #display_title > available and available > 3 then
+        display_title = display_title:sub(1, available - 1) .. '…'
+    elseif available <= 3 then
+        display_title = ''
+    end
+
+    -- Build final display
+    local display
+    if display_title ~= '' then
+        display = icon .. ' · ' .. dir .. ' · ' .. display_title
     else
-        -- tmux or other domain - extract host if available
-        domain_label = host or domain
+        display = icon .. ' · ' .. dir
     end
 
-    -- Build the rest of the display (process/command + dir)
-    local detail_parts = {}
-    if cmd_from_title then
-        table.insert(detail_parts, cmd_from_title)
-    elseif show_process then
-        table.insert(detail_parts, process)
-    end
-    table.insert(detail_parts, dir or '~')
-
-    local detail = table.concat(detail_parts, ' › ')
-
-    -- Combine: [domain] detail
-    local display = '[' .. domain_label .. '] ' .. detail
-
-    -- Truncate if needed, but always keep the domain prefix
-    if #display > max_width - 4 then
-        local prefix = '[' .. domain_label .. '] '
-        local remaining = max_width - 7 - #prefix
-        if remaining > 3 then
-            display = prefix .. detail:sub(1, remaining) .. '…'
-        else
-            -- Tab is very narrow, just show domain
-            display = '[' .. domain_label .. ']'
-        end
-    end
-
-    -- Return formatted text
     return wezterm.format {
         { Attribute = { Intensity = tab.is_active and 'Bold' or 'Normal' } },
-        { Text = '  ' .. display .. '  ' },
+        { Text = ' ' .. display },
     }
 end)
 
@@ -212,56 +207,54 @@ wezterm.on('user-var-changed', function(window, pane, name, value)
     end
 end)
 
--- Melange tab bar styling (switches with appearance)
+-- Tab bar styling - high contrast UI colors
 local function tab_bar_for_appearance(appear)
     if appear:find 'Dark' then
         return {
-            background = '#292522',
+            background = '#1e1e1e',
             active_tab = {
-                bg_color = '#403A36',
-                fg_color = '#ECE1D7',
-                intensity = 'Bold',
+                bg_color = '#3c3c3c',
+                fg_color = '#ffffff',
             },
             inactive_tab = {
-                bg_color = '#34302C',
-                fg_color = '#867462',
+                bg_color = '#2d2d2d',
+                fg_color = '#a0a0a0',
             },
             inactive_tab_hover = {
-                bg_color = '#403A36',
-                fg_color = '#C1A78E',
+                bg_color = '#3c3c3c',
+                fg_color = '#ffffff',
             },
             new_tab = {
-                bg_color = '#292522',
-                fg_color = '#867462',
+                bg_color = '#1e1e1e',
+                fg_color = '#808080',
             },
             new_tab_hover = {
-                bg_color = '#34302C',
-                fg_color = '#C1A78E',
+                bg_color = '#2d2d2d',
+                fg_color = '#ffffff',
             },
         }
     else
         return {
-            background = '#E9E1DB',
+            background = '#e8e8e8',
             active_tab = {
-                bg_color = '#F1F1F1',
-                fg_color = '#54433A',
-                intensity = 'Bold',
+                bg_color = '#ffffff',
+                fg_color = '#1a1a1a',
             },
             inactive_tab = {
-                bg_color = '#D9D3CE',
-                fg_color = '#7D6658',
+                bg_color = '#d4d4d4',
+                fg_color = '#505050',
             },
             inactive_tab_hover = {
-                bg_color = '#F1F1F1',
-                fg_color = '#54433A',
+                bg_color = '#ffffff',
+                fg_color = '#1a1a1a',
             },
             new_tab = {
-                bg_color = '#E9E1DB',
-                fg_color = '#7D6658',
+                bg_color = '#e8e8e8',
+                fg_color = '#606060',
             },
             new_tab_hover = {
-                bg_color = '#D9D3CE',
-                fg_color = '#54433A',
+                bg_color = '#d4d4d4',
+                fg_color = '#1a1a1a',
             },
         }
     end
