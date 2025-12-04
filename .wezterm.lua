@@ -100,6 +100,7 @@ wezterm.on('format-tab-title', function(tab, tabs, panes, cfg, hover, max_width)
         dodeca = '📐',
         facet = '🎲',
         cove = '🦊',
+        amos = '🏠',
     }
 
     -- Get directory name from CWD
@@ -107,33 +108,30 @@ wezterm.on('format-tab-title', function(tab, tabs, panes, cfg, hover, max_width)
     if cwd and cwd.file_path then
         dir_name = cwd.file_path:match('([^/]+)/?$')
     end
-    local dir = dir_icons[dir_name] or dir_name or '~'
+    local dir_emoji = dir_icons[dir_name]
+    local dir = dir_emoji or dir_name or '~'
 
     -- Clean up title - strip user@host: prefix if present
     local display_title = title:gsub('^[^@]+@[^:]+:%s*', '')
     -- Strip leading emoji/symbol if any (like ✳)
     display_title = display_title:gsub('^[✳%s]+', '')
 
-    -- Calculate how much space we have for the title
-    -- Format: "  icon›dir›title  " (4 chars padding + 2 separators)
-    -- icon is ~2 chars visually (emoji), dir varies
-    local prefix = icon .. '›' .. dir .. '›'
-    local prefix_len = #dir + 4  -- rough estimate (emoji counts weird)
-    local available = max_width - prefix_len - 4  -- 4 for padding
-
-    -- Truncate title from the right if needed
-    if #display_title > available and available > 3 then
-        display_title = display_title:sub(1, available - 1) .. '…'
-    elseif available <= 3 then
-        display_title = ''
-    end
-
-    -- Build final display
+    -- Build final display (fancy tab bar handles truncation)
+    -- If dir is an emoji, no middots: 💻🏠 title
+    -- Otherwise: 💻 · dirname · title
     local display
-    if display_title ~= '' then
-        display = icon .. ' · ' .. dir .. ' · ' .. display_title
+    if dir_emoji then
+        if display_title ~= '' then
+            display = icon .. dir .. ' ' .. display_title
+        else
+            display = icon .. dir
+        end
     else
-        display = icon .. ' · ' .. dir
+        if display_title ~= '' then
+            display = icon .. ' · ' .. dir .. ' · ' .. display_title
+        else
+            display = icon .. ' · ' .. dir
+        end
     end
 
     return wezterm.format {
