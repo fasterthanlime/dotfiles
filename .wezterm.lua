@@ -55,8 +55,8 @@ config.tab_max_width = 400
 -- Tab bar styling (Chrome-like)
 -- Note: window_frame colors are set dynamically below based on appearance
 config.window_frame = {
-    font = wezterm.font('PT Sans Narrow', { weight = 'Bold' }),
-    font_size = 16.0,
+    font = wezterm.font('BreezeSans', { weight = 'Medium', stretch = 'Condensed' }),
+    font_size = 14.0,
     border_left_width = '0.5cell',
     border_right_width = '0.5cell',
     border_top_height = '0.25cell',
@@ -87,10 +87,10 @@ config.window_decorations = 'RESIZE'
 
 -- Padding inside the window
 config.window_padding = {
-    left = 12,
-    right = 12,
-    top = 12,
-    bottom = 8,
+    left = 0,
+    right = 0,
+    top = 0,
+    bottom = 0,
 }
 
 -- Custom tab title: show domain›dir›title
