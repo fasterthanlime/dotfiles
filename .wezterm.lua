@@ -63,7 +63,8 @@ config.window_padding = {
     bottom = 8,
 }
 
--- Custom tab title: show host › command/process › dir
+-- Custom tab title: show [domain] prefix + command/process › dir
+-- Domain is shown first so it's always visible even in narrow tabs
 wezterm.on('format-tab-title', function(tab, tabs, panes, cfg, hover, max_width)
     local pane = tab.active_pane
     local domain = pane.domain_name or ''
@@ -102,48 +103,44 @@ wezterm.on('format-tab-title', function(tab, tabs, panes, cfg, hover, max_width)
     local dominated_procs = { zsh = true, bash = true, fish = true, sh = true, [''] = true }
     local show_process = not dominated_procs[process]
 
-    -- Build the display string
-    local parts = {}
-
+    -- Determine domain label (shown first, always visible)
+    local domain_label = nil
     if domain == 'local' or domain == '' then
-        -- Local: show command/process and directory
-        if cmd_from_title then
-            table.insert(parts, cmd_from_title)
-        elseif show_process then
-            table.insert(parts, process)
-        end
-        table.insert(parts, dir or title)
+        domain_label = 'local'
     elseif domain:match('^SSH:') then
-        -- SSH domain
-        local ssh_host = domain:gsub('^SSH:', ''):gsub('^[^@]*@', '')
-        table.insert(parts, ssh_host)
-        if cmd_from_title then
-            table.insert(parts, cmd_from_title)
-        elseif show_process then
-            table.insert(parts, process)
-        end
-        table.insert(parts, dir or '~')
+        domain_label = domain:gsub('^SSH:', ''):gsub('^[^@]*@', '')
     else
-        -- tmux or other domain
-        if host then
-            table.insert(parts, host)
-        end
-        if cmd_from_title then
-            table.insert(parts, cmd_from_title)
-        elseif show_process then
-            table.insert(parts, process)
-        end
-        table.insert(parts, dir or '~')
+        -- tmux or other domain - extract host if available
+        domain_label = host or domain
     end
 
-    local display = table.concat(parts, ' › ')
+    -- Build the rest of the display (process/command + dir)
+    local detail_parts = {}
+    if cmd_from_title then
+        table.insert(detail_parts, cmd_from_title)
+    elseif show_process then
+        table.insert(detail_parts, process)
+    end
+    table.insert(detail_parts, dir or '~')
 
-    -- Truncate if needed
+    local detail = table.concat(detail_parts, ' › ')
+
+    -- Combine: [domain] detail
+    local display = '[' .. domain_label .. '] ' .. detail
+
+    -- Truncate if needed, but always keep the domain prefix
     if #display > max_width - 4 then
-        display = display:sub(1, max_width - 7) .. '…'
+        local prefix = '[' .. domain_label .. '] '
+        local remaining = max_width - 7 - #prefix
+        if remaining > 3 then
+            display = prefix .. detail:sub(1, remaining) .. '…'
+        else
+            -- Tab is very narrow, just show domain
+            display = '[' .. domain_label .. ']'
+        end
     end
 
-    -- Return formatted text for taller tabs
+    -- Return formatted text
     return wezterm.format {
         { Attribute = { Intensity = tab.is_active and 'Bold' or 'Normal' } },
         { Text = '  ' .. display .. '  ' },
