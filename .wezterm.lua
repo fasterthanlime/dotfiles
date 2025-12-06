@@ -327,6 +327,9 @@ table.insert(config.hyperlink_rules, {
     format = 'https://docs.rs/$1',
 })
 
+-- Close pane whenever the shell exits, regardless of exit code
+config.exit_behavior = "Close"
+
 ----------------------------------------------------------------
 -- Ghostty-like keybindings
 -- SUPER = Cmd on macOS
