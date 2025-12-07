@@ -72,8 +72,8 @@ local function frame_colors_for_appearance(appear)
         }
     else
         return {
-            active_titlebar_bg = '#F1E9E0',
-            inactive_titlebar_bg = '#F1E9E0',
+            active_titlebar_bg = '#E0D8CF',
+            inactive_titlebar_bg = '#E0D8CF',
         }
     end
 end
@@ -254,28 +254,28 @@ local function tab_bar_for_appearance(appear)
             },
         }
     else
-        -- Melange light colors (adjust if you have melange_light.toml)
+        -- Melange light: muted warm gray background, high contrast text
         return {
-            background = '#F1E9E0',
+            background = '#E0D8CF',  -- more muted than #F1E9E0
             active_tab = {
-                bg_color = '#ffffff',
-                fg_color = '#34302C',
+                bg_color = '#FAF8F5',  -- crisp off-white for active
+                fg_color = '#1A1816',  -- near-black for strong contrast
             },
             inactive_tab = {
-                bg_color = '#F1E9E0',
-                fg_color = '#867462',
+                bg_color = '#E0D8CF',  -- blends with bar
+                fg_color = '#5C564E',  -- darker than #867462 for readability
             },
             inactive_tab_hover = {
-                bg_color = '#E8DED5',
-                fg_color = '#34302C',
+                bg_color = '#D4CCC2',
+                fg_color = '#1A1816',
             },
             new_tab = {
-                bg_color = '#F1E9E0',
-                fg_color = '#867462',
+                bg_color = '#E0D8CF',
+                fg_color = '#5C564E',
             },
             new_tab_hover = {
-                bg_color = '#E8DED5',
-                fg_color = '#34302C',
+                bg_color = '#D4CCC2',
+                fg_color = '#1A1816',
             },
         }
     end
@@ -283,6 +283,11 @@ end
 
 config.colors = config.colors or {}
 config.colors.tab_bar = tab_bar_for_appearance(appearance)
+
+-- Override terminal background for light mode (more muted than default melange_light)
+if not appearance:find 'Dark' then
+    config.colors.background = '#E8E0D6'  -- muted warm gray
+end
 
 ----------------------------------------------------------------
 -- Behaviour

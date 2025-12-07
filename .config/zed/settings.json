@@ -47,10 +47,20 @@
       "projects": [
         {
           "paths": [
+            "/Users/amos/bearcove/facet"
+          ]
+        },
+        {
+          "paths": [
             "/home/amos/bearcove/facet"
           ]
         }
       ]
+    },
+    {
+      "host": "souffle",
+      "args": [],
+      "projects": []
     }
   ],
   "cursor_blink": false,
