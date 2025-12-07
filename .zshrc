@@ -176,6 +176,7 @@ alias clau="claude --model haiku --allow-dangerously-skip-permissions"
 alias codex="codex --full-auto --search"
 
 alias gid="git diff --staged"
+alias gpnv="git push --no-verify"
 
 # mocap likes its process
 ulimit -n 4096
