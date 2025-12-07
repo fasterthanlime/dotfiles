@@ -151,7 +151,6 @@ alias crd="cargo run" # cargo run "dev"
 alias crp="cargo run --release" # cargo run "prod"
 alias lg="lazygit"
 alias p="pnpm"
-alias npm="echo no"
 
 # source <(jj util completion zsh)
 
@@ -215,4 +214,9 @@ wezcopy() {
     data=$(cat)
     b64=$(printf '%s' "$data" | base64 | tr -d '\n')
     printf '\033]1337;SetUserVar=%s=%s\007' wez_copy "$b64"
+}
+
+
+interactive() {
+    export GIT_PAGER="less -R"
 }

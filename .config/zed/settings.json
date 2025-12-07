@@ -47,22 +47,7 @@
       "projects": [
         {
           "paths": [
-            "/home/amos"
-          ]
-        },
-        {
-          "paths": [
-            "/home/amos/bearcove/pikru"
-          ]
-        },
-        {
-          "paths": [
-            "/home/amos/cove"
-          ]
-        },
-        {
-          "paths": [
-            "/home/amos/facet"
+            "/home/amos/bearcove/facet"
           ]
         }
       ]
@@ -77,7 +62,11 @@
     "light": "Melange Light"
   },
   "terminal": {
-    "keep_selection_on_copy": false
+    "keep_selection_on_copy": false,
+    "env": {
+      // for the poor bots who get confused
+      "GIT_PAGER": ""
+    }
   },
   "languages": {
     "Markdown-Inline": {
@@ -167,7 +156,7 @@
     "default_profile": "write",
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-sonnet-4"
+      "model": "claude-haiku-4-5"
     },
     "profiles": {
       "write": {
