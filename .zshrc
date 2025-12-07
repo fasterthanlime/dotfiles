@@ -207,8 +207,10 @@ autoload -Uz add-zsh-hook
 add-zsh-hook precmd __wezterm_osc7
 add-zsh-hook precmd __wezterm_title
 
+# Doesn't work anyway
 export DISABLE_COST_WARNINGS=1
 
+# Pipe to this to copy remotely
 wezcopy() {
     local data b64
     data=$(cat)
@@ -216,7 +218,22 @@ wezcopy() {
     printf '\033]1337;SetUserVar=%s=%s\007' wez_copy "$b64"
 }
 
-
+# Use inside zed to counteract GIT_PAGER=""
 interactive() {
     export GIT_PAGER="less -R"
+}
+
+# push tag
+ptag() {
+	git tag -a "$1" -m "$1" && git push origin "$1"
+}
+
+# replace tag
+rtag() {
+	git tag -d "$1" && git push origin :"$1" && pushtag "$1"
+}
+
+# list tags
+ltag() {
+	git tag --sort=-v:refname
 }
