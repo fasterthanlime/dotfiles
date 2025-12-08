@@ -229,14 +229,13 @@ interactive() {
 
 # helper: ensure tag looks like vX.Y.Z (digits only)
 is_semver_tag() {
-local tag="$1"
-# zsh pattern: v + digits + . + digits + . + digits
-if [[ "$tag" == v[0-9]##.[0-9]##.[0-9]## ]]; then
-    return 0
-else
-    echo "error: tag '$tag' must match vX.Y.Z (e.g. v1.2.3)" >&2
-    return 1
-fi
+    local tag="$1"
+    if [[ "$tag" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+        return 0
+    else
+        echo "error: tag '$tag' must match vX.Y.Z (e.g. v1.2.3)" >&2
+        return 1
+    fi
 }
 
 # push tag
