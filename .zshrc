@@ -227,17 +227,43 @@ interactive() {
     export GIT_PAGER="less -R"
 }
 
+# helper: ensure tag looks like vX.Y.Z (digits only)
+is_semver_tag() {
+local tag="$1"
+# zsh pattern: v + digits + . + digits + . + digits
+if [[ "$tag" == v[0-9]##.[0-9]##.[0-9]## ]]; then
+    return 0
+else
+    echo "error: tag '$tag' must match vX.Y.Z (e.g. v1.2.3)" >&2
+    return 1
+fi
+}
+
 # push tag
 ptag() {
-	git tag -a "$1" -m "$1" && git push origin "$1"
+local tag="$1"
+if [[ -z "$tag" ]]; then
+    echo "usage: ptag vX.Y.Z" >&2
+    return 1
+fi
+is_semver_tag "$tag" || return 1
+git tag -a "$tag" -m "$tag" && git push origin "$tag"
 }
 
 # replace tag
 rtag() {
-	git tag -d "$1" && git push origin :"$1" && ptag "$1"
+local tag="$1"
+if [[ -z "$tag" ]]; then
+    echo "usage: rtag vX.Y.Z" >&2
+    return 1
+fi
+is_semver_tag "$tag" || return 1
+git tag -d "$tag" && git push origin :"$tag" && ptag "$tag"
 }
 
 # list tags
 ltag() {
-	git tag --sort=-v:refname
+git tag --sort=-v:refname
 }
+
+
