@@ -234,7 +234,7 @@ ptag() {
 
 # replace tag
 rtag() {
-	git tag -d "$1" && git push origin :"$1" && pushtag "$1"
+	git tag -d "$1" && git push origin :"$1" && ptag "$1"
 }
 
 # list tags

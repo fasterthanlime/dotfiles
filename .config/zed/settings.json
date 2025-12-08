@@ -47,7 +47,7 @@
       "projects": [
         {
           "paths": [
-            "/Users/amos/bearcove/facet"
+            "/home/amos/bearcove"
           ]
         },
         {
@@ -166,7 +166,7 @@
     "default_profile": "write",
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-haiku-4-5"
+      "model": "claude-sonnet-4"
     },
     "profiles": {
       "write": {
