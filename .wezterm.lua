@@ -635,6 +635,13 @@ config.mouse_bindings = {
         action = wezterm.action.ExtendSelectionToMouseCursor 'Cell',
     },
 
+    -- Plain click: complete selection (don't open links)
+    {
+        event = { Up = { streak = 1, button = 'Left' } },
+        mods = 'NONE',
+        action = wezterm.action.CompleteSelection 'ClipboardAndPrimarySelection',
+    },
+
     -- Cmd + Click opens links
     {
         event = { Up = { streak = 1, button = 'Left' } },
