@@ -9,7 +9,6 @@ $c\
 $golang\
 $java\
 $kotlin\
-$nodejs\
 $python\
 $zig\
 $nix_shell\
@@ -51,7 +50,7 @@ read_only_style = "bold #D47766"
 [git_branch]
 symbol = ""
 style = "bold #85B695"
-format = " [›$symbol $branch(:$remote_branch)]($style)"
+format = " [›$symbol $branch(:$remote_branch)]($style) "
 
 [cmd_duration]
 min_time = 500
@@ -66,7 +65,7 @@ time_format = "%H:%M"
 
 [git_status]
 style = "bold #E49B5D"
-format = '( [$all_status$ahead_behind]($style))'
+format = '([$all_status$ahead_behind]($style))'
 staged = '[󰐕 $count](bold #85B695)'
 modified = '[󰏫 $count](bold #EBC06D)'
 untracked = '[󰋗 $count](bold #89B3B6)'
