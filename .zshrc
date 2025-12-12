@@ -150,6 +150,7 @@ alias cagro="cargo"
 alias carho="cargo"
 alias carho="cargo"
 alias crago="cargo"
+alias cx="cargo xtask"
 alias crd="cargo run" # cargo run "dev"
 alias crp="cargo run --release" # cargo run "prod"
 alias lg="lazygit"
@@ -246,7 +247,7 @@ if [[ -z "$tag" ]]; then
     return 1
 fi
 is_semver_tag "$tag" || return 1
-git tag -a "$tag" -m "$tag" && git push origin "$tag"
+git tag -a "$tag" -m "$tag" && git push origin "$tag" --no-verify
 }
 
 # replace tag
@@ -257,12 +258,10 @@ if [[ -z "$tag" ]]; then
     return 1
 fi
 is_semver_tag "$tag" || return 1
-git tag -d "$tag" && git push origin :"$tag" && ptag "$tag"
+git tag -d "$tag" && git push origin :"$tag" --no-verify && ptag "$tag"
 }
 
 # list tags
 ltag() {
 git tag --sort=-v:refname
 }
-
-
