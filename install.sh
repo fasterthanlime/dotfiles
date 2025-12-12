@@ -18,11 +18,12 @@ mkdir -p ~/.config/
 mkdir -p ~/.config/tmux
 mkdir -p ~/.config/fish
 mkdir -p ~/.config/wezterm/colors
+mkdir -p ~/.config/zellij
 
 git config --global core.excludesFile '~/.gitignore'
 
 for i in .gitignore .zshenv .zshrc .zshrc.d .wezterm.lua .config/starship.toml .config/zed .config/zellij/config.kdl .config/tmux/tmux.conf .config/fish/config.fish .config/fish/git-alias.fish .config/grit.conf .config/wezterm/colors/melange_dark.toml .config/wezterm/colors/melange_light.toml; do
-	ln -f -s $script_dir/$i ~/$(dirname $i)
+	ln -f -s $script_dir/$i ~/$(dirname $i)/
 done
 echo "Creating symlinks... done!"
 
