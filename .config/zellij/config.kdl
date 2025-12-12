@@ -197,7 +197,7 @@ keybinds clear-defaults=true {
         // bind "Ctrl t" { SwitchToMode "tab"; }
     }
     shared_except "locked" "pane" {
-        bind "Ctrl p" { SwitchToMode "pane"; }
+        // bind "Ctrl p" { SwitchToMode "pane"; }
     }
     shared_except "locked" "resize" {
         bind "Ctrl n" { SwitchToMode "resize"; }
