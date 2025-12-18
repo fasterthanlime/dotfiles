@@ -46,18 +46,27 @@
       "args": [],
       "projects": [
         {
-          "paths": ["/home/amos/bearcove"],
+          "paths": [
+            "/home/amos/bearcove"
+          ]
         },
         {
-          "paths": ["/home/amos/bearcove/facet"],
+          "paths": [
+            "/home/amos/bearcove/dodeca"
+          ]
         },
-      ],
+        {
+          "paths": [
+            "/home/amos/bearcove/facet"
+          ]
+        }
+      ]
     },
     {
       "host": "souffle",
       "args": [],
-      "projects": [],
-    },
+      "projects": []
+    }
   ],
   "cursor_blink": false,
   "outline_panel": {
@@ -162,7 +171,7 @@
     "default_profile": "write",
     "default_model": {
       "provider": "openrouter",
-      "model": "moonshotai/kimi-k2-thinking",
+      "model": "openai/gpt-5.1-codex-max",
     },
     "profiles": {
       "write": {
