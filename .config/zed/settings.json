@@ -46,27 +46,21 @@
       "args": [],
       "projects": [
         {
-          "paths": [
-            "/home/amos/bearcove"
-          ]
+          "paths": ["/home/amos/bearcove"],
         },
         {
-          "paths": [
-            "/home/amos/bearcove/dodeca"
-          ]
+          "paths": ["/home/amos/bearcove/dodeca"],
         },
         {
-          "paths": [
-            "/home/amos/bearcove/facet"
-          ]
-        }
-      ]
+          "paths": ["/home/amos/bearcove/facet"],
+        },
+      ],
     },
     {
       "host": "souffle",
       "args": [],
-      "projects": []
-    }
+      "projects": [],
+    },
   ],
   "cursor_blink": false,
   "outline_panel": {
@@ -94,7 +88,9 @@
       // which adds strays `>` when quoting long pasted things.
       "soft_wrap": "none",
     },
-    "HTML": {},
+    "HTML": {
+      "format_on_save": "off",
+    },
     "Rust": {
       "format_on_save": "on",
     },
@@ -166,12 +162,12 @@
     "play_sound_when_agent_done": true,
     "inline_assistant_model": {
       "provider": "zed.dev",
-      "model": "claude-sonnet-4",
+      "model": "claude-haiku-4-5",
     },
     "default_profile": "write",
     "default_model": {
-      "provider": "openrouter",
-      "model": "openai/gpt-5.1-codex-max",
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4",
     },
     "profiles": {
       "write": {

@@ -103,8 +103,7 @@ alias dt="cargo test --doc --all-features"
 alias cla="cargo clippy --all-targets --all-features"
 alias claf="cargo clippy --all-targets --all-features --fix --allow-dirty"
 
-alias kubectl="tsh kubectl"
-alias k="tsh kubectl"
+alias k="kubectl"
 alias tf="tofu"
 
 # alias mosh="mosh --server=/opt/homebrew/bin/mosh-server"
