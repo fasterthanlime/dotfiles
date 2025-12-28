@@ -181,6 +181,8 @@ alias codex="codex --full-auto --search"
 alias gid="git diff --staged"
 alias gpnv="git push --no-verify"
 
+alias oc="opencode"
+
 # mocap likes its process
 ulimit -n 4096
 
