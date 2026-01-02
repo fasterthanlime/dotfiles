@@ -19,6 +19,21 @@
     "enabled_in_text_threads": false,
   },
   "context_servers": {
+    "qdrant": {
+      "enabled": true,
+      "command": "node",
+      "args": [
+        "/Users/amos/bearcove/qdrant-mcp-server/build/index.js"
+      ],
+      "env": {
+        "EMBEDDING_BASE_URL": "https://ollama.bearcove.cloud",
+        "QDRANT_URL": "https://qdrant.bearcove.cloud"
+      }
+    },
+    "mcp-server-brave-search": {
+      "enabled": true,
+      "settings": {}
+    },
     "chrome-devtools": {
       "enabled": false,
       "command": "npx",
@@ -74,7 +89,7 @@
     "keep_selection_on_copy": false,
     "env": {
       // for the poor bots who get confused
-      "GIT_PAGER": "",
+      // "GIT_PAGER": "",
     },
   },
   "languages": {
@@ -117,6 +132,25 @@
     },
   },
   "language_models": {
+    "openai_compatible": {
+      "GLM": {
+        "api_url": "https://api.z.ai/api/coding/paas/v4",
+        "available_models": [
+          {
+            "name": "glm-4.7",
+            "max_tokens": 200000,
+            "max_output_tokens": 128000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false
+            }
+          }
+        ]
+      }
+    },
     "lmstudio": {},
   },
   "base_keymap": "VSCode",
@@ -166,8 +200,8 @@
     },
     "default_profile": "write",
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4",
+      "provider": "GLM",
+      "model": "glm-4.7",
     },
     "profiles": {
       "write": {
@@ -227,7 +261,6 @@
   "file_types": {
     "Jinja2": ["jinja", "j2"],
     "XML": ["svg"],
-    "TypeScript": ["ts", "tsx"],
     "Markdown": ["in"],
     "CSS": ["css.jinja"],
   },

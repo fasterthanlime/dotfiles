@@ -268,6 +268,7 @@ git tag --sort=-v:refname
 }
 
 alias claude-mem='bun "/Users/amos/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
+alias dc="docker compose"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
