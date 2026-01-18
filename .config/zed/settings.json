@@ -16,23 +16,21 @@
       "proxy_no_verify": null,
       "enterprise_uri": null,
     },
-    "enabled_in_text_threads": false,
+    "enabled_in_text_threads": true,
   },
   "context_servers": {
     "qdrant": {
       "enabled": true,
       "command": "node",
-      "args": [
-        "/Users/amos/bearcove/qdrant-mcp-server/build/index.js"
-      ],
+      "args": ["/Users/amos/bearcove/qdrant-mcp-server/build/index.js"],
       "env": {
         "EMBEDDING_BASE_URL": "https://ollama.bearcove.cloud",
-        "QDRANT_URL": "https://qdrant.bearcove.cloud"
-      }
+        "QDRANT_URL": "https://qdrant.bearcove.cloud",
+      },
     },
     "mcp-server-brave-search": {
       "enabled": true,
-      "settings": {}
+      "settings": {},
     },
     "chrome-devtools": {
       "enabled": false,
@@ -95,9 +93,25 @@
   "languages": {
     "Markdown-Inline": {
       "show_edit_predictions": false,
+      "inlay_hints": {
+        "enabled": true,
+        "show_parameter_hints": true,
+        "show_background": true,
+        "show_type_hints": true,
+        "show_value_hints": true,
+        "show_other_hints": true,
+      },
     },
     "Markdown": {
       "show_edit_predictions": false,
+      "inlay_hints": {
+        "enabled": true,
+        "show_parameter_hints": true,
+        "show_background": true,
+        "show_type_hints": true,
+        "show_value_hints": true,
+        "show_other_hints": true,
+      },
       "preferred_line_length": 80,
       // soft wrap fucks with vim's "I" — it inserts where the soft wrap happens,
       // which adds strays `>` when quoting long pasted things.
@@ -145,11 +159,11 @@
               "tools": true,
               "images": true,
               "parallel_tool_calls": false,
-              "prompt_cache_key": false
-            }
-          }
-        ]
-      }
+              "prompt_cache_key": false,
+            },
+          },
+        ],
+      },
     },
     "lmstudio": {},
   },
@@ -189,19 +203,21 @@
     "line_width": 4,
   },
   "features": {
-    "edit_prediction_provider": "supermaven",
+    "edit_prediction_provider": "zed",
   },
   "agent": {
+    "show_turn_stats": true,
+    "notify_when_agent_waiting": "all_screens",
     "single_file_review": false,
     "play_sound_when_agent_done": true,
     "inline_assistant_model": {
       "provider": "zed.dev",
-      "model": "claude-haiku-4-5",
+      "model": "claude-sonnet-4-5",
     },
     "default_profile": "write",
     "default_model": {
-      "provider": "GLM",
-      "model": "glm-4.7",
+      "provider": "zed.dev",
+      "model": "claude-opus-4-5",
     },
     "profiles": {
       "write": {
@@ -269,6 +285,11 @@
     "words": "fallback",
   },
   "agent_servers": {
+    "claude": {
+      "favorite_models": [],
+      "default_config_options": {},
+      "favorite_config_option_values": {}
+    },
     "kimi": {
       "type": "custom",
       "command": "kimi",
@@ -277,6 +298,21 @@
     },
   },
   "lsp": {
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always"
+          }
+        },
+        "javascript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always"
+          }
+        }
+      },
+      "enable_lsp_tasks": true
+    },
     "rust-analyzer": {
       "initialization_options": {
         "imports": {
