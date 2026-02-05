@@ -7,6 +7,13 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "read_only_files": [
+    "**/.rustup/**",
+    "**/.cargo/registry/**",
+    "**/.cargo/git/**",
+    "target/**/*.rs",
+    "**/*.lock",
+  ],
   "show_signature_help_after_edits": true,
   "use_system_window_tabs": false,
   "edit_predictions": {
@@ -14,30 +21,43 @@
     "copilot": {
       "proxy": null,
       "proxy_no_verify": null,
-      "enterprise_uri": null
+      "enterprise_uri": null,
     },
-    "enabled_in_text_threads": false
+    "enabled_in_text_threads": true,
   },
   "context_servers": {
+    "qdrant": {
+      "enabled": false,
+      "command": "node",
+      "args": ["/Users/amos/bearcove/qdrant-mcp-server/build/index.js"],
+      "env": {
+        "EMBEDDING_BASE_URL": "https://ollama.bearcove.cloud",
+        "QDRANT_URL": "https://qdrant.bearcove.cloud",
+      },
+    },
+    "mcp-server-brave-search": {
+      "enabled": true,
+      "settings": {},
+    },
     "chrome-devtools": {
       "enabled": false,
       "command": "npx",
-      "args": ["chrome-devtools-mcp@latest"]
+      "args": ["chrome-devtools-mcp@latest"],
     },
     "rust-analyzer": {
       "enabled": false,
       "command": "rust-analyzer-mcp",
-      "args": []
+      "args": [],
     },
     "mcp-server-sequential-thinking": {
       "enabled": false,
-      "settings": {}
-    }
+      "settings": {},
+    },
   },
   "icon_theme": "Bearded Icon Theme",
   "use_system_path_prompts": false,
   "minimap": {
-    "show": "never"
+    "show": "never",
   },
   "ssh_connections": [
     {
@@ -46,68 +66,119 @@
       "args": [],
       "projects": [
         {
-          "paths": [
-            "/home/amos"
-          ]
+          "paths": ["/home/amos/bearcove"],
         },
         {
-          "paths": [
-            "/home/amos/cove"
-          ]
-        }
-      ]
-    }
+          "paths": ["/home/amos/bearcove/dodeca"],
+        },
+        {
+          "paths": ["/home/amos/bearcove/facet"],
+        },
+      ],
+    },
+    {
+      "host": "souffle",
+      "args": [],
+      "projects": [],
+    },
+    {
+      "host": "golem",
+      "username": "amos",
+      "args": [],
+      "projects": [],
+    },
   ],
   "cursor_blink": false,
   "outline_panel": {
-    "dock": "right"
+    "dock": "right",
   },
   "theme": {
     "dark": "Melange Dark",
-    "light": "Melange Light"
+    "light": "Quiet Light",
   },
   "terminal": {
-    "keep_selection_on_copy": false
+    "keep_selection_on_copy": false,
+    "env": {
+      // for the poor bots who get confused
+      // "GIT_PAGER": "",
+    },
   },
   "languages": {
     "Markdown-Inline": {
-      "show_edit_predictions": false
+      "show_edit_predictions": false,
+      "inlay_hints": {
+        "enabled": true,
+        "show_parameter_hints": true,
+        "show_background": true,
+        "show_type_hints": true,
+        "show_value_hints": true,
+        "show_other_hints": true,
+      },
     },
     "Markdown": {
       "show_edit_predictions": false,
+      "inlay_hints": {
+        "enabled": true,
+        "show_parameter_hints": true,
+        "show_background": true,
+        "show_type_hints": true,
+        "show_value_hints": true,
+        "show_other_hints": true,
+      },
       "preferred_line_length": 80,
       // soft wrap fucks with vim's "I" — it inserts where the soft wrap happens,
       // which adds strays `>` when quoting long pasted things.
-      "soft_wrap": "none"
+      "soft_wrap": "none",
     },
-    "HTML": {},
+    "HTML": {
+      "format_on_save": "off",
+    },
     "Rust": {
-      "format_on_save": "on"
+      "format_on_save": "on",
     },
     "TOML": {
-      "format_on_save": "on"
+      "format_on_save": "on",
     },
     "SCSS": {
-      "format_on_save": "off"
+      "format_on_save": "off",
     },
     "TypeScript": {
-      "format_on_save": "on"
+      "format_on_save": "on",
     },
     "Svelte": {
-      "format_on_save": "on"
+      "format_on_save": "on",
     },
     "Just": {
-      "format_on_save": "on"
+      "format_on_save": "on",
     },
     "Terraform": {
-      "format_on_save": "on"
+      "format_on_save": "on",
     },
     "YAML": {
-      "format_on_save": "off"
-    }
+      "format_on_save": "off",
+    },
   },
   "language_models": {
-    "lmstudio": {}
+    "openai_compatible": {
+      "GLM": {
+        "api_url": "https://api.z.ai/api/coding/paas/v4",
+        "available_models": [
+          {
+            "name": "glm-4.7",
+            "max_tokens": 200000,
+            "max_output_tokens": 128000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+        ],
+      },
+    },
+    "lmstudio": {},
   },
   "base_keymap": "VSCode",
   "buffer_font_family": "IosevkaTerm Nerd Font",
@@ -116,48 +187,50 @@
   "ui_font_size": 16,
   "inlay_hints": {
     "enabled": true,
-    "show_background": true
+    "show_background": true,
   },
   "vim_mode": true,
   "vim": {
     "use_system_clipboard": "always",
-    "use_smartcase_find": true
+    "use_smartcase_find": true,
   },
   "show_whitespaces": "selection",
   "tab_bar": {
-    "show": true
+    "show": true,
   },
   "toolbar": {
     "breadcrumbs": true,
-    "quick_actions": false
+    "quick_actions": false,
   },
   "scrollbar": {
-    "show": "always"
+    "show": "always",
   },
   "gutter": {
-    "folds": false
+    "folds": false,
   },
   "project_panel": {
-    "button": true
+    "button": true,
   },
   "indent_guides": {
     "coloring": "indent_aware",
-    "line_width": 4
+    "line_width": 4,
   },
   "features": {
-    "edit_prediction_provider": "supermaven"
+    "edit_prediction_provider": "zed",
   },
   "agent": {
+    "show_turn_stats": true,
+    "notify_when_agent_waiting": "all_screens",
     "single_file_review": false,
     "play_sound_when_agent_done": true,
     "inline_assistant_model": {
       "provider": "zed.dev",
-      "model": "claude-sonnet-4"
+      "model": "claude-sonnet-4-5",
     },
     "default_profile": "write",
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-sonnet-4"
+      "model": "claude-sonnet-4-5",
     },
     "profiles": {
       "write": {
@@ -185,51 +258,107 @@
           "symbol_info": true,
           "terminal": true,
           "thinking": true,
-          "web_search": true
+          "web_search": true,
         },
         "enable_all_context_servers": true,
-        "context_servers": {}
-      }
+        "context_servers": {},
+      },
     },
     "always_allow_tool_actions": true,
     "inline_alternatives": [],
-    "stream_edits": false
+    "stream_edits": false,
   },
   "preview_tabs": {
-    "enabled": false
+    "enabled": false,
   },
   "tabs": {
     "file_icons": true,
     "git_status": true,
-    "show_diagnostics": "all"
+    "show_diagnostics": "all",
   },
   "diagnostics": {
     "button": true,
-    "include_warnings": true
+    "include_warnings": true,
   },
   "slash_commands": {
     "docs": {
-      "enabled": true
-    }
+      "enabled": true,
+    },
   },
   "preferred_line_length": 100,
   "soft_wrap": "none",
   "file_types": {
     "Jinja2": ["jinja", "j2"],
     "XML": ["svg"],
-    "TypeScript": ["ts", "tsx"],
     "Markdown": ["in"],
-    "CSS": ["css.jinja"]
+    "CSS": ["css.jinja"],
   },
   "show_edit_predictions": true,
   "completions": {
-    "words": "fallback"
+    "words": "fallback",
   },
   "agent_servers": {
+    "codex": {
+      "favorite_config_option_values": {
+        "mode": [
+          "full-access"
+        ]
+      },
+      "favorite_models": [
+        "gpt-5.2-codex/high",
+        "gpt-5.2-codex/medium"
+      ]
+    },
+    "claude": {
+      "default_mode": "bypassPermissions",
+      "favorite_models": [],
+      "default_config_options": {},
+      "favorite_config_option_values": {},
+    },
     "kimi": {
+      "type": "custom",
       "command": "kimi",
-      "args": ["--acp"],
-      "env": {}
-    }
-  }
+      "args": ["acp"],
+    },
+  },
+  "lsp": {
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always",
+          },
+        },
+        "javascript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always",
+          },
+        },
+      },
+      "enable_lsp_tasks": true,
+    },
+    "rust-analyzer": {
+      "initialization_options": {
+        "imports": {
+          "preferNoStd": false,
+        },
+        "check": {
+          "command": "clippy",
+          "workspace": true,
+          "allTargets": true,
+        },
+        "diagnostics": {
+          "experimental": {
+            // "enable": true
+          },
+          "styleLints": {
+            "enable": true,
+          },
+        },
+        "cargo": {
+          "features": "all",
+        },
+      },
+    },
+  },
 }

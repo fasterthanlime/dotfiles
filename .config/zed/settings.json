@@ -7,6 +7,13 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "read_only_files": [
+    "**/.rustup/**",
+    "**/.cargo/registry/**",
+    "**/.cargo/git/**",
+    "target/**/*.rs",
+    "**/*.lock",
+  ],
   "show_signature_help_after_edits": true,
   "use_system_window_tabs": false,
   "edit_predictions": {
@@ -19,28 +26,9 @@
     "enabled_in_text_threads": true,
   },
   "context_servers": {
-    "qdrant": {
-      "enabled": true,
-      "command": "node",
-      "args": ["/Users/amos/bearcove/qdrant-mcp-server/build/index.js"],
-      "env": {
-        "EMBEDDING_BASE_URL": "https://ollama.bearcove.cloud",
-        "QDRANT_URL": "https://qdrant.bearcove.cloud",
-      },
-    },
     "mcp-server-brave-search": {
       "enabled": true,
       "settings": {},
-    },
-    "chrome-devtools": {
-      "enabled": false,
-      "command": "npx",
-      "args": ["chrome-devtools-mcp@latest"],
-    },
-    "rust-analyzer": {
-      "enabled": false,
-      "command": "rust-analyzer-mcp",
-      "args": [],
     },
     "mcp-server-sequential-thinking": {
       "enabled": false,
@@ -50,7 +38,7 @@
   "icon_theme": "Bearded Icon Theme",
   "use_system_path_prompts": false,
   "minimap": {
-    "show": "never",
+    "show": "auto",
   },
   "ssh_connections": [
     {
@@ -74,6 +62,12 @@
       "args": [],
       "projects": [],
     },
+    {
+      "host": "golem",
+      "username": "amos",
+      "args": [],
+      "projects": [],
+    },
   ],
   "cursor_blink": false,
   "outline_panel": {
@@ -81,14 +75,11 @@
   },
   "theme": {
     "dark": "Melange Dark",
-    "light": "Melange Light",
+    "light": "Hex Light Theme",
   },
   "terminal": {
+    "font_family": "Maple Mono NF",
     "keep_selection_on_copy": false,
-    "env": {
-      // for the poor bots who get confused
-      // "GIT_PAGER": "",
-    },
   },
   "languages": {
     "Markdown-Inline": {
@@ -168,9 +159,10 @@
     "lmstudio": {},
   },
   "base_keymap": "VSCode",
-  "buffer_font_family": "IosevkaTerm Nerd Font",
+  "buffer_font_family": "Maple Mono",
+  // "buffer_font_family": "IosevkaTerm Nerd Font",
   // "buffer_font_family": "Berkeley Mono",
-  "buffer_font_size": 16.0,
+  "buffer_font_size": 14.0,
   "ui_font_size": 16,
   "inlay_hints": {
     "enabled": true,
@@ -202,9 +194,6 @@
     "coloring": "indent_aware",
     "line_width": 4,
   },
-  "features": {
-    "edit_prediction_provider": "zed",
-  },
   "agent": {
     "show_turn_stats": true,
     "notify_when_agent_waiting": "all_screens",
@@ -217,43 +206,10 @@
     "default_profile": "write",
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-opus-4-5",
-    },
-    "profiles": {
-      "write": {
-        "name": "Write",
-        "tools": {
-          "open": true,
-          "create_directory": true,
-          "batch_tool": true,
-          "code_actions": true,
-          "code_symbols": true,
-          "contents": true,
-          "copy_path": true,
-          "create_file": true,
-          "delete_path": true,
-          "diagnostics": true,
-          "edit_file": true,
-          "fetch": true,
-          "list_directory": true,
-          "move_path": true,
-          "now": true,
-          "find_path": true,
-          "read_file": true,
-          "grep": true,
-          "rename": true,
-          "symbol_info": true,
-          "terminal": true,
-          "thinking": true,
-          "web_search": true,
-        },
-        "enable_all_context_servers": true,
-        "context_servers": {},
-      },
+      "model": "claude-sonnet-4-5",
     },
     "always_allow_tool_actions": true,
     "inline_alternatives": [],
-    "stream_edits": false,
   },
   "preview_tabs": {
     "enabled": false,
@@ -266,11 +222,6 @@
   "diagnostics": {
     "button": true,
     "include_warnings": true,
-  },
-  "slash_commands": {
-    "docs": {
-      "enabled": true,
-    },
   },
   "preferred_line_length": 100,
   "soft_wrap": "none",
@@ -285,16 +236,22 @@
     "words": "fallback",
   },
   "agent_servers": {
+    "codex": {
+      "favorite_config_option_values": {
+        "mode": ["full-access"],
+      },
+      "favorite_models": ["gpt-5.2-codex/high", "gpt-5.2-codex/medium"],
+    },
     "claude": {
+      "default_mode": "bypassPermissions",
       "favorite_models": [],
       "default_config_options": {},
-      "favorite_config_option_values": {}
+      "favorite_config_option_values": {},
     },
     "kimi": {
       "type": "custom",
       "command": "kimi",
-      "args": ["--acp"],
-      "env": {},
+      "args": ["acp"],
     },
   },
   "lsp": {
@@ -302,16 +259,16 @@
       "settings": {
         "typescript": {
           "updateImportsOnFileMove": {
-            "enabled": "always"
-          }
+            "enabled": "always",
+          },
         },
         "javascript": {
           "updateImportsOnFileMove": {
-            "enabled": "always"
-          }
-        }
+            "enabled": "always",
+          },
+        },
       },
-      "enable_lsp_tasks": true
+      "enable_lsp_tasks": true,
     },
     "rust-analyzer": {
       "initialization_options": {

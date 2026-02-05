@@ -4,6 +4,11 @@
     "body": ["```rust", "$1", "```"],
     "description": "Rust code block"
   },
+  "styx": {
+    "prefix": "st",
+    "body": ["```styx", "$1", "```"],
+    "description": "Styx code block"
+  },
   "asm": {
     "prefix": "asm",
     "body": ["```asm", "$1", "```"],
