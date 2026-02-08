@@ -266,7 +266,7 @@ git tag --sort=-v:refname
 alias claude-mem='bun "/Users/amos/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
 alias dc="docker compose"
 
-export GIT_PAGER="$HOME/.cargo/bin/smart-pager"
+# export GIT_PAGER="$HOME/.cargo/bin/smart-pager"
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
