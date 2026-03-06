@@ -2,16 +2,14 @@
   "agent_servers": {
     "claude": {
       "default_config_options": {
-        "mode": "bypassPermissions"
-      }
+        "mode": "bypassPermissions",
+      },
     },
     "codex": {
       "favorite_config_option_values": {
-        "mode": [
-          "full-access"
-        ]
-      }
-    }
+        "mode": ["full-access"],
+      },
+    },
   },
   "use_system_path_prompts": true,
   "use_system_prompts": false,
@@ -19,9 +17,9 @@
     "tool_permissions": {
       "tools": {
         "terminal": {
-          "default": "allow"
-        }
-      }
+          "default": "allow",
+        },
+      },
     },
     "default_profile": "write",
     "show_turn_stats": true,
