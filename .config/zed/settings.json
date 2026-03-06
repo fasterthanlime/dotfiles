@@ -17,7 +17,8 @@
   "show_signature_help_after_edits": true,
   "use_system_window_tabs": false,
   "edit_predictions": {
-    "mode": "subtle",
+    "provider": "mercury",
+    "mode": "eager",
     "copilot": {
       "proxy": null,
       "proxy_no_verify": null,
@@ -38,7 +39,7 @@
   "icon_theme": "Bearded Icon Theme",
   "use_system_path_prompts": false,
   "minimap": {
-    "show": "auto",
+    "show": "never",
   },
   "ssh_connections": [
     {
@@ -74,8 +75,8 @@
     "dock": "right",
   },
   "theme": {
-    "dark": "Melange Dark",
-    "light": "Hex Light Theme",
+    "dark": "Fleet Dark",
+    "light": "Fleet Light",
   },
   "terminal": {
     "font_family": "Maple Mono NF",
@@ -206,7 +207,7 @@
     "default_profile": "write",
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-sonnet-4-5",
+      "model": "gpt-5.2-codex",
     },
     "always_allow_tool_actions": true,
     "inline_alternatives": [],

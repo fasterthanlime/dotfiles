@@ -156,8 +156,6 @@ alias crp="cargo run --release" # cargo run "prod"
 alias lg="lazygit"
 alias p="pnpm"
 
-# source <(jj util completion zsh)
-
 . "$HOME/.cargo/env"
 
 # pnpm
@@ -170,10 +168,6 @@ esac
 
 eval "$(direnv hook zsh)"
 
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/amos/.lmstudio/bin"
-
 alias rp="release-plz"
 alias claude="claude --allow-dangerously-skip-permissions"
 alias clau="claude --model haiku --allow-dangerously-skip-permissions"
@@ -182,40 +176,8 @@ alias codex="codex --full-auto --search"
 alias gid="git diff --staged"
 alias gpnv="git push --no-verify"
 
-alias oc="opencode"
-
-# mocap likes its process
-ulimit -n 4096
-
-# Added by Helix CLI installer
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.amvm/bin:$PATH"
-
 # iTerm2 integration
-# source ~/.iterm2_shell_integration.zsh
-
-# macOS clang suxx (no wasm32)
-export PATH="$(brew --prefix llvm)/bin:$PATH"
-
-# WezTerm shell integration - send OSC 7 with hostname + cwd
-# Always emit for interactive shells - WezTerm needs this for cwd tracking
-# (WEZTERM_PANE may not be set over SSH due to AcceptEnv restrictions)
-__wezterm_osc7() {
-    printf '\e]7;file://%s%s\e\\' "${HOST}" "${PWD}"
-}
-
-# Set terminal title to user@host:dir
-__wezterm_title() {
-    print -Pn '\e]0;%n@%m:%~\e\\'
-}
-
-# Hook into prompt
-autoload -Uz add-zsh-hook
-add-zsh-hook precmd __wezterm_osc7
-add-zsh-hook precmd __wezterm_title
-
-# Doesn't work anyway
-export DISABLE_COST_WARNINGS=1
+source ~/.iterm2_shell_integration.zsh
 
 # Pipe to this to copy remotely
 wezcopy() {
@@ -263,10 +225,8 @@ ltag() {
 git tag --sort=-v:refname
 }
 
-alias claude-mem='bun "/Users/amos/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
 alias dc="docker compose"
 
-# export GIT_PAGER="$HOME/.cargo/bin/smart-pager"
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
@@ -275,15 +235,3 @@ export PATH="$(brew --prefix)/opt/openjdk/bin:$PATH"
 # Added by Antigravity
 export PATH="/Users/amos/.antigravity/antigravity/bin:$PATH"
 
-
-# BEGIN opam configuration
-# This is useful if you're using opam as it adds:
-#   - the correct directories to the PATH
-#   - auto-completion for the opam binary
-# This section can be safely removed at any time if needed.
-[[ ! -r '/Users/amos/.opam/opam-init/init.zsh' ]] || source '/Users/amos/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
-# END opam configuration
-
-export PATH=$PATH:$HOME/bearcove/verifast/bin
-
-eval $(opam env --switch=/Users/amos/bearcove/soteria --set-switch)
