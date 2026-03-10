@@ -60,9 +60,8 @@ cdpath=(
 fpath=(~/.zshrc.d/completions $fpath)
 
 # Include brew zsh site functions if they exist
-if type brew &>/dev/null
-then
-  fpath=("$(brew --prefix)/share/zsh/site-functions" $fpath)
+if [[ -d /opt/homebrew/share/zsh/site-functions ]]; then
+  fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
 fi
 
 ## Path setup
@@ -85,8 +84,13 @@ function acp() {
     git push
 }
 
-# Load zsh completions
-autoload -Uz compinit && compinit
+# Load zsh completions (cached — regenerate dump once per day)
+autoload -Uz compinit
+if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
 
 ####################################################
 ## Aliases
@@ -230,9 +234,24 @@ git tag --sort=-v:refname
 alias dc="docker compose"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-export PATH="$(brew --prefix)/opt/openjdk/bin:$PATH"
+# Lazy-load nvm — only source it when first needed
+_nvm_lazy_load() {
+  unset -f nvm node npm npx
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+}
+nvm()  { _nvm_lazy_load; nvm  "$@"; }
+node() { _nvm_lazy_load; node "$@"; }
+npm()  { _nvm_lazy_load; npm  "$@"; }
+npx()  { _nvm_lazy_load; npx  "$@"; }
+# Add nvm's default node to PATH without sourcing nvm
+if [[ -f "$NVM_DIR/alias/default" ]]; then
+  _nvm_default_ver=$(<"$NVM_DIR/alias/default")
+  _nvm_node_path="$NVM_DIR/versions/node/v${_nvm_default_ver}/bin"
+  [[ -d "$_nvm_node_path" ]] && export PATH="$_nvm_node_path:$PATH"
+  unset _nvm_default_ver _nvm_node_path
+fi
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 # Added by Antigravity
 export PATH="/Users/amos/.antigravity/antigravity/bin:$PATH"
