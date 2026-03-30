@@ -51,6 +51,7 @@ cdpath=(
     ~/bearcove
     ~/bearcove/cove
     ~/bearcove/cove/crates
+    ~/bearcove/vixen/crates
     ~/facet-rs/facet
     ~/facet-rs
     ~
@@ -174,6 +175,20 @@ esac
 eval "$(direnv hook zsh)"
 
 alias rp="release-plz"
+
+# export CLAUDE_CODE_DISABLE_1M_CONTEXT=1
+export CLAUDE_CODE_AUTO_COMPACT_WINDOW=500000
+export CLAUDE_CODE_DISABLE_AUTO_MEMORY=1
+export CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING=1
+export CLAUDE_CODE_DISABLE_BACKGROUND_TASKS=1
+export CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS=1
+export CLAUDE_CODE_DISABLE_FAST_MODE=1
+export CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY=1
+export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
+export CLAUDE_CODE_EFFORT_LEVEL=high
+export CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION=false
+export ENABLE_CLAUDEAI_MCP_SERVERS=false
+
 alias claude="claude --allow-dangerously-skip-permissions"
 alias clau="claude --model haiku --allow-dangerously-skip-permissions"
 # alias codex="codex --full-auto --search"
@@ -233,26 +248,7 @@ git tag --sort=-v:refname
 
 alias dc="docker compose"
 
-export NVM_DIR="$HOME/.nvm"
-# Lazy-load nvm — only source it when first needed
-_nvm_lazy_load() {
-  unset -f nvm node npm npx
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
-}
-nvm()  { _nvm_lazy_load; nvm  "$@"; }
-node() { _nvm_lazy_load; node "$@"; }
-npm()  { _nvm_lazy_load; npm  "$@"; }
-npx()  { _nvm_lazy_load; npx  "$@"; }
-# Add nvm's default node to PATH without sourcing nvm
-if [[ -f "$NVM_DIR/alias/default" ]]; then
-  _nvm_default_ver=$(<"$NVM_DIR/alias/default")
-  _nvm_node_path="$NVM_DIR/versions/node/v${_nvm_default_ver}/bin"
-  [[ -d "$_nvm_node_path" ]] && export PATH="$_nvm_node_path:$PATH"
-  unset _nvm_default_ver _nvm_node_path
-fi
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 # Added by Antigravity
 export PATH="/Users/amos/.antigravity/antigravity/bin:$PATH"
-
