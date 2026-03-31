@@ -74,8 +74,8 @@ export BEARDIST_CACHE_DIR=/tmp/beardist-cache
 ## Linux-specific setup
 if [[ $(uname) == "Linux" ]]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    export PKG_CONFIG_PATH=/home/linuxbrew/.linuxbrew/lib/pkgconfig
-    export LD_LIBRARY_PATH=/home/linuxbrew/.linuxbrew/lib
+    # export PKG_CONFIG_PATH=/home/linuxbrew/.linuxbrew/lib/pkgconfig
+    # export LD_LIBRARY_PATH=/home/linuxbrew/.linuxbrew/lib
 fi
 
 ## Git alias: Add commit push (acp)
