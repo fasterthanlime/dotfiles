@@ -85,13 +85,16 @@ function acp() {
     git push
 }
 
-# Load zsh completions (cached — regenerate dump once per day)
+# # Load zsh completions (cached — regenerate dump once per day)
+# autoload -Uz compinit
+# if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+#   compinit
+# else
+#   compinit -C
+# fi
+
 autoload -Uz compinit
-if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
-  compinit
-else
-  compinit -C
-fi
+compinit
 
 ####################################################
 ## Aliases
@@ -157,6 +160,7 @@ alias carho="cargo"
 alias crago="cargo"
 alias cx="cargo xtask"
 alias cxi="cargo xtask install"
+alias cxid="cargo xtask install --dev"
 alias crd="cargo run" # cargo run "dev"
 alias crp="cargo run --release" # cargo run "prod"
 alias lg="lazygit"
@@ -177,20 +181,22 @@ eval "$(direnv hook zsh)"
 alias rp="release-plz"
 
 # export CLAUDE_CODE_DISABLE_1M_CONTEXT=1
-export CLAUDE_CODE_AUTO_COMPACT_WINDOW=500000
+# export CLAUDE_CODE_AUTO_COMPACT_WINDOW=400000
 export CLAUDE_CODE_DISABLE_AUTO_MEMORY=1
-export CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING=1
-export CLAUDE_CODE_DISABLE_BACKGROUND_TASKS=1
-export CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS=1
+# export CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING=1
+# export CLAUDE_CODE_DISABLE_BACKGROUND_TASKS=1
+# export CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS=1
 export CLAUDE_CODE_DISABLE_FAST_MODE=1
 export CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY=1
+# this disables updates
 # export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
-# export CLAUDE_CODE_EFFORT_LEVEL=high
+# export CLAUDE_CODE_EFFORT_LEVEL=max
 export CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION=false
 export CLAUDE_CODE_NO_FLICKER=1
 export ENABLE_CLAUDEAI_MCP_SERVERS=false
 
 alias claude="claude --allow-dangerously-skip-permissions"
+alias claud="claude --model sonnet --allow-dangerously-skip-permissions"
 alias clau="claude --model haiku --allow-dangerously-skip-permissions"
 # alias codex="codex --full-auto --search"
 alias codex="codex --yolo"
@@ -253,3 +259,10 @@ export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 # Added by Antigravity
 export PATH="/Users/amos/.antigravity/antigravity/bin:$PATH"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/amos/.lmstudio/bin"
+# End of LM Studio CLI section
+#
+eval "$(zoxide init zsh)"
+

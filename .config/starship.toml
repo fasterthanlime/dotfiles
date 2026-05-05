@@ -24,7 +24,7 @@ $character"""
 disabled = true
 
 [hostname]
-ssh_only = true
+ssh_only = false
 ssh_symbol = "󰣀"
 style = "bold #D47766"
 format = "[ $ssh_symbol $hostname]($style)"
