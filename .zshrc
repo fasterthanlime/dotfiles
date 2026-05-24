@@ -48,12 +48,8 @@ export WORDCHARS='*?_-.~=&;!#$%^(){}<>'
 ## Paths I often jump to
 cdpath=(
     .
+    ~/vixenware
     ~/bearcove
-    ~/bearcove/cove
-    ~/bearcove/cove/crates
-    ~/bearcove/vixen/crates
-    ~/facet-rs/facet
-    ~/facet-rs
     ~
 )
 
@@ -257,12 +253,5 @@ alias dc="docker compose"
 
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
-# Added by Antigravity
-export PATH="/Users/amos/.antigravity/antigravity/bin:$PATH"
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/amos/.lmstudio/bin"
-# End of LM Studio CLI section
-#
-eval "$(zoxide init zsh)"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
