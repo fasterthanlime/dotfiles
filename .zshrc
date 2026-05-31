@@ -251,7 +251,5 @@ git tag --sort=-v:refname
 
 alias dc="docker compose"
 
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
