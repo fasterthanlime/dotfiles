@@ -81,6 +81,13 @@ function acp() {
     git push
 }
 
+## Git alias: Add commit push no verify (acpnv)
+function acpnv() {
+    git add .
+    git commit --no-verify-m "$*"
+    git push
+}
+
 # # Load zsh completions (cached — regenerate dump once per day)
 # autoload -Uz compinit
 # if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then

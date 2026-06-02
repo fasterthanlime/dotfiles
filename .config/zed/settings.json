@@ -1,19 +1,348 @@
-// Zed settings
-//
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run `zed: open default settings` from the
-// command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "use_system_prompts": false,
+  "ui_font_family": "Iosevka",
+  "diff_view_style": "unified",
+  "agent_ui_font_size": 15.0,
+  "ui_font_size": 15.0,
+  "agent_buffer_font_size": 15.0,
+  "buffer_font_size": 15.0,
+  "ssh_connections": [
+    {
+      "host": "meadow",
+      "username": "amos",
+      "args": [],
+      "projects": [
+        {
+          "paths": ["/Users/amos/bearcove/bee"],
+        },
+        {
+          "paths": ["/home/amos"],
+        },
+        {
+          "paths": ["/home/amos/bilbo"],
+        },
+        {
+          "paths": ["/home/amos/dwarf-json"],
+        },
+        {
+          "paths": ["/home/amos/helloworld/./"],
+        },
+        {
+          "paths": ["/home/amos/nperf"],
+        },
+      ],
+    },
+    {
+      "host": "cuda",
+      "args": [],
+      "projects": [
+        {
+          "paths": ["/home/amos/./"],
+        },
+        {
+          "paths": ["/home/amos/bearcove/bee"],
+        },
+        {
+          "paths": ["/home/amos/helix"],
+        },
+      ],
+    },
+    {
+      "host": "souffle",
+      "args": [],
+      "projects": [
+        {
+          "paths": ["/Users/amos/bearcove/bee"],
+        },
+      ],
+    },
+  ],
+  "cli_default_open_behavior": "new_window",
+  "outline_panel": {
+    "dock": "right",
+  },
+  "collaboration_panel": {
+    "dock": "right",
+  },
+  "language_models": {
+    "openai_compatible": {
+      "Alibaba Cloud": {
+        "api_url": "https://ws-p1bqy3xrmgstzeew.eu-central-1.maas.aliyuncs.com/compatible-mode/v1",
+        "available_models": [
+          {
+            "name": "qwen3.6-plus",
+            "display_name": "Qwen 3.6+",
+            "max_tokens": 1000000,
+            "max_output_tokens": 64000,
+            "max_completion_tokens": 1000000,
+            "capabilities": {
+              "tools": true,
+              "images": true,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": true,
+              "chat_completions": true,
+            },
+          },
+        ],
+      },
+    },
+  },
+  "diagnostics_max_severity": "warning",
+  "lsp_document_colors": "inlay",
+  "hover_popover_enabled": true,
+  "context_servers": {
+    "tracey": {
+      "enabled": true,
+      "remote": false,
+      "settings": {},
+    },
+    "mcp-server-sequential-thinking": {
+      "enabled": false,
+      "remote": false,
+      "settings": {},
+    },
+  },
+  "edit_predictions": {
+    "mode": "subtle",
+  },
+  "git_panel": {
+    "dock": "right",
+    "collapse_untracked_diff": false,
+    "diff_stats": true,
+    "tree_view": true,
+  },
+  "project_panel": {
+    "hide_hidden": false,
+    "hide_root": false,
+    "diagnostic_badges": true,
+    "hide_gitignore": true,
+    "dock": "right",
+  },
+  "use_system_window_tabs": false,
+  "bottom_dock_layout": "contained",
+  "preview_tabs": {
+    "enable_preview_multibuffer_from_code_navigation": false,
+    "enable_preview_from_project_panel": true,
+    "enabled": false,
+  },
+  "tab_bar": {
+    "show_nav_history_buttons": false,
+    "show_tab_bar_buttons": true,
+    "show_pinned_tabs_in_separate_row": true,
+  },
+  "tabs": {
+    "show_diagnostics": "all",
+    "file_icons": true,
+    "git_status": true,
+  },
+  "title_bar": {
+    "show_branch_status_icon": true,
+    "show_menus": false,
+  },
+  "diagnostics": {
+    "inline": {
+      "padding": 2,
+      "min_column": 0,
+      "enabled": false,
+    },
+  },
+  "prettier": {
+    "allowed": false,
+  },
+  "document_symbols": "on",
+  "document_folding_ranges": "on",
+  "semantic_tokens": "combined",
+  "colorize_brackets": true,
+  "inlay_hints": {
+    "show_background": true,
+    "enabled": true,
+    "toggle_on_modifiers_press": {
+      "function": true,
+    },
+  },
+  "indent_guides": {
+    "background_coloring": "disabled",
+    "coloring": "indent_aware",
+  },
+  "soft_wrap": "none",
+  "vim": {
+    "use_smartcase_find": true,
+  },
+  "toolbar": {
+    "breadcrumbs": true,
+    "code_actions": true,
+  },
+  "minimap": {
+    "show": "never",
+  },
+  "autoscroll_on_clicks": true,
+  "sticky_scroll": {
+    "enabled": true,
+  },
+  "show_signature_help_after_edits": true,
+  "auto_signature_help": false,
+  "which_key": {
+    "enabled": true,
+  },
+  "cursor_shape": "bar",
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Colored Zed Icons Theme Light",
+    "dark": "Colored Zed Icons Theme Dark",
+  },
+  "redact_private_values": false,
+  "agent_servers": {
+    "omp": {
+      "type": "custom",
+      "command": "omp",
+      "args": ["acp"],
+      "env": {},
+    },
+    "gemini": {
+      "favorite_models": ["gemini-3.1-pro-preview-customtools"],
+      "default_model": "gemini-3.1-pro-preview-customtools",
+      "type": "registry",
+    },
+    "opencode": {
+      "type": "registry",
+    },
+    "codex-acp": {
+      "default_config_options": {
+        "mode": "full-access",
+        "model": "gpt-5.5",
+      },
+      "favorite_config_option_values": {
+        "model": ["gpt-5.5"],
+        "mode": ["full-access"],
+      },
+      "type": "registry",
+    },
+    "claude-acp": {
+      "default_config_options": {
+        "model": "default",
+        "mode": "bypassPermissions",
+      },
+      "favorite_config_option_values": {
+        "model": ["default"],
+        "mode": ["auto"],
+      },
+      "type": "registry",
+    },
+  },
   "use_system_path_prompts": false,
-  "ui_font_size": 16,
-  "buffer_font_size": 15,
+  "use_system_prompts": false,
+  "agent": {
+    "message_editor_min_lines": 6,
+    "show_turn_stats": true,
+    "thinking_display": "preview",
+    "play_sound_when_agent_done": "never",
+    "notify_when_agent_waiting": "never",
+    "single_file_review": false,
+    "tool_permissions": {
+      "tools": {
+        "mcp:tracey:tracey_validate": {
+          "default": "allow",
+        },
+        "edit_file": {
+          "default": "allow",
+        },
+        "search_web": {
+          "default": "allow",
+        },
+        "fetch": {
+          "default": "allow",
+        },
+        "move_path": {
+          "default": "allow",
+        },
+        "delete_path": {
+          "default": "allow",
+        },
+        "copy_path": {
+          "default": "allow",
+        },
+        "save_file": {
+          "default": "allow",
+        },
+        "create_directory": {
+          "default": "allow",
+        },
+        "terminal": {
+          "default": "allow",
+        },
+      },
+    },
+    "default_profile": "write",
+    "default_model": {
+      "effort": "low",
+      "provider": "openai-subscribed",
+      "model": "gpt-5.5",
+      "enable_thinking": true,
+    },
+    "dock": "left",
+    "favorite_models": [
+      {
+        "provider": "openai-subscribed",
+        "model": "gpt-5.5",
+        "enable_thinking": true,
+        "effort": "low",
+      },
+    ],
+    "inline_assistant_model": {
+      "provider": "openai-subscribed",
+      "model": "gpt-5.5",
+      "enable_thinking": false,
+    },
+    "model_parameters": [],
+  },
   "theme": {
     "mode": "system",
-    "light": "One Light",
-    "dark": "One Dark",
+    "dark": "Gruvbox Dark",
+    "light": "Melange Light",
   },
+  "terminal": {
+    "font_size": 15.0,
+    "shell": "system",
+    "toolbar": {
+      "breadcrumbs": true,
+    },
+    "working_directory": "first_project_directory",
+    "font_family": "IosevkaTerm Nerd Font",
+  },
+  "base_keymap": "VSCode",
+  "buffer_font_family": "IosevkaTerm Nerd Font",
+  "vim_mode": true,
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "check": {
+          "command": "clippy",
+          "workspace": true,
+          "extraEnv": {
+            "CARGO_TARGET_DIR": "/tmp/cargo-unified-pain-and-suffering",
+          },
+        },
+      },
+    },
+  },
+  "buffer_font_features": {
+    "calt": true,
+    "cv01": true,
+    "cv02": true,
+    "cv33": true,
+    "cv34": true,
+    "cv35": true,
+    "cv36": true,
+    "cv61": true,
+    "cv62": true,
+    "ss05": true,
+    "ss06": true,
+    "ss07": true,
+    "ss08": true,
+  },
+  "languages": {
+    "Vixen": {
+      "format_on_save": "off",
+    },
+  },
+  "code_lens": "off",
 }
