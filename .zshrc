@@ -105,12 +105,15 @@ compinit
 
 alias vim="nvim"
 
+alias l="ls -l --color=auto"
+alias ll="ls -lhA --color=auto"
+
 alias j="just"
 alias nt="cargo nextest"
 alias nrc="cargo nextest run --no-capture"
 alias nff="cargo nextest run --no-fail-fast"
 alias nr="cargo nextest run"
-alias nl="cargo nextest list"
+#alias nl="cargo nextest list"
 alias dt="cargo test --doc --all-features"
 alias cla="cargo clippy --all-targets --all-features"
 alias claf="cargo clippy --all-targets --all-features --fix --allow-dirty"
@@ -123,11 +126,6 @@ alias tf="tofu"
 alias earthly="earthly -i"
 alias e="earthly"
 alias eb="earthly build"
-
-## Colorful ls on all platforms
-alias ls="eza --color=always"
-alias l="eza --color=always -lhA"
-alias ll="eza --color=always -lh"
 
 ## AT&T syntax makes me sad
 alias objdump="objdump -Mintel"
@@ -259,4 +257,10 @@ git tag --sort=-v:refname
 alias dc="docker compose"
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="${HOME}/.local/cargo-wrapper/bin:$PATH"
+# Guard against `rg -r`/`-rn` (grep muscle memory → ripgrep --replace mangles output). Source: ~/rg-wrapper
+export PATH="${HOME}/.local/rg-wrapper/bin:$PATH"
 
+
+# Scaleway CLI autocomplete initialization.
+eval "$(scw autocomplete script shell=zsh)"

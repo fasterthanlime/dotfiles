@@ -29,7 +29,9 @@ local function scheme_for_appearance(appearance)
     if appearance:find 'Dark' then
         return 'melange_dark'
     else
-        return 'melange_light'
+        return 'Default (light) (terminal.sexy)'
+        -- return 'DanQing Light (base16)'
+        -- return 'melange_light'
     end
 end
 
@@ -286,7 +288,7 @@ config.colors.tab_bar = tab_bar_for_appearance(appearance)
 
 -- Override terminal background for light mode (more muted than default melange_light)
 if not appearance:find 'Dark' then
-    config.colors.background = '#E8E0D6'  -- muted warm gray
+    -- config.colors.background = '#E8E0D6'  -- muted warm gray
 end
 
 ----------------------------------------------------------------
