@@ -49,7 +49,8 @@ export WORDCHARS='*?_-.~=&;!#$%^(){}<>'
 cdpath=(
     .
     ~/vixenware
-    ~/bearcove
+    ~/bearlabs
+    ~/oss
     ~
 )
 
@@ -104,6 +105,7 @@ compinit
 ####################################################
 
 alias vim="nvim"
+alias ap="ansible-playbook"
 
 alias l="ls -l --color=auto"
 alias ll="ls -lhA --color=auto"
