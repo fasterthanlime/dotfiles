@@ -49,7 +49,7 @@ export WORDCHARS='*?_-.~=&;!#$%^(){}<>'
 cdpath=(
     .
     ~/vixenware
-    ~/bearlabs
+    ~/bearcove
     ~/oss
     ~
 )
