@@ -43,22 +43,28 @@ alias gbx='git branch --delete'
 alias gbX='git branch --delete --force'
 
 # Commit (c)
-alias gc='git commit --verbose'
+# Interactive commits are always Amos, even in repos whose local config is
+# an agent identity (Cool Bear) with bot-key signing. -c wins over local
+# config; signing is disabled so the bot key is never used for human commits.
+function amos-git
+    git -c user.name='Amos Wenger' -c user.email='amos@bearcove.eu' -c commit.gpgsign=false $argv
+end
+alias gc='amos-git commit --verbose'
 alias gcS='git commit --verbose --gpg-sign'
-alias gca='git commit --verbose --all'
+alias gca='amos-git commit --verbose --all'
 alias gcaS='git commit --verbose --all --gpg-sign'
-alias gcm='git commit --message'
+alias gcm='amos-git commit --message'
 alias gcmS='git commit --message --gpg-sign'
-alias gcam='git commit --all --message'
+alias gcam='amos-git commit --all --message'
 alias gco='git checkout'
 alias gcO='git checkout --patch'
-alias gcf='git commit --amend --reuse-message HEAD'
+alias gcf='amos-git commit --amend --reuse-message HEAD'
 alias gcfS='git commit --amend --reuse-message HEAD --gpg-sign'
-alias gcF='git commit --verbose --amend'
+alias gcF='amos-git commit --verbose --amend'
 alias gcFS='git commit --verbose --amend --gpg-sign'
-alias gcp='git cherry-pick --ff'
-alias gcP='git cherry-pick --no-commit'
-alias gcr='git revert'
+alias gcp='amos-git cherry-pick --ff'
+alias gcP='amos-git cherry-pick --no-commit'
+alias gcr='amos-git revert'
 alias gcR='git reset "HEAD^"'
 alias gcs='git show'
 alias gcsS='git show --pretty=short --show-signature'
