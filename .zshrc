@@ -48,9 +48,10 @@ export WORDCHARS='*?_-.~=&;!#$%^(){}<>'
 ## Paths I often jump to
 cdpath=(
     .
-    ~/vixenware
-    ~/bearcove
-    ~/oss
+    ~/w/vixenware
+    ~/w/bearcove
+    ~/w/fasterthanlime
+    ~/w/facet-rs
     ~
 )
 
@@ -64,9 +65,6 @@ fi
 
 ## Path setup
 export PATH="$HOME/.cargo/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/opt/homebrew/opt/curl/bin:/usr/local/go/bin:$HOME/.local/bin:$HOME/go/bin:$PATH"
-
-## BeardDist cache dir
-export BEARDIST_CACHE_DIR=/tmp/beardist-cache
 
 ## Linux-specific setup
 if [[ $(uname) == "Linux" ]]; then
@@ -220,43 +218,41 @@ wezcopy() {
 
 # helper: ensure tag looks like vX.Y.Z (digits only)
 is_semver_tag() {
-    local tag="$1"
-    if [[ "$tag" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
-        return 0
-    else
-        echo "error: tag '$tag' must match vX.Y.Z (e.g. v1.2.3)" >&2
-        return 1
-    fi
+  local tag="$1"
+  if [[ "$tag" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+    return 0
+  else
+    echo "error: tag '$tag' must match vX.Y.Z (e.g. v1.2.3)" >&2
+    return 1
+  fi
 }
 
 # push tag
 ptag() {
-local tag="$1"
-if [[ -z "$tag" ]]; then
-    echo "usage: ptag vX.Y.Z" >&2
-    return 1
-fi
-is_semver_tag "$tag" || return 1
-git tag -a "$tag" -m "$tag" && git push origin "$tag" --no-verify
+  local tag="$1"
+  if [[ -z "$tag" ]]; then
+      echo "usage: ptag vX.Y.Z" >&2
+      return 1
+  fi
+  is_semver_tag "$tag" || return 1
+  git tag -a "$tag" -m "$tag" && git push origin "$tag" --no-verify
 }
 
 # replace tag
 rtag() {
-local tag="$1"
-if [[ -z "$tag" ]]; then
-    echo "usage: rtag vX.Y.Z" >&2
-    return 1
-fi
-is_semver_tag "$tag" || return 1
-git tag -d "$tag" && git push origin :"$tag" --no-verify && ptag "$tag"
+  local tag="$1"
+  if [[ -z "$tag" ]]; then
+      echo "usage: rtag vX.Y.Z" >&2
+      return 1
+  fi
+  is_semver_tag "$tag" || return 1
+  git tag -d "$tag" && git push origin :"$tag" --no-verify && ptag "$tag"
 }
 
 # list tags
 ltag() {
-git tag --sort=-v:refname
+  git tag --sort=-v:refname
 }
-
-alias dc="docker compose"
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="${HOME}/.local/cargo-wrapper/bin:$PATH"
@@ -264,5 +260,3 @@ export PATH="${HOME}/.local/cargo-wrapper/bin:$PATH"
 export PATH="${HOME}/.local/rg-wrapper/bin:$PATH"
 
 
-# Scaleway CLI autocomplete initialization.
-eval "$(scw autocomplete script shell=zsh)"
